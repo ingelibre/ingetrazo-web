@@ -45,7 +45,7 @@
     "name": "IngeTrazo",
     "operatingSystem": "Linux, Windows, macOS",
     "applicationCategory": "DesignApplication",
-    "description": "Modelador 3D libre estilo SketchUp orientado a ingeniería civil y arquitectura, con BIM como capa opcional: etiqueta la geometría como muros, losas o columnas, obtén cantidades (metrado) y exporta IFC 4. Incluye terreno satelital 3D, perfiles longitudinales e importación de modelos SketchUp (.skp directo, .dae, .obj). Código abierto bajo GPL-3.0.",
+    "description": "Modelador 3D libre estilo SketchUp orientado a ingeniería civil y arquitectura, con BIM como capa opcional: etiqueta la geometría como muros, losas o columnas, obtén cantidades (metrado) y exporta IFC 4. Incluye composición de láminas con planos a escala exacta y export a PDF, terreno satelital 3D, levantamientos fotogramétricos de dron, perfiles longitudinales e importación nativa de modelos SketchUp (.skp de todas las versiones, .dae, .obj). Código abierto bajo GPL-3.0.",
     "url": "https://ingetrazo.com/",
     "image": "https://ingetrazo.com/images/logo.png",
     "author": {
@@ -90,7 +90,7 @@
         "name": "¿Puedo abrir mis modelos de SketchUp?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sí, el .skp directamente: Archivo ▸ Importar ▸ SketchUp. La primera vez, IngeTrazo ofrece instalar el conversor skp2dae automáticamente con un clic — las texturas llegan porque viajan dentro del propio .skp. También importa COLLADA (.dae) y OBJ."
+          "text": "Sí, el .skp directamente y sin conversores: el importador nativo de IngeTrazo lee archivos de todas las versiones de SketchUp — geometría, grupos, componentes, materiales, texturas, capas, escenas y cotas. También importa COLLADA (.dae) y OBJ."
         }
       },
       {
@@ -99,6 +99,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "BIM significa darle semántica al modelo: este sólido ES un muro, esta cara ES una puerta. Con eso IngeTrazo calcula las cantidades de obra (m², m³, unidades) y las exporta en IFC, el formato estándar que entienden los programas de presupuestos — incluido IngePresupuestos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo generar los planos del proyecto?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. El compositor de láminas coloca vistas del modelo a escala exacta (1:50, 1:100…) sobre hojas A4–A0, con cotas ancladas al modelo que se actualizan si el modelo cambia, cajetín editable, escala gráfica y estilo técnico de líneas ocultas. Exporta cada lámina — o el juego completo — a PDF vectorial, y la vista a DXF."
         }
       },
       {
@@ -162,10 +170,10 @@
   <section class="hero">
     <div class="container hero-center">
       <h1>El modelador 3D libre<br>para ingeniería y arquitectura</h1>
-      <p class="hero-sub">Traza como a mano. Etiqueta BIM. Exporta IFC.<br>Nativo en Linux — también Windows y macOS. Código abierto.</p>
+      <p class="hero-sub">Traza como a mano. Etiqueta BIM. Exporta IFC y planos en PDF.<br>Nativo en Linux — también Windows y macOS. Código abierto.</p>
       <div class="hero-ctas">
         <a href="#descargar" class="btn btn-primary btn-lg">Consigue IngeTrazo gratis</a>
-        <span class="hero-version">Última versión: <span id="latest-version">v0.2.1</span></span>
+        <span class="hero-version">Última versión: <span id="latest-version">v0.3.0</span></span>
       </div>
     </div>
     <div class="hero-screenshot-wrap">
@@ -228,7 +236,9 @@
           <ul class="feat-list">
             <li><strong>Terreno 3D con imagen satelital</strong> — elevaciones reales de tu zona</li>
             <li><strong>Perfil longitudinal</strong> — traza una ruta y mira su perfil al instante</li>
+            <li><strong>Levantamiento de dron (WebODM)</strong> — tu malla fotogramétrica texturizada como referencia, con cotas reales</li>
             <li><strong>Puntos GPS / estación total</strong> — importa tu CSV en UTM y dibuja sobre puntos exactos</li>
+            <li><strong>UTM WGS84 en toda la interfaz</strong> — escribe la Zona/E/N tal como la reporta tu equipo</li>
             <li><strong>Rutas y linderos</strong> georreferenciados, con progresivas y áreas</li>
           </ul>
           <p class="feat-muted">El modelador completo funciona offline; solo el mapa usa internet.</p>
@@ -240,15 +250,36 @@
       </div>
     </section>
 
-    <!-- ── 4. Import SketchUp ── -->
-    <section class="feat feat-alt reveal">
+    <!-- ── 4. Láminas / planos ── -->
+    <section class="feat reveal">
       <div class="container feat-row feat-reverse">
         <div class="feat-text">
-          <h2>Abre tus archivos de SketchUp</h2>
-          <p>Tu biblioteca de años no se queda atrás: IngeTrazo abre el <code>.skp</code> directamente — con grupos, componentes, materiales y texturas.</p>
+          <h2>Del modelo al plano impreso</h2>
+          <p>Compón láminas como en QGIS o LayOut: vistas del modelo a <strong>escala exacta</strong> sobre la hoja, cotas que se re-miden solas y PDF vectorial listo para el expediente.</p>
           <ul class="feat-list">
-            <li><strong>Importa SketchUp (.skp) directo</strong> — el conversor <a href="https://github.com/tuxiasumari/skp2dae" target="_blank" rel="noopener">skp2dae</a> se instala solo, con un clic</li>
-            <li><strong>También COLLADA (.dae) y OBJ</strong> — y las texturas viajan dentro del propio .skp</li>
+            <li><strong>Escala real garantizada</strong> — 1:100 en un marco de 200 mm son 20 m de modelo, siempre</li>
+            <li><strong>Cotas ancladas al modelo</strong> — editas el muro y la cota se mueve y re-mide sola</li>
+            <li><strong>Estilo técnico de líneas ocultas exactas</strong> — el dibujo que entintaría un dibujante</li>
+            <li><strong>Cajetín editable, escala gráfica y norte</strong> — y varias láminas por documento, a PDF en un clic</li>
+          </ul>
+          <p class="feat-muted">En la imagen: una lámina real exportada por IngeTrazo — planta y elevaciones de una vivienda a 1:100.</p>
+        </div>
+        <figure class="feat-img">
+          <img class="zoomable" src="images/screenshots/laminas.jpeg"
+               alt="Lámina A3 generada por IngeTrazo: planta y elevaciones a 1:100 con cajetín y escala gráfica" width="1820" height="1287" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── 5. Import SketchUp ── -->
+    <section class="feat feat-alt reveal">
+      <div class="container feat-row">
+        <div class="feat-text">
+          <h2>Abre tus archivos de SketchUp</h2>
+          <p>Tu biblioteca de años no se queda atrás: IngeTrazo abre el <code>.skp</code> directamente, con su propio importador nativo de código abierto — sin conversores ni instalaciones extra.</p>
+          <ul class="feat-list">
+            <li><strong>Importa SketchUp (.skp) nativo</strong> — todas las versiones, de las antiguas a las actuales</li>
+            <li><strong>Con todo adentro</strong> — grupos, componentes, materiales, texturas, capas, escenas y cotas</li>
             <li><strong>Grupos y componentes</strong> se conservan — mueve una farola sin arrastrar el resto</li>
             <li><strong>Exporta STL</strong> para impresión 3D, <strong>OBJ</strong> e <strong>IFC</strong></li>
           </ul>
@@ -286,7 +317,7 @@
   <section id="descargar" class="download-section">
     <div class="container">
       <h2>Consigue IngeTrazo</h2>
-      <p class="download-sub">Gratis y completo. Versión <span id="dl-version">0.2.1</span> — <span id="dl-date">julio 2026</span>.</p>
+      <p class="download-sub">Gratis y completo. Versión <span id="dl-version">0.3.0</span> — <span id="dl-date">agosto 2026</span>.</p>
       <div class="dl-row">
         <div class="dl-group">
           <span class="dl-group-label">Windows</span>
@@ -346,11 +377,15 @@ venv/bin/python main.py</code>
         </details>
         <details class="faq-item">
           <summary>¿Puedo abrir mis modelos de SketchUp?</summary>
-          <p>Sí, el <strong>.skp directamente</strong>: Archivo ▸ Importar ▸ SketchUp. La primera vez, IngeTrazo te ofrece instalar el conversor <strong>skp2dae</strong> automáticamente (un clic) — las texturas llegan porque viajan dentro del propio .skp. También importa <strong>COLLADA (.dae)</strong> y <strong>OBJ</strong> exportados desde SketchUp.</p>
+          <p>Sí, el <strong>.skp directamente y sin conversores</strong>: Archivo ▸ Importar ▸ SketchUp. El importador nativo lee archivos de <strong>todas las versiones</strong> — geometría, grupos, componentes, materiales, texturas, capas, escenas y cotas. También importa <strong>COLLADA (.dae)</strong> y <strong>OBJ</strong> exportados desde SketchUp.</p>
         </details>
         <details class="faq-item">
           <summary>¿Qué es eso de BIM e IFC?</summary>
           <p>BIM significa darle <strong>semántica</strong> al modelo: este sólido ES un muro, esta cara ES una puerta. Con eso IngeTrazo calcula las cantidades de obra (m², m³, unidades) y las exporta en <strong>IFC</strong>, el formato estándar que entienden los programas de presupuestos — incluido IngePresupuestos.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Puedo generar los planos del proyecto?</summary>
+          <p>Sí. El <strong>compositor de láminas</strong> coloca vistas del modelo a <strong>escala exacta</strong> (1:50, 1:100…) sobre hojas A4–A0, con cotas ancladas al modelo que se actualizan si el modelo cambia, cajetín editable, escala gráfica y estilo técnico de líneas ocultas. Exporta cada lámina — o el juego completo — a <strong>PDF vectorial</strong>, y la vista a <strong>DXF</strong>.</p>
         </details>
         <details class="faq-item">
           <summary>¿Funciona sin internet?</summary>

@@ -46,6 +46,11 @@ Todas REALES, generadas por script contra la app en GL
 - `import-sketchup.jpeg` — **plaza Yanque real abierta desde su .skp** (vía el
   conversor skp2dae bajo Wine): arco, bandera del Perú y empedrado con
   texturas, panel de materiales poblado. (Antes: vivero.dae con colores.)
+- `laminas.jpeg` — **lámina A3 real exportada por IngeTrazo 0.3** (PDF de
+  dogfooding `laminas-prueba/c3_a3_tecnica.pdf` → pdftoppm): planta +
+  elevaciones de vivienda a 1:100, cajetín y escala gráfica. Candidata a
+  reemplazo por una captura de la VENTANA del compositor cuando Marco la
+  tome (mostraría los paneles y el flujo, no solo el resultado).
 
 OG banner: `.cover-build/og.html` + Chromium headless (snap: solo escribe
 dentro de $HOME) → `images/og-banner.jpg`.
