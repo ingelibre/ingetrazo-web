@@ -37,15 +37,19 @@ Todas REALES, generadas por script contra la app en GL
 (`QT_QPA_PLATFORM=xcb` + captura con `import -window` de ImageMagick —
 `QWidget.grab()` NO captura el overlay QPainter del viewport):
 
-- `principal.jpeg` — hero (copiada de `~/ingetrazo/docs/images/viewport.png`,
-  recortada la franja inferior).
-- `modelado.jpeg` — recorte del viewport del hero.
-- `bim.jpeg` — casita taggeada + panel BIM con metrados (script scratch
-  `shot_bim.py`; los números del panel se verificaron correctos).
-- `terreno.jpeg` — terreno 3D del valle del Colca (Yanque) con Esri satelital.
-- `import-sketchup.jpeg` — **plaza Yanque real abierta desde su .skp** (vía el
-  conversor skp2dae bajo Wine): arco, bandera del Perú y empedrado con
-  texturas, panel de materiales poblado. (Antes: vivero.dae con colores.)
+Renovadas COMPLETAS el 2026-08-08 con capturas manuales de Marco (fuente:
+`~/Imágenes/Capturas de pantalla/ingetrazo/`, convertidas a JPEG 1600px):
+
+- `principal.jpeg` — hero: **coso taurino con andenería**, graderías, arcos,
+  toros y público; paneles de capas/escenas/materiales.
+- `modelado.jpeg` — caseta de ladrillo con Empujar/Tirar activo y VCB.
+- `bim.jpeg` — nave industrial (tijerales + cobertura curva) con el panel
+  Tagging BIM (IfcColumn) abierto.
+- `terreno.jpeg` — **levantamiento de dron real de un valle** con ruta
+  trazada, perfil longitudinal abierto y lectura UTM en barra de estado
+  (marco de ventana GNOME recortado con -trim, fondo #1e242c).
+- `import-sketchup.jpeg` — parque infantil abierto desde su `.skp` con las
+  capas originales de SketchUp (PERIMETRO, TREES, people…).
 - `laminas.jpeg` — **lámina A3 real exportada por IngeTrazo 0.3** (PDF de
   dogfooding `laminas-prueba/c3_a3_tecnica.pdf` → pdftoppm): planta +
   elevaciones de vivienda a 1:100, cajetín y escala gráfica. Candidata a
