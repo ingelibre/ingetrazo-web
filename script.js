@@ -4,7 +4,7 @@
   'use strict';
 
   /* ── Versión + fecha desde GitHub Releases ─────────────────────────── */
-  fetch('https://api.github.com/repos/tuxiasumari/ingetrazo/releases/latest')
+  fetch('https://api.github.com/repos/ingelibre/ingetrazo/releases/latest')
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (rel) {
       if (!rel || !rel.tag_name) return;
@@ -19,15 +19,42 @@
         if (dd) dd.textContent = d.toLocaleDateString('es-PE',
           { year: 'numeric', month: 'long' });
       }
-      /* URLs exactas de los binarios Windows del release */
+      /* URL exacta de cada artefacto del release, su tamaño real, y el
+         comando copiable con el nombre exacto del archivo. */
+      function updateCard(cardId, label, a, codeId, lines, copyCmd) {
+        var btn = document.getElementById(cardId);
+        if (btn) {
+          btn.href = a.browser_download_url;
+          var size = btn.querySelector('span');
+          if (size && a.size) {
+            size.textContent = label + ' · ' +
+              Math.round(a.size / 1048576) + ' MB';
+          }
+        }
+        var box = document.getElementById(codeId);
+        if (box) {
+          var code = box.querySelector('code');
+          var copy = box.querySelector('.dl-code-copy');
+          if (code) code.textContent = lines;
+          if (copy) copy.setAttribute('data-copy', copyCmd);
+        }
+      }
       (rel.assets || []).forEach(function (a) {
         if (/-setup-.*\.exe$/.test(a.name)) {
           var btn = document.getElementById('dl-win-btn');
           if (btn) btn.href = a.browser_download_url;
-        }
-        if (/-windows\.zip$/.test(a.name)) {
+        } else if (/-windows\.zip$/.test(a.name)) {
           var zip = document.getElementById('dl-win-zip');
           if (zip) zip.href = a.browser_download_url;
+        } else if (/\.AppImage$/.test(a.name)) {
+          updateCard('dl-appimage', 'no instala nada', a, 'dl-code-appimage',
+            'chmod +x ' + a.name + '\n./' + a.name,
+            'chmod +x ' + a.name + ' && ./' + a.name);
+        } else if (/\.tar\.gz$/.test(a.name)) {
+          var dir = a.name.replace(/-linux-[^-]+\.tar\.gz$/, '');
+          updateCard('dl-tarball', 'sin FUSE', a, 'dl-code-tarball',
+            'tar -xzf ' + a.name + '\n' + dir + '/ingetrazo',
+            'tar -xzf ' + a.name + ' && ' + dir + '/ingetrazo');
         }
       });
     })
