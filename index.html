@@ -45,7 +45,7 @@
     "name": "IngeTrazo",
     "operatingSystem": "Linux, Windows, macOS",
     "applicationCategory": "DesignApplication",
-    "description": "Modelador 3D libre estilo SketchUp orientado a ingeniería civil y arquitectura, con BIM como capa opcional: etiqueta la geometría como muros, losas o columnas, obtén cantidades (metrado) y exporta IFC 4. Incluye composición de láminas con planos a escala exacta y export a PDF, terreno satelital 3D, levantamientos fotogramétricos de dron, perfiles longitudinales e importación nativa de modelos SketchUp (.skp de todas las versiones, .dae, .obj). Código abierto bajo GPL-3.0.",
+    "description": "Modelador 3D libre estilo SketchUp orientado a ingeniería civil y arquitectura, con BIM como capa opcional: etiqueta la geometría como muros, losas o columnas, obtén cantidades (metrado) y exporta IFC 4. Incluye composición de láminas con planos a escala exacta y export a PDF, terreno satelital 3D, levantamientos fotogramétricos de dron, perfiles longitudinales, y modelos SketchUp nativos: abre .skp de todas las versiones y guarda en .skp (también .dae, .obj, glTF, STL). Código abierto bajo GPL-3.0.",
     "url": "https://ingetrazo.com/",
     "image": "https://ingetrazo.com/images/logo.png",
     "author": {
@@ -87,10 +87,10 @@
       },
       {
         "@type": "Question",
-        "name": "¿Puedo abrir mis modelos de SketchUp?",
+        "name": "¿Puedo abrir mis modelos de SketchUp? ¿Y guardar?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sí, el .skp directamente y sin conversores: el importador nativo — construido sobre OpenSKP, el lector libre del formato SketchUp al que IngeTrazo contribuye — lee archivos de todas las versiones: geometría, grupos, componentes, materiales, texturas, capas, escenas y cotas. También importa COLLADA (.dae) y OBJ."
+          "text": "Sí a ambas, el .skp directamente y sin conversores: Archivo ▸ Importar ▸ SketchUp para abrir, y Archivo ▸ Exportar ▸ SketchUp para guardar. Construido sobre OpenSKP, el lector/escritor libre del formato al que IngeTrazo contribuye — lee archivos de todas las versiones (geometría, grupos, componentes, materiales, texturas, capas, escenas, cotas y textos guía) y lo que exportas abre en SketchUp con sus anotaciones incluidas. También importa COLLADA (.dae) y OBJ."
         }
       },
       {
@@ -285,13 +285,13 @@
     <section class="feat feat-alt reveal">
       <div class="container feat-row">
         <div class="feat-text">
-          <h2>Abre tus archivos de SketchUp</h2>
-          <p>Tu biblioteca de años no se queda atrás: IngeTrazo abre el <code>.skp</code> directamente, gracias a <a href="https://github.com/iamahsanmehmood/openskp" target="_blank" rel="noopener"><strong>OpenSKP</strong></a>, el lector libre del formato SketchUp — sin conversores ni instalaciones extra.</p>
+          <h2>Abre y guarda tus archivos de SketchUp</h2>
+          <p>Tu biblioteca de años no se queda atrás — y tus colegas tampoco: IngeTrazo abre el <code>.skp</code> directamente y <strong>guarda en .skp</strong> lo que modelas, gracias a <a href="https://github.com/iamahsanmehmood/openskp" target="_blank" rel="noopener"><strong>OpenSKP</strong></a>, el lector/escritor libre del formato SketchUp — sin conversores ni instalaciones extra.</p>
           <ul class="feat-list">
-            <li><strong>Importa SketchUp (.skp) nativo</strong> — todas las versiones, de las antiguas a las actuales</li>
-            <li><strong>Con todo adentro</strong> — grupos, componentes, materiales, texturas, capas, escenas y cotas</li>
-            <li><strong>Grupos y componentes</strong> se conservan — mueve una farola sin arrastrar el resto</li>
-            <li><strong>Exporta STL</strong> para impresión 3D, <strong>OBJ</strong> e <strong>IFC</strong></li>
+            <li><strong>Importa SketchUp (.skp) nativo</strong> — todas las versiones, de las antiguas (2013) a las actuales</li>
+            <li><strong>Con todo adentro</strong> — grupos, componentes, materiales, texturas, capas, escenas, cotas y textos guía</li>
+            <li><strong>Exporta a .skp</strong> — tu modelo abre en SketchUp con sus grupos, materiales con nombre, cotas y textos</li>
+            <li><strong>Y además STL</strong> para impresión 3D, <strong>OBJ, COLLADA, glTF</strong> e <strong>IFC</strong></li>
           </ul>
           <p class="feat-muted">En la captura: un parque real abierto desde su .skp — juegos, tribunas y cobertura, con sus capas originales. IngeTrazo contribuye código a OpenSKP: cada archivo que abre aquí mejora el lector libre para todos.</p>
         </div>
@@ -345,7 +345,7 @@
               <span>sin instalación</span>
             </a>
           </div>
-          <p class="dl-group-alt" style="font-size:12px;color:rgba(255,255,255,0.75)">Si SmartScreen avisa: «Más información → Ejecutar de todas formas» (beta sin firma).</p>
+          <p class="dl-group-alt" style="font-size:12px;color:rgba(255,255,255,0.75)">Si SmartScreen avisa: «Más información → Ejecutar de todas formas» (instalador sin firma digital).</p>
         </div>
 
         <div class="dl-divider"></div>
@@ -400,8 +400,8 @@ IngeTrazo-0.3.2/ingetrazo</code>
           <p>El dibujo se siente igual de directo (empujar/tirar, inferencias, medidas exactas por teclado), pero IngeTrazo es libre, corre <strong>nativo en Linux</strong>, garantiza <strong>sólidos herméticos</strong> aptos para metrado e impresión 3D, y suma la capa BIM: etiquetas la geometría y obtienes cantidades e IFC.</p>
         </details>
         <details class="faq-item">
-          <summary>¿Puedo abrir mis modelos de SketchUp?</summary>
-          <p>Sí, el <strong>.skp directamente y sin conversores</strong>: Archivo ▸ Importar ▸ SketchUp. El importador nativo — construido sobre <a href="https://github.com/iamahsanmehmood/openskp" target="_blank" rel="noopener"><strong>OpenSKP</strong></a>, el lector libre del formato al que IngeTrazo contribuye — lee archivos de <strong>todas las versiones</strong>: geometría, grupos, componentes, materiales, texturas, capas, escenas y cotas. También importa <strong>COLLADA (.dae)</strong> y <strong>OBJ</strong> exportados desde SketchUp.</p>
+          <summary>¿Puedo abrir mis modelos de SketchUp? ¿Y guardar?</summary>
+          <p>Sí a ambas, el <strong>.skp directamente y sin conversores</strong>: Archivo ▸ Importar ▸ SketchUp para abrir, y Archivo ▸ Exportar ▸ SketchUp para guardar. Construido sobre <a href="https://github.com/iamahsanmehmood/openskp" target="_blank" rel="noopener"><strong>OpenSKP</strong></a>, el lector/escritor libre del formato al que IngeTrazo contribuye — lee archivos de <strong>todas las versiones</strong> (geometría, grupos, componentes, materiales, texturas, capas, escenas, cotas y textos guía) y lo que exportas abre en SketchUp con sus anotaciones incluidas. También importa <strong>COLLADA (.dae)</strong> y <strong>OBJ</strong>.</p>
         </details>
         <details class="faq-item">
           <summary>¿Qué es eso de BIM e IFC?</summary>
