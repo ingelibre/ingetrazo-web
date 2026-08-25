@@ -130,7 +130,7 @@
         "name": "¿Cómo lo instalo?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "En Windows: descarga el instalador de ingetrazo.com o de los releases de GitHub, doble clic y listo. En Linux: descarga el AppImage (permiso de ejecución y abrir) o, si tu distro no trae FUSE, el tar.gz — lo descomprimes donde quieras y ejecutas ingetrazo. También puedes correrlo desde el código fuente con 3 comandos."
+          "text": "En Windows: descarga el instalador de ingetrazo.com o de los releases de GitHub, doble clic y listo. En Linux: descarga el Flatpak (doble clic y tu tienda de aplicaciones lo instala, con los .igz y .skp asociados), el AppImage (permiso de ejecución y abrir) o, si tu distro no trae FUSE, el tar.gz — lo descomprimes donde quieras y ejecutas ingetrazo. También puedes correrlo desde el código fuente con 3 comandos."
         }
       },
       {
@@ -182,7 +182,7 @@
       <p class="hero-sub">Traza como a mano. Etiqueta BIM. Exporta IFC y planos en PDF.<br>Nativo en Linux — también Windows y macOS. Código abierto.</p>
       <div class="hero-ctas">
         <a href="#descargar" class="btn btn-primary btn-lg">Consigue IngeTrazo gratis</a>
-        <span class="hero-version">Última versión: <span id="latest-version">v0.3.2</span></span>
+        <span class="hero-version">Última versión: <span id="latest-version">v0.3.4</span></span>
       </div>
     </div>
     <div class="hero-screenshot-wrap">
@@ -329,7 +329,7 @@
   <section id="descargar" class="download-section">
     <div class="container">
       <h2>Consigue IngeTrazo</h2>
-      <p class="download-sub">Gratis y completo. Versión <span id="dl-version">0.3.2</span> — <span id="dl-date">agosto 2026</span>.</p>
+      <p class="download-sub">Gratis y completo. Versión <span id="dl-version">0.3.4</span> — <span id="dl-date">agosto 2026</span>.</p>
       <div class="dl-row">
         <div class="dl-group">
           <span class="dl-group-label">Windows</span>
@@ -353,6 +353,11 @@
         <div class="dl-group">
           <span class="dl-group-label">Linux · x86_64</span>
           <div class="dl-group-cards">
+            <a class="dl-card dl-card-compact" id="dl-flatpak" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0 1 3.5v9L8 16l7-3.5v-9L8 0zm0 1.7 5 2.5-5 2.5-5-2.5 5-2.5zM2.5 5.6l4.75 2.4v5.9L2.5 11.5V5.6zm11 0v5.9l-4.75 2.4V8L13.5 5.6z"/></svg>
+              <strong>Flatpak</strong>
+              <span>doble clic instala</span>
+            </a>
             <a class="dl-card dl-card-compact" id="dl-appimage" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
               <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
               <strong>AppImage</strong>
@@ -364,17 +369,23 @@
               <span>sin FUSE</span>
             </a>
           </div>
+          <p class="dl-group-alt"><strong>Flatpak</strong>: doble clic y GNOME Software / KDE Discover lo instala (el entorno Freedesktop baja solo de Flathub); queda en tu menú de aplicaciones con los .igz y .skp asociados. Por terminal:</p>
+          <div class="dl-code" id="dl-code-flatpak">
+            <code>flatpak install --user IngeTrazo.flatpak
+flatpak run com.ingetrazo.IngeTrazo</code>
+            <button class="dl-code-copy" type="button" data-copy="flatpak install --user IngeTrazo.flatpak && flatpak run com.ingetrazo.IngeTrazo">Copiar</button>
+          </div>
           <p class="dl-group-alt"><strong>AppImage</strong>: dale permiso de ejecución y ábrelo (o doble clic desde tu gestor de archivos):</p>
           <div class="dl-code" id="dl-code-appimage">
-            <code>chmod +x IngeTrazo-0.3.2-x86_64.AppImage
-./IngeTrazo-0.3.2-x86_64.AppImage</code>
-            <button class="dl-code-copy" type="button" data-copy="chmod +x IngeTrazo-0.3.2-x86_64.AppImage && ./IngeTrazo-0.3.2-x86_64.AppImage">Copiar</button>
+            <code>chmod +x IngeTrazo-0.3.4-x86_64.AppImage
+./IngeTrazo-0.3.4-x86_64.AppImage</code>
+            <button class="dl-code-copy" type="button" data-copy="chmod +x IngeTrazo-0.3.4-x86_64.AppImage && ./IngeTrazo-0.3.4-x86_64.AppImage">Copiar</button>
           </div>
           <p class="dl-group-alt"><strong>tar.gz</strong>: si tu distro no trae FUSE (lo único que un AppImage necesita), descomprime y ejecuta — sirve igual para instalarlo en <code>/opt</code>:</p>
           <div class="dl-code" id="dl-code-tarball">
-            <code>tar -xzf IngeTrazo-0.3.2-linux-x86_64.tar.gz
-IngeTrazo-0.3.2/ingetrazo</code>
-            <button class="dl-code-copy" type="button" data-copy="tar -xzf IngeTrazo-0.3.2-linux-x86_64.tar.gz && IngeTrazo-0.3.2/ingetrazo">Copiar</button>
+            <code>tar -xzf IngeTrazo-0.3.4-linux-x86_64.tar.gz
+IngeTrazo-0.3.4/ingetrazo</code>
+            <button class="dl-code-copy" type="button" data-copy="tar -xzf IngeTrazo-0.3.4-linux-x86_64.tar.gz && IngeTrazo-0.3.4/ingetrazo">Copiar</button>
           </div>
           <p class="dl-group-alt">Los dos traen lo mismo: Python, Qt y el lector de .skp viajan dentro. Corren en Ubuntu 22.04 y posteriores. Si algo falla, <code>--check</code> te dice qué falta.</p>
           <p class="dl-note">También puedes correrlo <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">desde el código fuente</a> (3 comandos, README). Todos los archivos en los <a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">releases de GitHub</a>.</p>
@@ -421,7 +432,7 @@ IngeTrazo-0.3.2/ingetrazo</code>
         </details>
         <details class="faq-item">
           <summary>¿Cómo lo instalo?</summary>
-          <p>En <strong>Windows</strong>: descarga el instalador de la sección Descargar, doble clic y listo (asocia los archivos .igz). En <strong>Linux</strong>: descarga el <strong>AppImage</strong> (dale permiso de ejecución y ábrelo) o, si tu distro no trae FUSE, el <strong>tar.gz</strong>: lo descomprimes donde quieras y ejecutas <code>ingetrazo</code>. Si algo no funciona, <code>--check</code> te dice qué le falta. También puedes correrlo desde el código fuente con 3 comandos.</p>
+          <p>En <strong>Windows</strong>: descarga el instalador de la sección Descargar, doble clic y listo (asocia los archivos .igz). En <strong>Linux</strong>: descarga el <strong>Flatpak</strong> (doble clic y GNOME Software / KDE Discover lo instala, con los .igz y .skp asociados), el <strong>AppImage</strong> (dale permiso de ejecución y ábrelo) o, si tu distro no trae FUSE, el <strong>tar.gz</strong>: lo descomprimes donde quieras y ejecutas <code>ingetrazo</code>. Si algo no funciona, <code>--check</code> te dice qué le falta. También puedes correrlo desde el código fuente con 3 comandos.</p>
         </details>
         <details class="faq-item">
           <summary>¿Sirve para impresión 3D?</summary>

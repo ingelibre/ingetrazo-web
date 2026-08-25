@@ -46,6 +46,12 @@
         } else if (/-windows\.zip$/.test(a.name)) {
           var zip = document.getElementById('dl-win-zip');
           if (zip) zip.href = a.browser_download_url;
+        } else if (/\.flatpak$/.test(a.name)) {
+          updateCard('dl-flatpak', 'doble clic instala', a, 'dl-code-flatpak',
+            'flatpak install --user ' + a.name +
+            '\nflatpak run com.ingetrazo.IngeTrazo',
+            'flatpak install --user ' + a.name +
+            ' && flatpak run com.ingetrazo.IngeTrazo');
         } else if (/\.AppImage$/.test(a.name)) {
           updateCard('dl-appimage', 'no instala nada', a, 'dl-code-appimage',
             'chmod +x ' + a.name + '\n./' + a.name,
