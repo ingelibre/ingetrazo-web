@@ -4,3 +4,9 @@
 .cover-build/site*.png
 .cover-build/og-raw.png
 node_modules/
+
+# La biblioteca de componentes: 185 MB de datos DERIVADOS. No va en git —
+# se regenera en 23 s desde los .sh3f de Sweet Home 3D con
+# `python3 tools/gen-library.py biblioteca <libreria.sh3f> …` (ver CLAUDE.md).
+# Wrangler sí la publica: NO añadirla a .assetsignore.
+biblioteca/
