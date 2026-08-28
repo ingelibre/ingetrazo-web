@@ -371,10 +371,10 @@
           </div>
           <p class="dl-group-alt"><strong>Flatpak</strong> — <em>la forma recomendada en Linux</em>: instálalo desde nuestro repositorio y a partir de ahí <code>flatpak update</code> te trae cada versión nueva. Queda en tu menú de aplicaciones con los .igz y .skp asociados (el entorno Freedesktop baja solo de Flathub).</p>
           <div class="dl-code" id="dl-code-flatpak">
-            <code>flatpak remote-add --if-not-exists ingetrazo https://ingetrazo.com/ingetrazo.flatpakrepo
+            <code>flatpak remote-add --user --if-not-exists ingetrazo https://ingetrazo.com/ingetrazo.flatpakrepo
 flatpak install --user ingetrazo com.ingetrazo.IngeTrazo
 flatpak run com.ingetrazo.IngeTrazo</code>
-            <button class="dl-code-copy" type="button" data-copy="flatpak remote-add --if-not-exists ingetrazo https://ingetrazo.com/ingetrazo.flatpakrepo && flatpak install --user ingetrazo com.ingetrazo.IngeTrazo && flatpak run com.ingetrazo.IngeTrazo">Copiar</button>
+            <button class="dl-code-copy" type="button" data-copy="flatpak remote-add --user --if-not-exists ingetrazo https://ingetrazo.com/ingetrazo.flatpakrepo && flatpak install --user ingetrazo com.ingetrazo.IngeTrazo && flatpak run com.ingetrazo.IngeTrazo">Copiar</button>
           </div>
           <p class="dl-group-alt">¿Prefieres el archivo suelto? La tarjeta de arriba lo descarga y se instala con doble clic — pero así <strong>no se actualiza solo</strong>: un <code>.flatpak</code> no tiene de dónde buscar versiones nuevas.</p>
           <p class="dl-group-alt"><strong>AppImage</strong>: dale permiso de ejecución y ábrelo (o doble clic desde tu gestor de archivos):</p>
