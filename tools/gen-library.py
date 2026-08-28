@@ -36,15 +36,17 @@ from pathlib import Path
 #: archive uses. CC0 asks nothing; CC-BY needs the author credited, which is
 #: why the author travels in the index; the Free Art License is copyleft, so
 #: a derived work inherits it — the app has to be able to say which is which.
+#: The name is written in English and the app translates it, like every
+#: other string it shows — the index is data, not a Spanish document.
 LICENCES = {
-    "BlendSwap-CC-0": ("CC0-1.0", "Dominio público"),
-    "BlendSwap-CC-BY": ("CC-BY-4.0", "Creative Commons Atribución"),
-    "Scopia": ("CC-BY-4.0", "Creative Commons Atribución"),
-    "KatorLegaz": ("CC-BY-4.0", "Creative Commons Atribución"),
-    "Reallusion": ("CC-BY-4.0", "Creative Commons Atribución"),
-    "Contributions": ("LAL-1.3", "Licencia Arte Libre"),
-    "LucaPresidente": ("LAL-1.3", "Licencia Arte Libre"),
-    "Trees": ("LAL-1.3", "Licencia Arte Libre"),
+    "BlendSwap-CC-0": ("CC0-1.0", "Public domain"),
+    "BlendSwap-CC-BY": ("CC-BY-4.0", "Creative Commons Attribution"),
+    "Scopia": ("CC-BY-4.0", "Creative Commons Attribution"),
+    "KatorLegaz": ("CC-BY-4.0", "Creative Commons Attribution"),
+    "Reallusion": ("CC-BY-4.0", "Creative Commons Attribution"),
+    "Contributions": ("LAL-1.3", "Free Art License"),
+    "LucaPresidente": ("LAL-1.3", "Free Art License"),
+    "Trees": ("LAL-1.3", "Free Art License"),
 }
 
 
@@ -134,6 +136,7 @@ def convert(sh3f: Path, out: Path, entries: list) -> int:
         base = _read(zf, "PluginFurnitureCatalog.properties")
         es = _read(zf, "PluginFurnitureCatalog_es.properties") or base
         names = _fields(es, "name") or _fields(base, "name")
+        names_en = _fields(base, "name")
         cats = _fields(es, "category") or _fields(base, "category")
         models, icons = _fields(base, "model"), _fields(base, "icon")
         widths, depths = _fields(base, "width"), _fields(base, "depth")
@@ -172,6 +175,10 @@ def convert(sh3f: Path, out: Path, entries: list) -> int:
             entries.append({
                 "id": ident,
                 "nombre": names.get(i, rel.rsplit("/", 1)[-1]),
+                # The catalogue names every model in both languages and the
+                # two agree one-to-one (unlike its categories), so the tray
+                # can say "Washbasin" or "Lavabo" as the interface asks.
+                "nombre_en": names_en.get(i, rel.rsplit("/", 1)[-1]),
                 "categoria": cats.get(i, "Varios"),
                 "coleccion": collection,
                 "obj": rel.rsplit("/", 1)[-1],
