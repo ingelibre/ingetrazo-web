@@ -89,6 +89,40 @@ son datos DERIVADOS, y su sitio es el despliegue, no el historial.
   por una carpeta o una URL para probar). Navegar cuesta kilobytes: solo se
   descarga el modelo que se pulsa, y queda en caché.
 
+## Repositorio Flatpak (`flatpak/repo/`) — 126 MB
+
+Lo que hace que `flatpak update` funcione. Antes se publicaba solo el bundle
+de un archivo, y **un bundle no tiene canal de actualización**: quien lo
+instalaba se quedaba en esa versión para siempre (Marco lo vio en su propio
+portátil, con la 0.3.4 instalada desde una carpeta de compilación suya).
+
+- **No está en git**: datos derivados del `.flatpak` de cada release.
+  Se reconstruye en segundos, sin recompilar nada:
+
+  ```
+  flatpak run --filesystem=host --command=ostree org.flatpak.Builder \
+      init --mode=archive-z2 --repo="$PWD/flatpak/repo"
+  flatpak build-import-bundle flatpak/repo <IngeTrazo-X.Y.Z-x86_64.flatpak>
+  flatpak build-update-repo flatpak/repo
+  npx wrangler deploy
+  ```
+
+  (`ostree` no está instalado nativamente aquí; vive dentro del Flatpak
+  `org.flatpak.Builder`. `build-import-bundle` importa el bundle YA publicado,
+  así que el repo y la release son bit a bit lo mismo.)
+
+- `ingetrazo.flatpakrepo` **sí va en git**: es el descriptor que el usuario
+  añade como remoto. Apunta a `https://ingetrazo.com/flatpak/repo/`.
+- 3.643 archivos, que con los 3.021 de `biblioteca/` dejan ~6.700 de los
+  20.000 del plan libre. ostree comparte objetos entre versiones, así que
+  cada release nueva añade solo lo que cambió.
+- **Sin firma GPG.** Va por HTTPS, como el bundle. Firmarlo es el siguiente
+  paso natural si se quiere verificación de punta a punta; requiere una clave
+  y decidir dónde vive.
+- **Cada release hay que reimportar el bundle y desplegar** — hoy es manual,
+  igual que la biblioteca. Automatizarlo pide un token de Cloudflare en los
+  secretos del repo de la app.
+
 ## Decisiones (no revertir sin discutir)
 
 - Sin frameworks, sin trackers, sin cookies banner.

@@ -10,3 +10,9 @@ node_modules/
 # `python3 tools/gen-library.py biblioteca <libreria.sh3f> …` (ver CLAUDE.md).
 # Wrangler sí la publica: NO añadirla a .assetsignore.
 biblioteca/
+
+# El repositorio Flatpak: 126 MB de datos DERIVADOS del bundle de cada
+# release (`flatpak build-import-bundle`). No va en git — se reconstruye
+# desde el .flatpak publicado, ver CLAUDE.md. Wrangler SÍ lo publica: no
+# añadirlo a .assetsignore. El descriptor ingetrazo.flatpakrepo sí va en git.
+flatpak/repo/

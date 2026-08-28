@@ -31,7 +31,7 @@
               Math.round(a.size / 1048576) + ' MB';
           }
         }
-        var box = document.getElementById(codeId);
+        var box = codeId ? document.getElementById(codeId) : null;
         if (box) {
           var code = box.querySelector('code');
           var copy = box.querySelector('.dl-code-copy');
@@ -47,11 +47,10 @@
           var zip = document.getElementById('dl-win-zip');
           if (zip) zip.href = a.browser_download_url;
         } else if (/\.flatpak$/.test(a.name)) {
-          updateCard('dl-flatpak', 'doble clic instala', a, 'dl-code-flatpak',
-            'flatpak install --user ' + a.name +
-            '\nflatpak run com.ingetrazo.IngeTrazo',
-            'flatpak install --user ' + a.name +
-            ' && flatpak run com.ingetrazo.IngeTrazo');
+          // Solo la tarjeta (enlace y peso). El bloque de comandos NO se
+          // toca: instala desde el repositorio, que es lo que hace que
+          // `flatpak update` funcione, y no depende de cada release.
+          updateCard('dl-flatpak', 'doble clic instala', a, null, null, null);
         } else if (/\.AppImage$/.test(a.name)) {
           updateCard('dl-appimage', 'no instala nada', a, 'dl-code-appimage',
             'chmod +x ' + a.name + '\n./' + a.name,
