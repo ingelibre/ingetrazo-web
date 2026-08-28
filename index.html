@@ -45,7 +45,7 @@
     "name": "IngeTrazo",
     "operatingSystem": "Linux, Windows, macOS",
     "applicationCategory": "DesignApplication",
-    "description": "Modelador 3D libre estilo SketchUp orientado a ingeniería civil y arquitectura, con BIM como capa opcional: etiqueta la geometría como muros, losas o columnas, obtén cantidades (metrado) y exporta IFC 4. Incluye composición de láminas con planos a escala exacta y export a PDF, terreno satelital 3D, levantamientos fotogramétricos de dron, perfiles longitudinales, y modelos SketchUp nativos: abre .skp de todas las versiones y guarda en .skp (también .dae, .obj, glTF, STL). Código abierto bajo GPL-3.0.",
+    "description": "Modelador 3D libre estilo SketchUp orientado a ingeniería civil y arquitectura, con BIM como capa opcional: etiqueta la geometría como muros, losas o columnas, obtén cantidades (metrado) y exporta IFC 4. Incluye biblioteca de 1510 componentes y 427 texturas a tamaño real con los 213 colores RAL Classic, composición de láminas con planos a escala exacta y export a PDF, terreno satelital 3D, levantamientos fotogramétricos de dron, perfiles longitudinales, y modelos SketchUp nativos: abre .skp de todas las versiones y guarda en .skp (también .dae, .obj, glTF, STL). Código abierto bajo GPL-3.0.",
     "url": "https://ingetrazo.com/",
     "image": "https://ingetrazo.com/images/logo.png",
     "author": {
@@ -182,7 +182,7 @@
       <p class="hero-sub">Traza como a mano. Etiqueta BIM. Exporta IFC y planos en PDF.<br>Nativo en Linux — también Windows y macOS. Código abierto.</p>
       <div class="hero-ctas">
         <a href="#descargar" class="btn btn-primary btn-lg">Consigue IngeTrazo gratis</a>
-        <span class="hero-version">Última versión: <span id="latest-version">v0.3.4</span></span>
+        <span class="hero-version">Última versión: <span id="latest-version">v0.3.7.1</span></span>
       </div>
     </div>
     <div class="hero-screenshot-wrap">
@@ -282,8 +282,30 @@
     </section>
 
     <!-- ── 5. Import SketchUp ── -->
-    <section class="feat feat-alt reveal">
+    <!-- ── Biblioteca de componentes y materiales ── -->
+    <section class="feat reveal">
       <div class="container feat-row">
+        <div class="feat-text">
+          <h2>Poblar la escena no debería costarte la tarde</h2>
+          <p>Un modelo se entiende cuando tiene gente al lado, un árbol y un auto. IngeTrazo trae <strong>1.510 componentes</strong> a un clic y <strong>427 texturas</strong> — y cada uno llega <strong>a su tamaño real</strong>, no al que le toque.</p>
+          <ul class="feat-list">
+            <li><strong>1.510 modelos en línea</strong> — muebles, puertas, ventanas, árboles, vehículos y personas. Navegar cuesta kilobytes: solo se descarga el que pulsas, y queda guardado</li>
+            <li><strong>Sin conexión también</strong> — ocho modelos y seis figuras de escala vienen dentro del programa</li>
+            <li><strong>427 texturas con su medida real</strong> — un ladrillo se ve de ladrillo porque el catálogo dice cuánto mide, no porque lo ajustes a ojo</li>
+            <li><strong>213 colores RAL Classic</strong> — pintas con <em>RAL 7035 Gris claro</em> y el dibujo lleva la referencia que un pintor puede comprar, no tres números</li>
+            <li><strong>Figuras de escala a su altura</strong> — para leer de un vistazo si esa puerta es de 2,10 m</li>
+          </ul>
+          <p class="feat-muted">En la captura: un modelo de SketchUp abierto con sus texturas y dos figuras colocadas, con la bandeja de componentes a la derecha. Todo el material viene de la biblioteca libre de <a href="https://www.sweethome3d.com" target="_blank" rel="noopener">Sweet Home 3D</a> (CC0, CC BY y Arte Libre); IngeTrazo muestra siempre la licencia y el autor de cada pieza.</p>
+        </div>
+        <figure class="feat-img">
+          <img class="zoomable" src="images/screenshots/componentes.jpeg"
+               alt="IngeTrazo con un modelo urbano abierto desde SketchUp: dos figuras de escala en el paseo junto al agua y la bandeja de componentes con muebles, árboles y vehículos" width="1600" height="1005" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="feat feat-alt reveal">
+      <div class="container feat-row feat-reverse">
         <div class="feat-text">
           <h2>Abre y guarda tus archivos de SketchUp</h2>
           <p>Tu biblioteca de años no se queda atrás — y tus colegas tampoco: IngeTrazo abre el <code>.skp</code> directamente y <strong>guarda en .skp</strong> lo que modelas, gracias a <a href="https://github.com/iamahsanmehmood/openskp" target="_blank" rel="noopener"><strong>OpenSKP</strong></a>, el lector/escritor libre del formato SketchUp — sin conversores ni instalaciones extra.</p>
@@ -329,7 +351,7 @@
   <section id="descargar" class="download-section">
     <div class="container">
       <h2>Consigue IngeTrazo</h2>
-      <p class="download-sub">Gratis y completo. Versión <span id="dl-version">0.3.4</span> — <span id="dl-date">agosto 2026</span>.</p>
+      <p class="download-sub">Gratis y completo. Versión <span id="dl-version">0.3.7.1</span> — <span id="dl-date">agosto 2026</span>.</p>
       <div class="dl-row">
         <div class="dl-group">
           <span class="dl-group-label">Windows</span>
@@ -379,15 +401,15 @@ flatpak run com.ingetrazo.IngeTrazo</code>
           <p class="dl-group-alt">¿Prefieres el archivo suelto? La tarjeta de arriba lo descarga y se instala con doble clic — pero así <strong>no se actualiza solo</strong>: un <code>.flatpak</code> no tiene de dónde buscar versiones nuevas.</p>
           <p class="dl-group-alt"><strong>AppImage</strong>: dale permiso de ejecución y ábrelo (o doble clic desde tu gestor de archivos):</p>
           <div class="dl-code" id="dl-code-appimage">
-            <code>chmod +x IngeTrazo-0.3.4-x86_64.AppImage
-./IngeTrazo-0.3.4-x86_64.AppImage</code>
-            <button class="dl-code-copy" type="button" data-copy="chmod +x IngeTrazo-0.3.4-x86_64.AppImage && ./IngeTrazo-0.3.4-x86_64.AppImage">Copiar</button>
+            <code>chmod +x IngeTrazo-0.3.7.1-x86_64.AppImage
+./IngeTrazo-0.3.7.1-x86_64.AppImage</code>
+            <button class="dl-code-copy" type="button" data-copy="chmod +x IngeTrazo-0.3.7.1-x86_64.AppImage && ./IngeTrazo-0.3.7.1-x86_64.AppImage">Copiar</button>
           </div>
           <p class="dl-group-alt"><strong>tar.gz</strong>: si tu distro no trae FUSE (lo único que un AppImage necesita), descomprime y ejecuta — sirve igual para instalarlo en <code>/opt</code>:</p>
           <div class="dl-code" id="dl-code-tarball">
-            <code>tar -xzf IngeTrazo-0.3.4-linux-x86_64.tar.gz
-IngeTrazo-0.3.4/ingetrazo</code>
-            <button class="dl-code-copy" type="button" data-copy="tar -xzf IngeTrazo-0.3.4-linux-x86_64.tar.gz && IngeTrazo-0.3.4/ingetrazo">Copiar</button>
+            <code>tar -xzf IngeTrazo-0.3.7.1-linux-x86_64.tar.gz
+IngeTrazo-0.3.7.1/ingetrazo</code>
+            <button class="dl-code-copy" type="button" data-copy="tar -xzf IngeTrazo-0.3.7.1-linux-x86_64.tar.gz && IngeTrazo-0.3.7.1/ingetrazo">Copiar</button>
           </div>
           <p class="dl-group-alt">Los dos traen lo mismo: Python, Qt y el lector de .skp viajan dentro. Corren en Ubuntu 22.04 y posteriores. Si algo falla, <code>--check</code> te dice qué falta.</p>
           <p class="dl-note">También puedes correrlo <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">desde el código fuente</a> (3 comandos, README). Todos los archivos en los <a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">releases de GitHub</a>.</p>
