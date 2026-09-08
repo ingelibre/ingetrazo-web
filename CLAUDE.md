@@ -50,11 +50,14 @@ Renovadas COMPLETAS el 2026-08-08 con capturas manuales de Marco (fuente:
   (marco de ventana GNOME recortado con -trim, fondo #1e242c).
 - `import-sketchup.jpeg` — parque infantil abierto desde su `.skp` con las
   capas originales de SketchUp (PERIMETRO, TREES, people…).
-- `laminas.jpeg` — **lámina A3 real exportada por IngeTrazo 0.3** (PDF de
-  dogfooding `laminas-prueba/c3_a3_tecnica.pdf` → pdftoppm): planta +
-  elevaciones de vivienda a 1:100, cajetín y escala gráfica. Candidata a
-  reemplazo por una captura de la VENTANA del compositor cuando Marco la
-  tome (mostraría los paneles y el flujo, no solo el resultado).
+- `laminas.jpeg` — (2026-09-07) captura manual de Marco de la **ventana del
+  compositor** (por fin: paneles y flujo, no solo el resultado): lámina D02
+  «Detalle de banca y pérgola» de la plaza de Yanque, cuatro vistas a 1:20
+  (frontal, lado con corte, planta, 3D) con cotas, llamadas y cajetín, y el
+  panel «Propiedades del elemento» a la derecha. Fuente
+  `~/Imágenes/Capturas de pantalla/Captura desde 2026-09-07 22-54-25.png`
+  (2954×1856, HiDPI) → JPEG 1846×1160 con Pillow, sin recortar. Antes era
+  la lámina A3 de la pileta exportada a PDF y rasterizada.
 
 - `asistente-ia.jpeg` — (2026-09-08) el poste de alumbrado solar de
   `examples/` con el diálogo del Asistente IA abierto encima (UI en
