@@ -233,6 +233,12 @@ code {
   flex: 1 1 0%;
   min-width: 0;
 }
+.feat-row .feat-imgs {               /* two captures stacked in the image slot */
+  flex: 1 1 0%;
+  min-width: 0;
+  display: grid;
+  gap: 18px;
+}
 
 .feat-reverse {
   flex-direction: row-reverse;
@@ -417,6 +423,7 @@ code {
   }
   .feat-row .feat-text { flex: none; width: 100%; }
   .feat-row .feat-img  { flex: none; width: 100%; }
+  .feat-row .feat-imgs { flex: none; width: 100%; }
 }
 
 /* ============ Impact (dark centered statement) ============ */
