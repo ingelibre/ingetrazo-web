@@ -119,6 +119,14 @@
       },
       {
         "@type": "Question",
+        "name": "¿Tiene inteligencia artificial?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, de dos formas. El Asistente IA integrado es un chat en español: pegas la clave del proveedor que prefieras (Groq tiene cuota gratis; también Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek u Ollama en tu propia máquina) y le pides el modelo con palabras o con una foto. Y el puente MCP deja que Claude Desktop o Claude Code dibujen directamente en la app abierta. En los dos casos la IA genera recetas que el motor ejecuta, cada paso se puede deshacer y el modelo queda editable a mano. Sin IA, IngeTrazo funciona igual y sin internet."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "¿Funciona sin internet?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -283,6 +291,27 @@
       </div>
     </section>
 
+    <!-- ── Modela con la IA ── -->
+    <section class="feat reveal">
+      <div class="container feat-row feat-reverse">
+        <div class="feat-text">
+          <h2>Modela con la IA, dentro de la app o desde Claude</h2>
+          <p>Describe lo que quieres —o adjunta una foto— y la IA escribe la <strong>receta</strong>: revoluciones, extrusiones, Python sobre la API de acciones de IngeTrazo. El motor determinista la ejecuta: <strong>cada paso es un deshacer</strong>, cada receta pasa por el guard de hermeticidad y el modelo sigue siendo tuyo, editable a mano.</p>
+          <ul class="feat-list">
+            <li><strong>Asistente IA integrado</strong> (Extensiones ▸ Asistente IA, Ctrl+Mayús+A) — chat en español con tu propia clave: Groq (con cuota gratis), Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek o un modelo local con Ollama. Sin cuentas ni intermediarios</li>
+            <li><strong>Ve lo que hace</strong> — recibe capturas del viewport y corrige sobre lo que mira; con <strong>Foto…</strong> reconstruye lo que muestra una imagen con las medidas que le des</li>
+            <li><strong>Puente MCP para Claude Desktop y Claude Code</strong> — el agente dibuja, consulta y ve el modelo <em>en vivo, en la app abierta</em>; un paso de deshacer por acción y, si su código falla, el documento vuelve entero</li>
+            <li><strong>Sin caja negra</strong> — la IA nunca escribe mallas: genera recetas sobre el mismo motor que usas a mano, y todo queda en el historial</li>
+          </ul>
+          <p class="feat-muted">En la captura: el poste de alumbrado solar de los ejemplos, diseñado a través del puente MCP («diseña un poste solar de 4,5 m: tubo de 3&quot;, dado tronco-cónico, dos reflectores a 120°…»), con el Asistente IA abierto sobre el modelo. Otros modeladores venden esto por suscripción; aquí es libre y usas la clave que tú elijas.</p>
+        </div>
+        <figure class="feat-img">
+          <img class="zoomable" src="images/screenshots/asistente-ia.jpeg"
+               alt="Asistente IA de IngeTrazo abierto sobre un poste de alumbrado solar modelado por recetas: proveedor, clave, capturas del viewport y el pedido escrito en español" width="1600" height="965" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
     <!-- ── 5. Import SketchUp ── -->
     <!-- ── Biblioteca de componentes y materiales ── -->
     <section class="feat reveal">
@@ -307,7 +336,7 @@
     </section>
 
     <section class="feat feat-alt reveal">
-      <div class="container feat-row feat-reverse">
+      <div class="container feat-row">
         <div class="feat-text">
           <h2>Abre y guarda tus archivos de SketchUp</h2>
           <p>Tu biblioteca de años no se queda atrás — y tus colegas tampoco: IngeTrazo abre el <code>.skp</code> directamente y <strong>guarda en .skp</strong> lo que modelas, gracias a <a href="https://github.com/iamahsanmehmood/openskp" target="_blank" rel="noopener"><strong>OpenSKP</strong></a>, el lector/escritor libre del formato SketchUp — sin conversores ni instalaciones extra.</p>
@@ -488,6 +517,10 @@ IngeTrazo-0.3.7.1/ingetrazo</code>
         <details class="faq-item">
           <summary>¿Puedo agregarle funciones con plugins?</summary>
           <p>Sí, desde la versión 0.3.2 IngeTrazo tiene un <strong>menú Extensiones</strong>: copias un plugin (un archivo Python) a tu carpeta personal y sus herramientas aparecen en el menú — al estilo de las extensiones de SketchUp. Vienen dos incluidas: <strong>Info del modelo</strong> (estadísticas, materiales con m² pintados y objetos BIM) y una <strong>Consola Python</strong> para inspeccionar y automatizar el modelo por código, con todo integrado al deshacer. La guía está en el <a href="https://ingetrazo-docs.pages.dev/extensiones/" target="_blank" rel="noopener">manual</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Tiene inteligencia artificial?</summary>
+          <p>Sí, de dos formas. El <strong>Asistente IA</strong> integrado es un chat en español: pegas la clave del proveedor que prefieras (Groq tiene cuota gratis; también Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek u Ollama en tu propia máquina) y le pides el modelo con palabras o con una foto. Y el <strong>puente MCP</strong> deja que Claude Desktop o Claude Code dibujen directamente en la app abierta. En los dos casos la IA genera <em>recetas</em> que el motor ejecuta —nunca mallas a ciegas—, cada paso se puede deshacer y el modelo queda editable a mano. Sin IA, IngeTrazo funciona igual y sin internet.</p>
         </details>
         <details class="faq-item">
           <summary>¿Funciona sin internet?</summary>

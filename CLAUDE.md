@@ -56,6 +56,12 @@ Renovadas COMPLETAS el 2026-08-08 con capturas manuales de Marco (fuente:
   reemplazo por una captura de la VENTANA del compositor cuando Marco la
   tome (mostraría los paneles y el flujo, no solo el resultado).
 
+- `asistente-ia.jpeg` — (2026-09-08) el poste de alumbrado solar de
+  `examples/` con el diálogo del Asistente IA abierto encima (UI en
+  español, proveedor Gemini, pedido escrito en la caja): ventana capturada
+  con `import -window` y el diálogo con `grab()`, compuestos en su posición
+  real con sombra (script `captura_ia2.py` del scratchpad de la sesión).
+
 OG banner: `.cover-build/og.html` + Chromium headless (snap: solo escribe
 dentro de $HOME) → `images/og-banner.jpg`.
 
