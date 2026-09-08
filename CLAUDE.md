@@ -62,6 +62,14 @@ Renovadas COMPLETAS el 2026-08-08 con capturas manuales de Marco (fuente:
   con `import -window` y el diálogo con `grab()`, compuestos en su posición
   real con sombra (script `captura_ia2.py` del scratchpad de la sesión).
 
+- `mcp-claude.jpeg` — (2026-09-07) captura manual de Marco del **escritorio
+  Ubuntu completo** (barra superior y dock incluidos, a propósito: que se vea
+  que corre en Linux): Claude Code en la terminal con la tabla de medidas de
+  la mesa con 4 sillas que acaba de dibujar por el puente, e IngeTrazo
+  (Flatpak) al lado con el modelo y el diálogo «Puente IA (MCP)» abierto.
+  Fuente `~/Imágenes/Capturas de pantalla/Captura desde 2026-09-07 22-47-46.png`
+  (1920×1200) → JPEG 1600×1000 con Pillow, sin recortar.
+
 OG banner: `.cover-build/og.html` + Chromium headless (snap: solo escribe
 dentro de $HOME) → `images/og-banner.jpg`.
 
