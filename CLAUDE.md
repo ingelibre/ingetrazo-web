@@ -50,7 +50,15 @@ Renovadas COMPLETAS el 2026-08-08 con capturas manuales de Marco (fuente:
   (marco de ventana GNOME recortado con -trim, fondo #1e242c).
 - `import-sketchup.jpeg` — parque infantil abierto desde su `.skp` con las
   capas originales de SketchUp (PERIMETRO, TREES, people…).
-- `laminas.jpeg` — (2026-09-07) captura manual de Marco de la **ventana del
+- `laminas.jpeg` — (2026-09-08) captura manual de Marco de la **ventana del
+  compositor** con la 0.3.15: lámina D04 «Detalle de arco» de la plaza de
+  Yanque (frente, lado, planta y 3D a 1:50, detalles de letra y capitel,
+  niveles y línea de terreno), con las reglas, la barra de lámina con
+  iconos y el panel «Diseño» a la derecha. Fuente
+  `~/Imágenes/Capturas de pantalla/Captura desde 2026-09-08 22-13-50.png`
+  (1920×1200) → recorte 1846×1160 de la ventana (sin barra ni dock de
+  GNOME) con ImageMagick `-crop 1846x1160+74+40`, JPEG q86.
+  Antes (2026-09-07): captura de la **ventana del
   compositor** (por fin: paneles y flujo, no solo el resultado): lámina D02
   «Detalle de banca y pérgola» de la plaza de Yanque, cuatro vistas a 1:20
   (frontal, lado con corte, planta, 3D) con cotas, llamadas y cajetín, y el
