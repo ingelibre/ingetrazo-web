@@ -1,0 +1,71 @@
+{
+ "format": 1,
+ "generated": "2026-10-02T14:39Z",
+ "tags": [
+  "analysis",
+  "architecture",
+  "bim",
+  "drawing",
+  "education",
+  "fabrication",
+  "import-export",
+  "other",
+  "productivity",
+  "rendering",
+  "structures",
+  "terrain"
+ ],
+ "extensions": [
+  {
+   "id": "niveles",
+   "version": "0.5.7",
+   "author": "José Castro Basso (FADU–UDELAR)",
+   "license": "GPL-3.0-or-later",
+   "repository": "https://github.com/ingelibre/ingetrazo/blob/v0.5.7/examples/extensions/niveles.py",
+   "download": "https://raw.githubusercontent.com/ingelibre/ingetrazo/v0.5.7/examples/extensions/niveles.py",
+   "sha256": "ddf8c6e17bd164f336e8f514c257fc2a0abc4f6f9b16ff0a589c5a5bc73afed2",
+   "ingetrazo": "0.5.3",
+   "tags": [
+    "architecture",
+    "drawing",
+    "education"
+   ],
+   "name": {
+    "es": "Niveles",
+    "en": "Levels",
+    "pt": "Níveis"
+   },
+   "summary": {
+    "es": "Niveles del edificio (PB, PA, azotea…) con su altura: líneas guía en alzados y cortes, y el cursor se engancha a cada nivel.",
+    "en": "Building levels (ground floor, upper floor, roof…) with their height: guide lines in elevations and sections, and the cursor snaps to each level.",
+    "pt": "Níveis do edifício (térreo, pavimento superior, cobertura…) com sua altura: linhas-guia em elevações e cortes, e o cursor se prende a cada nível."
+   },
+   "reviewed": true
+  },
+  {
+   "id": "propiedades_poligono",
+   "version": "0.5.7",
+   "author": "Rony Leonel Janampa Monago",
+   "license": "MIT",
+   "repository": "https://github.com/ingelibre/ingetrazo/blob/v0.5.7/examples/extensions/propiedades_poligono.py",
+   "download": "https://raw.githubusercontent.com/ingelibre/ingetrazo/v0.5.7/examples/extensions/propiedades_poligono.py",
+   "sha256": "99c021dea07956dce73af39ba9cdc74eb0063797e689c39015c2f5d202cd6782",
+   "ingetrazo": "0.5.7",
+   "tags": [
+    "structures",
+    "analysis"
+   ],
+   "name": {
+    "es": "Propiedades del polígono",
+    "en": "Polygon properties",
+    "pt": "Propriedades do polígono"
+   },
+   "summary": {
+    "es": "Área, perímetro, centroide y momentos de segundo orden de las caras seleccionadas, con huecos y secciones compuestas.",
+    "en": "Area, perimeter, centroid and second moments of the selected faces, holes and composite sections included.",
+    "pt": "Área, perímetro, centroide e momentos de segunda ordem das faces selecionadas, com furos e seções compostas."
+   },
+   "reviewed": true
+  }
+ ]
+}

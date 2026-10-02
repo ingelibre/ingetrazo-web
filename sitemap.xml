@@ -88,4 +88,34 @@
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://ingetrazo.com/extensiones</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/extensiones"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ingetrazo.com/en/extensiones</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/extensiones"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ingetrazo.com/pt/extensiones</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/extensiones"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

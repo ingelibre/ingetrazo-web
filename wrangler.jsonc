@@ -6,13 +6,17 @@
   "name": "ingetrazo-web",
   "compatibility_date": "2026-07-16",
   "compatibility_flags": ["nodejs_compat"],
-  // worker.js solo corre para «/», «/apoyar» y «/firma»: elige el idioma (es/en/pt)
-  // por cookie, navegador y país; todo lo demás sale directo de los assets.
+  // worker.js solo corre para estas rutas: «/», «/apoyar», «/firma» y
+  // «/extensiones» eligen el idioma (es/en/pt) por cookie, navegador y país;
+  // las /extensiones-* leen el catálogo de GitHub. Todo lo demás sale
+  // directo de los assets.
   "main": "worker.js",
   "assets": {
     "directory": "./",
     "binding": "ASSETS",
-    "run_worker_first": ["/", "/apoyar", "/firma"]
+    "run_worker_first": ["/", "/apoyar", "/firma", "/extensiones",
+                         "/extensiones.json", "/extensiones-img/*",
+                         "/extensiones-descarga/*"]
   },
   "routes": [
     { "pattern": "ingetrazo.com", "custom_domain": true },
