@@ -258,7 +258,7 @@ def main_section(lang: str) -> str:
           <p><span class="ext-badge">{t["community"]}</span> {t["community_p"]}</p>
           <p class="ext-small">{t["safety_note"]}</p>
         </div>
-        <div class="ext-box ext-box-cta">
+        <div class="ext-box ext-box-cta" id="publicar">
           <h2>{t["publish_h"]}</h2>
           <p>{t["publish_p"]}</p>
           <a class="btn btn-primary" href="{CATALOG}{t["readme"]}" target="_blank" rel="noopener">{t["publish_btn"]}</a>
