@@ -1,0 +1,12 @@
+[Flatpak Ref]
+Name=com.ingetrazo.IngeTrazo
+Branch=master
+Title=IngeTrazo
+Url=https://ingetrazo.com/flatpak/repo/
+SuggestRemoteName=ingetrazo
+Homepage=https://ingetrazo.com
+Comment=Modelador 3D libre para ingeniería y arquitectura
+Description=IngeTrazo — traza como a mano: modelador 3D libre para ingeniería civil, arquitectura y diseño. GPL-3.0-or-later.
+Icon=https://ingetrazo.com/images/logo.png
+IsRuntime=false
+RuntimeRepo=https://dl.flathub.org/repo/flathub.flatpakrepo
