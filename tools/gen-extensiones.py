@@ -44,12 +44,19 @@ T = {
                     "catálogo directamente en",
         "install_h": "Cómo instalar",
         "install": [
-            "Pulsa <strong>Descargar</strong> en la extensión.",
+            "Pulsa <strong>Descargar</strong> en la extensión. Recibes un "
+            "archivo <code>.py</code> o un <code>.zip</code>.",
+            "Si es un <code>.zip</code>, descomprímelo: queda una carpeta "
+            "(por ejemplo <code>ja_sun</code>). Esa carpeta entera es la "
+            "extensión: no saques los archivos de dentro.",
             "En IngeTrazo abre <strong>Extensiones ▸ Abrir carpeta de "
-            "complementos</strong> y copia ahí el archivo.",
-            "Reinicia IngeTrazo. La extensión aparece en el menú "
-            "<strong>Extensiones</strong> o en el panel lateral.",
+            "complementos</strong> y copia ahí el archivo <code>.py</code> "
+            "o la carpeta.",
+            "Cierra y vuelve a abrir IngeTrazo. La extensión aparece en el "
+            "menú <strong>Extensiones</strong> o en el panel lateral. Si "
+            "sale con ⚠, pasa el ratón por encima para ver el motivo.",
         ],
+        "how": "¿Cómo se instalan?",
         "soon": "Pronto podrás instalarlas desde IngeTrazo con un clic.",
         "safety_h": "Revisadas y de la comunidad",
         "reviewed": "Revisada",
@@ -87,12 +94,19 @@ T = {
                     "catalog directly at",
         "install_h": "How to install",
         "install": [
-            "Click <strong>Download</strong> on the extension.",
+            "Click <strong>Download</strong> on the extension. You get a "
+            "<code>.py</code> file or a <code>.zip</code>.",
+            "If it is a <code>.zip</code>, unzip it: you get one folder "
+            "(e.g. <code>ja_sun</code>). That whole folder is the "
+            "extension — don't take the files out of it.",
             "In IngeTrazo open <strong>Extensions ▸ Open plugins "
-            "folder</strong> and copy the file there.",
-            "Restart IngeTrazo. The extension shows up in the "
-            "<strong>Extensions</strong> menu or in the side panel.",
+            "folder</strong> and copy the <code>.py</code> file or the "
+            "folder there.",
+            "Close and reopen IngeTrazo. The extension shows up in the "
+            "<strong>Extensions</strong> menu or in the side panel. If it "
+            "has a ⚠, hover over it to see why.",
         ],
+        "how": "How do I install one?",
         "soon": "Soon you will install them from inside IngeTrazo with one "
                 "click.",
         "safety_h": "Reviewed and community",
@@ -130,12 +144,19 @@ T = {
                     "catálogo diretamente em",
         "install_h": "Como instalar",
         "install": [
-            "Clique em <strong>Baixar</strong> na extensão.",
+            "Clique em <strong>Baixar</strong> na extensão. Você recebe um "
+            "arquivo <code>.py</code> ou um <code>.zip</code>.",
+            "Se for um <code>.zip</code>, descompacte: fica uma pasta (por "
+            "exemplo <code>ja_sun</code>). Essa pasta inteira é a extensão: "
+            "não tire os arquivos de dentro.",
             "No IngeTrazo abra <strong>Extensões ▸ Abrir pasta de "
-            "complementos</strong> e copie o arquivo para lá.",
-            "Reinicie o IngeTrazo. A extensão aparece no menu "
-            "<strong>Extensões</strong> ou no painel lateral.",
+            "complementos</strong> e copie para lá o arquivo "
+            "<code>.py</code> ou a pasta.",
+            "Feche e abra de novo o IngeTrazo. A extensão aparece no menu "
+            "<strong>Extensões</strong> ou no painel lateral. Se aparecer "
+            "com ⚠, passe o mouse por cima para ver o motivo.",
         ],
+        "how": "Como instalar?",
         "soon": "Em breve você poderá instalá-las de dentro do IngeTrazo com "
                 "um clique.",
         "safety_h": "Revisadas e da comunidade",
@@ -211,7 +232,7 @@ def main_section(lang: str) -> str:
     <div class="container">
       <div class="section-head">
         <h1>{t["h1"]}</h1>
-        <p>{t["lead"]}</p>
+        <p>{t["lead"]} <a href="#instalar" class="ext-how">{t["how"]} ↓</a></p>
       </div>
 
       <div class="ext-tools">
@@ -224,7 +245,7 @@ def main_section(lang: str) -> str:
       <noscript><p class="ext-empty">{t["noscript"]} <a href="{CATALOG}">{CATALOG.removeprefix("https://")}</a>.</p></noscript>
 
       <div class="ext-info">
-        <div class="ext-box">
+        <div class="ext-box" id="instalar">
           <h2>{t["install_h"]}</h2>
           <ol>
 {steps}

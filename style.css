@@ -1245,3 +1245,9 @@ code {
   .ext-grid { grid-template-columns: 1fr; }
   .ext-info { margin-top: 40px; }
 }
+
+/* Extensions: the «how do I install one?» link under the title jumps to the
+   install box; the box clears the sticky navbar when it lands. */
+.ext-how { white-space: nowrap; font-weight: 600; }
+#instalar { scroll-margin-top: 90px; }
+.ext-box code { font-size: 0.92em; background: var(--accent-soft); padding: 0 4px; border-radius: 4px; }
