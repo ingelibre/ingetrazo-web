@@ -66,7 +66,7 @@
     "584217929": {
       "release": "v0.5.0",
       "nombre": "IngeTrazo-ejemplos.zip",
-      "descargas": 57
+      "descargas": 58
     },
     "580363272": {
       "release": "v0.4.9",
@@ -201,7 +201,7 @@
     "599185365": {
       "release": "v0.5.6",
       "nombre": "IngeTrazo-0.5.6-macos-arm64.dmg",
-      "descargas": 56
+      "descargas": 57
     },
     "599221059": {
       "release": "v0.5.6",
@@ -221,12 +221,12 @@
     "599187133": {
       "release": "v0.5.6",
       "nombre": "ingetrazo-setup-v0.5.6.exe",
-      "descargas": 219
+      "descargas": 221
     },
     "599187131": {
       "release": "v0.5.6",
       "nombre": "ingetrazo-windows.zip",
-      "descargas": 67
+      "descargas": 69
     },
     "599192249": {
       "release": "v0.5.6",
@@ -236,46 +236,46 @@
     "601669854": {
       "release": "v0.5.7",
       "nombre": "IngeTrazo-0.5.7-linux-x86_64.tar.gz",
-      "descargas": 155
+      "descargas": 161
     },
     "601646580": {
       "release": "v0.5.7",
       "nombre": "IngeTrazo-0.5.7-macos-arm64.dmg",
-      "descargas": 1157
+      "descargas": 1194
     },
     "601669858": {
       "release": "v0.5.7",
       "nombre": "IngeTrazo-0.5.7-x86_64.AppImage",
-      "descargas": 565
+      "descargas": 589
     },
     "601648918": {
       "release": "v0.5.7",
       "nombre": "IngeTrazo-0.5.7-x86_64.flatpak",
-      "descargas": 1030
+      "descargas": 1067
     },
     "601670111": {
       "release": "v0.5.7",
       "nombre": "IngeTrazo-ejemplos.zip",
-      "descargas": 130
+      "descargas": 134
     },
     "601648219": {
       "release": "v0.5.7",
       "nombre": "ingetrazo-setup-v0.5.7.exe",
-      "descargas": 4866
+      "descargas": 4966
     },
     "601648216": {
       "release": "v0.5.7",
       "nombre": "ingetrazo-windows.zip",
-      "descargas": 914
+      "descargas": 929
     },
     "601651804": {
       "release": "v0.5.7",
       "nombre": "ingetrazo_0.5.7_amd64.snap",
-      "descargas": 32
+      "descargas": 33
     }
   },
   "retiradas": 6852,
-  "publicadas": 13863,
-  "total": 20715,
-  "actualizado": "2026-10-04T19:38Z"
+  "publicadas": 14093,
+  "total": 20945,
+  "actualizado": "2026-10-04T23:11Z"
 }
