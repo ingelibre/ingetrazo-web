@@ -145,7 +145,7 @@
         "name": "Como faço para instalar?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No Windows: baixe o instalador em ingetrazo.com ou nos releases do GitHub, clique duas vezes e pronto. No Linux: baixe o Flatpak (clique duplo e sua loja de aplicativos o instala, com os .igz e .skp associados), o AppImage (permissão de execução e abrir) ou, se sua distro não traz FUSE, o tar.gz — descompacte onde quiser e execute ingetrazo. No macOS (Apple Silicon): baixe o .dmg, arraste o IngeTrazo para Aplicativos e, na primeira vez, abra com clique direito ▸ Abrir (ainda não está assinado com uma conta da Apple). Você também pode rodá-lo a partir do código-fonte com 3 comandos."
+          "text": "No Windows: baixe o instalador em ingetrazo.com ou nos releases do GitHub, clique duas vezes e pronto. No Linux: baixe o Flatpak (clique duplo e sua loja de aplicativos o instala, com os .igz e .skp associados), o AppImage (permissão de execução e abrir) ou, se sua distro não traz FUSE, o tar.gz — descompacte onde quiser e execute ingetrazo. No macOS (Apple Silicon): baixe o .dmg, arraste o IngeTrazo para Aplicativos e, na primeira vez, autorize em Ajustes do Sistema ▸ Privacidade e Segurança ▸ Abrir Mesmo Assim (no macOS 14 ou anterior, clique direito ▸ Abrir), porque ainda não está assinado com uma conta da Apple. Você também pode rodá-lo a partir do código-fonte com 3 comandos."
         }
       },
       {
@@ -585,7 +585,20 @@ IngeTrazo-0.5.7/ingetrazo</code>
               <span>Apple Silicon · macOS</span>
             </a>
           </div>
-          <p class="dl-group-alt">Abra o <code>.dmg</code> e arraste o IngeTrazo para <strong>Aplicativos</strong>. Ele ainda não está assinado com uma conta da Apple, então <strong>na primeira vez</strong> o macOS não vai abri-lo com clique duplo: <strong>clique direito ▸ Abrir</strong> e confirme. Daí em diante ele abre normalmente, e os <code>.igz</code> e <code>.skp</code> abrem com clique duplo. Empacotado por <a href="https://github.com/felixriestra" target="_blank" rel="noopener">Félix Riestra</a>.</p>
+          <p class="dl-group-alt">Abra o <code>.dmg</code> e arraste o IngeTrazo para <strong>Aplicativos</strong>. Ele ainda não está assinado com uma conta da Apple, então <strong>na primeira vez</strong> o macOS não vai abri-lo com clique duplo e dirá que não pode verificar o desenvolvedor: autorize uma única vez com os passos abaixo. Daí em diante ele abre normalmente, e os <code>.igz</code> e <code>.skp</code> abrem com clique duplo. Empacotado por <a href="https://github.com/felixriestra" target="_blank" rel="noopener">Félix Riestra</a>.</p>
+          <details class="mac-help">
+            <summary>O macOS não deixa abrir o IngeTrazo: como autorizar</summary>
+            <p><strong>macOS 15 Sequoia ou posterior</strong> (o clique direito já não basta):</p>
+            <ol>
+              <li>Tente abrir o IngeTrazo e, no aviso, clique em <strong>OK</strong>.</li>
+              <li>Abra o menu Apple ▸ <strong>Ajustes do Sistema</strong> ▸ <strong>Privacidade e Segurança</strong>.</li>
+              <li>Desça até <strong>Segurança</strong>: aparece que o IngeTrazo foi bloqueado. Clique em <strong>Abrir Mesmo Assim</strong> e confirme com Touch ID ou sua senha.</li>
+            </ol>
+            <p><strong>macOS 14 ou anterior:</strong> em Aplicativos, <strong>clique direito</strong> (ou Control + clique) no IngeTrazo ▸ <strong>Abrir</strong>, e no aviso, <strong>Abrir</strong>.</p>
+            <p><strong>Se ainda assim não abrir</strong>, remova a marca de "baixado da internet" no Terminal e abra de novo:</p>
+            <pre><code>xattr -dr com.apple.quarantine /Applications/IngeTrazo.app</code></pre>
+            <p>Faça isso só com programas em que você confia: o desta página é o mesmo código publicado no GitHub. Guia contribuído pela comunidade na <a href="https://github.com/ingelibre/ingetrazo/discussions/324" target="_blank" rel="noopener">discussão #324</a>.</p>
+          </details>
           <p class="dl-group-alt">Para Mac com Apple Silicon (M1 em diante). O que ainda não funciona no Mac: a importação de DWG; abrir <code>.skp</code>, sim. Se algo falhar, conte para nós numa <a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">issue do GitHub</a>.</p>
         </div>
       </div>
@@ -679,7 +692,7 @@ IngeTrazo-0.5.7/ingetrazo</code>
         </details>
         <details class="faq-item">
           <summary>Como faço para instalar?</summary>
-          <p>No <strong>Windows</strong>: baixe o instalador na seção Baixar, clique duas vezes e pronto (associa os arquivos .igz). No <strong>Linux</strong>: baixe o <strong>Flatpak</strong> (clique duplo e o GNOME Software / KDE Discover o instala, com os .igz e .skp associados), o <strong>AppImage</strong> (dê permissão de execução e abra) ou, se sua distro não traz FUSE, o <strong>tar.gz</strong>: descompacte onde quiser e execute <code>ingetrazo</code>. Se algo não funcionar, <code>--check</code> diz o que está faltando. No <strong>macOS</strong> (Apple Silicon): baixe o <strong>.dmg</strong> em <a href="#mac">Baixar ▸ macOS</a>, arraste o IngeTrazo para Aplicativos e, na primeira vez, abra com clique direito ▸ Abrir (ainda não está assinado com uma conta da Apple). Você também pode rodá-lo a partir do código-fonte com 3 comandos.</p>
+          <p>No <strong>Windows</strong>: baixe o instalador na seção Baixar, clique duas vezes e pronto (associa os arquivos .igz). No <strong>Linux</strong>: baixe o <strong>Flatpak</strong> (clique duplo e o GNOME Software / KDE Discover o instala, com os .igz e .skp associados), o <strong>AppImage</strong> (dê permissão de execução e abra) ou, se sua distro não traz FUSE, o <strong>tar.gz</strong>: descompacte onde quiser e execute <code>ingetrazo</code>. Se algo não funcionar, <code>--check</code> diz o que está faltando. No <strong>macOS</strong> (Apple Silicon): baixe o <strong>.dmg</strong> em <a href="#mac">Baixar ▸ macOS</a>, arraste o IngeTrazo para Aplicativos e, na primeira vez, autorize em Ajustes do Sistema ▸ Privacidade e Segurança ▸ Abrir Mesmo Assim (no macOS 14 ou anterior, clique direito ▸ Abrir), porque ainda não está assinado com uma conta da Apple. Você também pode rodá-lo a partir do código-fonte com 3 comandos.</p>
         </details>
         <details class="faq-item">
           <summary>Serve para impressão 3D?</summary>
