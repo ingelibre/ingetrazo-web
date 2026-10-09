@@ -46,7 +46,7 @@
     "591561074": {
       "release": "v0.5.4",
       "nombre": "IngeTrazo-ejemplos.zip",
-      "descargas": 64
+      "descargas": 65
     },
     "589780204": {
       "release": "v0.5.3",
@@ -66,7 +66,7 @@
     "584217929": {
       "release": "v0.5.0",
       "nombre": "IngeTrazo-ejemplos.zip",
-      "descargas": 81
+      "descargas": 83
     },
     "580363272": {
       "release": "v0.4.9",
@@ -181,7 +181,7 @@
     "599581380": {
       "release": "v0.5.6.1",
       "nombre": "ingetrazo-setup-v0.5.6.1.exe",
-      "descargas": 1150
+      "descargas": 1151
     },
     "599581381": {
       "release": "v0.5.6.1",
@@ -206,7 +206,7 @@
     "599221059": {
       "release": "v0.5.6",
       "nombre": "IngeTrazo-0.5.6-x86_64.AppImage",
-      "descargas": 23
+      "descargas": 24
     },
     "599190076": {
       "release": "v0.5.6",
@@ -236,46 +236,46 @@
     "601669854": {
       "release": "v0.5.7",
       "nombre": "IngeTrazo-0.5.7-linux-x86_64.tar.gz",
-      "descargas": 333
+      "descargas": 353
     },
     "601646580": {
       "release": "v0.5.7",
       "nombre": "IngeTrazo-0.5.7-macos-arm64.dmg",
-      "descargas": 2507
+      "descargas": 2608
     },
     "601669858": {
       "release": "v0.5.7",
       "nombre": "IngeTrazo-0.5.7-x86_64.AppImage",
-      "descargas": 1067
+      "descargas": 1106
     },
     "601648918": {
       "release": "v0.5.7",
       "nombre": "IngeTrazo-0.5.7-x86_64.flatpak",
-      "descargas": 2213
+      "descargas": 2336
     },
     "601670111": {
       "release": "v0.5.7",
       "nombre": "IngeTrazo-ejemplos.zip",
-      "descargas": 253
+      "descargas": 261
     },
     "601648219": {
       "release": "v0.5.7",
       "nombre": "ingetrazo-setup-v0.5.7.exe",
-      "descargas": 10011
+      "descargas": 10437
     },
     "601648216": {
       "release": "v0.5.7",
       "nombre": "ingetrazo-windows.zip",
-      "descargas": 1851
+      "descargas": 1925
     },
     "601651804": {
       "release": "v0.5.7",
       "nombre": "ingetrazo_0.5.7_amd64.snap",
-      "descargas": 44
+      "descargas": 45
     }
   },
   "retiradas": 6852,
-  "publicadas": 23393,
-  "total": 30245,
-  "actualizado": "2026-10-09T09:06Z"
+  "publicadas": 24190,
+  "total": 31042,
+  "actualizado": "2026-10-09T16:14Z"
 }
