@@ -10,7 +10,7 @@
           flatpak: 'doble clic instala', appimage: 'no instala nada', tarball: 'sin FUSE',
           dlWin: 'Descargar para Windows', dlMac: 'Descargar para Mac', dlLinux: 'Descargar para Linux (Flatpak)',
           dlWinSub: 'Instalador para Windows 10/11 · 64 bits. Otras versiones y sistemas, abajo.',
-          dlMacSub: 'Para Mac con Apple Silicon (M1 o posterior). Otras opciones, abajo.',
+          dlMacSub: 'Para Mac con Apple Silicon (M1 o posterior). ¿Mac con Intel? Su versión está abajo.',
           dlLinuxSub: 'Se instala con doble clic. AppImage, tar.gz y los demás sistemas, abajo.',
           thanks: '¡Gracias por descargar IngeTrazo!',
           thanksSub: 'Es libre y lo hace una persona. Si te ahorra horas, puedes apoyarlo.',
@@ -19,7 +19,7 @@
           flatpak: 'double-click installs', appimage: 'installs nothing', tarball: 'no FUSE needed',
           dlWin: 'Download for Windows', dlMac: 'Download for Mac', dlLinux: 'Download for Linux (Flatpak)',
           dlWinSub: 'Installer for Windows 10/11 · 64-bit. Other versions and systems below.',
-          dlMacSub: 'For Macs with Apple Silicon (M1 or later). Other options below.',
+          dlMacSub: 'For Macs with Apple Silicon (M1 or later). Intel Mac? Its version is below.',
           dlLinuxSub: 'Installs with a double-click. AppImage, tar.gz and other systems below.',
           thanks: 'Thanks for downloading IngeTrazo!',
           thanksSub: 'It is free and made by one person. If it saves you hours, you can support it.',
@@ -28,7 +28,7 @@
           flatpak: 'clique duplo instala', appimage: 'não instala nada', tarball: 'sem FUSE',
           dlWin: 'Baixar para Windows', dlMac: 'Baixar para Mac', dlLinux: 'Baixar para Linux (Flatpak)',
           dlWinSub: 'Instalador para Windows 10/11 · 64 bits. Outras versões e sistemas, abaixo.',
-          dlMacSub: 'Para Mac com Apple Silicon (M1 ou posterior). Outras opções, abaixo.',
+          dlMacSub: 'Para Mac com Apple Silicon (M1 ou posterior). Mac com Intel? A versão dele está abaixo.',
           dlLinuxSub: 'Instala com clique duplo. AppImage, tar.gz e outros sistemas, abaixo.',
           thanks: 'Obrigado por baixar o IngeTrazo!',
           thanksSub: 'É livre e feito por uma pessoa. Se ele te poupa horas, você pode apoiá-lo.',
@@ -133,8 +133,10 @@
         } else if (/-windows\.zip$/.test(a.name)) {
           var zip = document.getElementById('dl-win-zip');
           if (zip) zip.href = a.browser_download_url;
-        } else if (/-macos-[^-]+\.dmg$/.test(a.name)) {
+        } else if (/-macos-arm64\.dmg$/.test(a.name)) {
           updateCard('dl-mac', 'Apple Silicon · macOS', a, null, null, null);
+        } else if (/-macos-x86_64\.dmg$/.test(a.name)) {
+          updateCard('dl-mac-intel', 'Intel · macOS', a, null, null, null);
         } else if (/\.flatpak$/.test(a.name)) {
           // Solo la tarjeta (enlace y peso). El bloque de comandos NO se
           // toca: instala desde el repositorio, que es lo que hace que
