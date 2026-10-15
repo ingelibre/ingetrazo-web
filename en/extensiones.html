@@ -70,6 +70,13 @@
       <div class="ext-tools">
         <input type="search" id="ext-q" class="ext-search" placeholder="Search extensions…" aria-label="Search extensions…" autocomplete="off">
         <label class="ext-only"><input type="checkbox" id="ext-reviewed"> Reviewed only</label>
+        <label class="ext-sort">Sort
+          <select id="ext-sort">
+            <option value="">Reviewed first</option>
+            <option value="recent">Most recent</option>
+            <option value="name">Name (A–Z)</option>
+          </select>
+        </label>
       </div>
       <div class="ext-tags" id="ext-tags" role="group" aria-label="Filter by topic"></div>
       <p class="ext-count" id="ext-count" aria-live="polite">Loading the catalog…</p>

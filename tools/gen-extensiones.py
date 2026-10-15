@@ -38,6 +38,10 @@ T = {
                 "si la necesitas.",
         "search": "Buscar extensiones…",
         "only": "Solo revisadas",
+        "sort": "Ordenar",
+        "sort_default": "Revisadas primero",
+        "sort_recent": "Más recientes",
+        "sort_name": "Nombre (A–Z)",
         "tags": "Filtrar por tema",
         "loading": "Cargando el catálogo…",
         "noscript": "Esta lista necesita JavaScript. También puedes ver el "
@@ -88,6 +92,10 @@ T = {
                 "need.",
         "search": "Search extensions…",
         "only": "Reviewed only",
+        "sort": "Sort",
+        "sort_default": "Reviewed first",
+        "sort_recent": "Most recent",
+        "sort_name": "Name (A–Z)",
         "tags": "Filter by topic",
         "loading": "Loading the catalog…",
         "noscript": "This list needs JavaScript. You can also browse the "
@@ -138,6 +146,10 @@ T = {
                 "precisar.",
         "search": "Buscar extensões…",
         "only": "Só revisadas",
+        "sort": "Ordenar",
+        "sort_default": "Revisadas primeiro",
+        "sort_recent": "Mais recentes",
+        "sort_name": "Nome (A–Z)",
         "tags": "Filtrar por tema",
         "loading": "Carregando o catálogo…",
         "noscript": "Esta lista precisa de JavaScript. Você também pode ver o "
@@ -238,6 +250,13 @@ def main_section(lang: str) -> str:
       <div class="ext-tools">
         <input type="search" id="ext-q" class="ext-search" placeholder="{t["search"]}" aria-label="{t["search"]}" autocomplete="off">
         <label class="ext-only"><input type="checkbox" id="ext-reviewed"> {t["only"]}</label>
+        <label class="ext-sort">{t["sort"]}
+          <select id="ext-sort">
+            <option value="">{t["sort_default"]}</option>
+            <option value="recent">{t["sort_recent"]}</option>
+            <option value="name">{t["sort_name"]}</option>
+          </select>
+        </label>
       </div>
       <div class="ext-tags" id="ext-tags" role="group" aria-label="{t["tags"]}"></div>
       <p class="ext-count" id="ext-count" aria-live="polite">{t["loading"]}</p>

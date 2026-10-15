@@ -19,7 +19,7 @@
       count: (n, t) => n === t ? `${t} extensiones` : `${n} de ${t} extensiones`,
       one: '1 extensión', none: 'Ninguna extensión coincide con la búsqueda.',
       error: 'No se pudo cargar el catálogo. Inténtalo de nuevo en un momento.',
-      all: 'Todas',
+      all: 'Todas', updated: 'actualizada',
       tags: {
         architecture: 'Arquitectura', bim: 'BIM', structures: 'Estructuras',
         terrain: 'Terreno', drawing: 'Dibujo', analysis: 'Análisis',
@@ -34,7 +34,7 @@
       count: (n, t) => n === t ? `${t} extensions` : `${n} of ${t} extensions`,
       one: '1 extension', none: 'No extension matches the search.',
       error: 'The catalog could not be loaded. Please try again shortly.',
-      all: 'All',
+      all: 'All', updated: 'updated',
       tags: {
         architecture: 'Architecture', bim: 'BIM', structures: 'Structures',
         terrain: 'Terrain', drawing: 'Drawing', analysis: 'Analysis',
@@ -49,7 +49,7 @@
       count: (n, t) => n === t ? `${t} extensões` : `${n} de ${t} extensões`,
       one: '1 extensão', none: 'Nenhuma extensão corresponde à busca.',
       error: 'Não foi possível carregar o catálogo. Tente de novo em instantes.',
-      all: 'Todas',
+      all: 'Todas', updated: 'atualizada',
       tags: {
         architecture: 'Arquitetura', bim: 'BIM', structures: 'Estruturas',
         terrain: 'Terreno', drawing: 'Desenho', analysis: 'Análise',
@@ -65,6 +65,7 @@
   const onlyReviewed = document.getElementById('ext-reviewed');
   const tagBox = document.getElementById('ext-tags');
   const count = document.getElementById('ext-count');
+  const sortBy = document.getElementById('ext-sort');
   let all = [];
   let tag = '';
 
@@ -116,7 +117,8 @@
     body.appendChild(tags);
 
     body.appendChild(el('p', 'ext-meta',
-      `v${x.version} · ${x.license} · ${ui.tested} ${x.ingetrazo}`));
+      `v${x.version} · ${x.license} · ${ui.tested} ${x.ingetrazo}`
+      + (day(x.updated_at) ? ` · ${ui.updated} ${day(x.updated_at)}` : '')));
 
     const links = el('div', 'ext-links');
     if (/^[a-z][a-z0-9_]*$/.test(x.id || '')) {
@@ -140,6 +142,29 @@
     return c;
   }
 
+  // «2026-10-15T15:48Z» (catalog.py, UTC) → the reader's own date format.
+  function day(stamp) {
+    const d = typeof stamp === 'string' ? new Date(stamp) : null;
+    if (!d || isNaN(d)) return '';
+    return d.toLocaleDateString(document.documentElement.lang || lang,
+      { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
+  // The catalog's own order is «reviewed first, then by name»; the other
+  // two sort a copy. An entry without dates (never merged) goes last.
+  function sorted(list) {
+    const mode = sortBy ? sortBy.value : '';
+    if (mode === 'recent') {
+      return [...list].sort((a, b) =>
+        String(b.updated_at || '').localeCompare(String(a.updated_at || '')));
+    }
+    if (mode === 'name') {
+      return [...list].sort((a, b) =>
+        pick(a.name).localeCompare(pick(b.name), lang, { sensitivity: 'base' }));
+    }
+    return list;
+  }
+
   function haystack(x) {
     const parts = [x.id, x.author];
     ['name', 'summary'].forEach((k) => {
@@ -158,7 +183,7 @@
       (!onlyReviewed.checked || x.reviewed) &&
       (!tag || (x.tags || []).includes(tag)) &&
       words.every((w) => x._h.includes(w)));
-    grid.replaceChildren(...shown.map(card));
+    grid.replaceChildren(...sorted(shown).map(card));
     if (!shown.length) {
       count.textContent = ui.none;
     } else {
@@ -188,6 +213,7 @@
 
   q.addEventListener('input', render);
   onlyReviewed.addEventListener('change', render);
+  if (sortBy) sortBy.addEventListener('change', render);
 
   fetch('/extensiones.json', { headers: { Accept: 'application/json' } })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })

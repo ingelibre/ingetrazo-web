@@ -1187,6 +1187,13 @@ code {
 .ext-search:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
 .ext-only { display: inline-flex; gap: 8px; align-items: center; font-size: 14px; color: var(--slate-500); cursor: pointer; }
 .ext-only input { width: 16px; height: 16px; accent-color: var(--accent); }
+.ext-sort { display: inline-flex; gap: 8px; align-items: center; font-size: 14px; color: var(--slate-500); }
+.ext-sort select {
+  font: inherit; font-size: 14px; color: var(--text);
+  padding: 7px 10px; border: 1px solid var(--silver-300); border-radius: var(--radius-sm);
+  background: var(--white); cursor: pointer;
+}
+.ext-sort select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
 .ext-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
 .ext-chip {
   font: inherit; font-size: 13px; font-weight: 500; color: var(--slate-500);
