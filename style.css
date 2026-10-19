@@ -1204,6 +1204,34 @@ code {
 .ext-chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--white); }
 .ext-count { font-size: 14px; color: var(--muted); margin-bottom: 16px; min-height: 1.6em; }
 .ext-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; }
+.ext-more-row { display: flex; justify-content: center; margin-top: 28px; }
+.ext-more { background: var(--white); color: var(--accent-dk); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.ext-more:hover { border-color: var(--accent); }
+.ext-more[hidden] { display: none; }
+.ext-all-h { font-size: 24px; color: var(--head); margin-bottom: 16px; }
+/* «Just added»: a strip that scrolls sideways, snapping card by card. */
+.ext-new { margin-bottom: 48px; }
+.ext-new[hidden] { display: none; }
+.ext-new-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.ext-new-head h2 { font-size: 24px; color: var(--head); }
+.ext-new-nav { display: flex; gap: 8px; }
+.ext-nav {
+  width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--white); color: var(--head); font-size: 24px; line-height: 1;
+  cursor: pointer; box-shadow: var(--shadow); display: grid; place-items: center;
+}
+.ext-nav:hover:not(:disabled) { border-color: var(--accent); color: var(--accent-dk); }
+.ext-nav:disabled { opacity: 0.35; cursor: default; }
+.ext-track {
+  display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding: 4px 2px 14px; scrollbar-width: thin;
+}
+.ext-track > .ext-card { scroll-snap-align: start; flex: 0 0 calc((100% - 40px) / 3); min-width: 0; }
+.ext-track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: var(--radius); }
+@media (max-width: 860px) {
+  .ext-track > .ext-card { flex-basis: 82%; }
+  .ext-new-nav { display: none; }
+}
 .ext-card {
   display: flex; flex-direction: column; overflow: hidden;
   background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);

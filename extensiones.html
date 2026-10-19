@@ -67,6 +67,18 @@
         <p>Herramientas que la comunidad agrega a IngeTrazo. Todas son libres y su código está publicado; cada una se instala solo si la necesitas. <a href="#instalar" class="ext-how">¿Cómo se instalan? ↓</a></p>
       </div>
 
+      <section class="ext-new" id="ext-new" aria-labelledby="ext-new-h" hidden>
+        <div class="ext-new-head">
+          <h2 id="ext-new-h">Recién llegadas</h2>
+          <div class="ext-new-nav">
+            <button type="button" class="ext-nav" id="ext-prev" aria-label="←">‹</button>
+            <button type="button" class="ext-nav" id="ext-next" aria-label="→">›</button>
+          </div>
+        </div>
+        <div class="ext-track" id="ext-track" tabindex="0"></div>
+      </section>
+
+      <h2 class="ext-all-h" id="todas">Todas las extensiones</h2>
       <div class="ext-tools">
         <input type="search" id="ext-q" class="ext-search" placeholder="Buscar extensiones…" aria-label="Buscar extensiones…" autocomplete="off">
         <label class="ext-only"><input type="checkbox" id="ext-reviewed"> Solo revisadas</label>
@@ -81,18 +93,18 @@
       <div class="ext-tags" id="ext-tags" role="group" aria-label="Filtrar por tema"></div>
       <p class="ext-count" id="ext-count" aria-live="polite">Cargando el catálogo…</p>
       <div class="ext-grid" id="ext-grid"></div>
+      <div class="ext-more-row"><button type="button" class="btn ext-more" id="ext-more" hidden></button></div>
       <noscript><p class="ext-empty">Esta lista necesita JavaScript. También puedes ver el catálogo directamente en <a href="https://github.com/ingelibre/ingetrazo-extensions">github.com/ingelibre/ingetrazo-extensions</a>.</p></noscript>
 
       <div class="ext-info">
         <div class="ext-box" id="instalar">
           <h2>Cómo instalar</h2>
           <ol>
-          <li>Pulsa <strong>Descargar</strong> en la extensión. Recibes un archivo <code>.py</code> o un <code>.zip</code>.</li>
-          <li>Si es un <code>.zip</code>, descomprímelo: queda una carpeta (por ejemplo <code>ja_sun</code>). Esa carpeta entera es la extensión: no saques los archivos de dentro.</li>
-          <li>En IngeTrazo abre <strong>Extensiones ▸ Abrir carpeta de complementos</strong> y copia ahí el archivo <code>.py</code> o la carpeta.</li>
-          <li>Cierra y vuelve a abrir IngeTrazo. La extensión aparece en el menú <strong>Extensiones</strong> o en el panel lateral. Si sale con ⚠, pasa el ratón por encima para ver el motivo.</li>
+          <li>En IngeTrazo abre <strong>Extensiones ▸ Gestionar extensiones…</strong> (desde la versión 0.5.8).</li>
+          <li>En la pestaña <strong>Explorar</strong> busca la extensión y pulsa <strong>Instalar</strong>. IngeTrazo la descarga, comprueba que sea exactamente el archivo aprobado y la activa.</li>
+          <li>Si la extensión es de la comunidad, IngeTrazo te pregunta antes de instalarla. Las que ya tienes están en la pestaña <strong>Instaladas</strong>.</li>
           </ol>
-          <p class="ext-small">Pronto podrás instalarlas desde IngeTrazo con un clic.</p>
+          <p class="ext-small">¿Sin conexión o con una versión anterior? Pulsa <strong>Descargar</strong>, descomprime el <code>.zip</code>, copia la carpeta entera en <strong>Extensiones ▸ Abrir carpeta de extensiones</strong> y vuelve a abrir IngeTrazo.</p>
         </div>
         <div class="ext-box">
           <h2>Revisadas y de la comunidad</h2>

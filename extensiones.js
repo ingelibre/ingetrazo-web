@@ -20,6 +20,7 @@
       one: '1 extensión', none: 'Ninguna extensión coincide con la búsqueda.',
       error: 'No se pudo cargar el catálogo. Inténtalo de nuevo en un momento.',
       all: 'Todas', updated: 'actualizada',
+      more: (n) => `Ver más (${n})`, prev: 'Anteriores', next: 'Siguientes',
       tags: {
         architecture: 'Arquitectura', bim: 'BIM', structures: 'Estructuras',
         terrain: 'Terreno', drawing: 'Dibujo', analysis: 'Análisis',
@@ -35,6 +36,7 @@
       one: '1 extension', none: 'No extension matches the search.',
       error: 'The catalog could not be loaded. Please try again shortly.',
       all: 'All', updated: 'updated',
+      more: (n) => `Show more (${n})`, prev: 'Previous', next: 'Next',
       tags: {
         architecture: 'Architecture', bim: 'BIM', structures: 'Structures',
         terrain: 'Terrain', drawing: 'Drawing', analysis: 'Analysis',
@@ -50,6 +52,7 @@
       one: '1 extensão', none: 'Nenhuma extensão corresponde à busca.',
       error: 'Não foi possível carregar o catálogo. Tente de novo em instantes.',
       all: 'Todas', updated: 'atualizada',
+      more: (n) => `Ver mais (${n})`, prev: 'Anteriores', next: 'Próximas',
       tags: {
         architecture: 'Arquitetura', bim: 'BIM', structures: 'Estruturas',
         terrain: 'Terreno', drawing: 'Desenho', analysis: 'Análise',
@@ -66,6 +69,11 @@
   const tagBox = document.getElementById('ext-tags');
   const count = document.getElementById('ext-count');
   const sortBy = document.getElementById('ext-sort');
+  const more = document.getElementById('ext-more');
+  // The full list shows a page at a time: with dozens of extensions a
+  // single wall of cards buries the search box's results.
+  const PAGE = 12;
+  let limit = PAGE;
   let all = [];
   let tag = '';
 
@@ -183,7 +191,12 @@
       (!onlyReviewed.checked || x.reviewed) &&
       (!tag || (x.tags || []).includes(tag)) &&
       words.every((w) => x._h.includes(w)));
-    grid.replaceChildren(...sorted(shown).map(card));
+    grid.replaceChildren(...sorted(shown).slice(0, limit).map(card));
+    const left = shown.length - limit;
+    if (more) {
+      more.hidden = left <= 0;
+      more.textContent = ui.more(left);
+    }
     if (!shown.length) {
       count.textContent = ui.none;
     } else {
@@ -202,7 +215,7 @@
         tag = value;
         tagBox.querySelectorAll('.ext-chip').forEach((o) =>
           o.setAttribute('aria-pressed', String(o === b)));
-        render();
+        refilter();
       });
       return b;
     };
@@ -211,9 +224,56 @@
         .map((t) => make(t, ui.tags[t] || t)));
   }
 
-  q.addEventListener('input', render);
-  onlyReviewed.addEventListener('change', render);
-  if (sortBy) sortBy.addEventListener('change', render);
+  // «Just added»: the latest merged entries in a strip that moves on by
+  // itself until the visitor touches it (or asked for reduced motion).
+  function carousel() {
+    const box = document.getElementById('ext-new');
+    const track = document.getElementById('ext-track');
+    if (!box || !track) return;
+    const recent = all.filter((x) => x.updated_at)
+      .sort((a, b) => String(b.updated_at).localeCompare(String(a.updated_at)))
+      .slice(0, 10);
+    if (recent.length < 3) return;
+    track.replaceChildren(...recent.map(card));
+    box.hidden = false;
+    const prev = document.getElementById('ext-prev');
+    const next = document.getElementById('ext-next');
+    prev.setAttribute('aria-label', ui.prev);
+    next.setAttribute('aria-label', ui.next);
+    const step = () => {
+      const c = track.firstElementChild;
+      return c ? c.getBoundingClientRect().width + 20 : track.clientWidth;
+    };
+    const atEnd = () => track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    const edges = () => {
+      prev.disabled = track.scrollLeft <= 4;
+      next.disabled = atEnd();
+    };
+    track.addEventListener('scroll', edges, { passive: true });
+    edges();
+
+    let timer = null;
+    const stop = () => { clearInterval(timer); timer = null; };
+    prev.addEventListener('click', () => { stop(); track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    next.addEventListener('click', () => { stop(); track.scrollBy({ left: step(), behavior: 'smooth' }); });
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let paused = false;
+    ['pointerenter', 'focusin'].forEach((e) => box.addEventListener(e, () => { paused = true; }));
+    ['pointerleave', 'focusout'].forEach((e) => box.addEventListener(e, () => { paused = false; }));
+    ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach((e) =>
+      track.addEventListener(e, stop, { passive: true }));
+    timer = setInterval(() => {
+      if (paused || document.hidden) return;
+      if (atEnd()) track.scrollTo({ left: 0, behavior: 'smooth' });
+      else track.scrollBy({ left: step(), behavior: 'smooth' });
+    }, 5000);
+  }
+
+  const refilter = () => { limit = PAGE; render(); };
+  q.addEventListener('input', refilter);
+  onlyReviewed.addEventListener('change', refilter);
+  if (sortBy) sortBy.addEventListener('change', refilter);
+  if (more) more.addEventListener('click', () => { limit += PAGE; render(); });
 
   fetch('/extensiones.json', { headers: { Accept: 'application/json' } })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -221,6 +281,7 @@
       all = (data.extensions || []).filter((x) => x && typeof x === 'object');
       all.forEach((x) => { x._h = haystack(x); });
       chips();
+      carousel();
       render();
     })
     .catch(() => { count.textContent = ui.error; });
