@@ -26,17 +26,17 @@
     "596206257": {
       "release": "v0.5.5",
       "nombre": "IngeTrazo-ejemplos.zip",
-      "descargas": 58
+      "descargas": 59
     },
     "596217231": {
       "release": "v0.5.5",
       "nombre": "ingetrazo-setup-v0.5.5.exe",
-      "descargas": 1053
+      "descargas": 1054
     },
     "596217227": {
       "release": "v0.5.5",
       "nombre": "ingetrazo-windows.zip",
-      "descargas": 464
+      "descargas": 465
     },
     "596192174": {
       "release": "v0.5.5",
@@ -66,7 +66,7 @@
     "584217929": {
       "release": "v0.5.0",
       "nombre": "IngeTrazo-ejemplos.zip",
-      "descargas": 107
+      "descargas": 108
     },
     "580363272": {
       "release": "v0.4.9",
@@ -241,12 +241,12 @@
     "601646580": {
       "release": "v0.5.7",
       "nombre": "IngeTrazo-0.5.7-macos-arm64.dmg",
-      "descargas": 3248
+      "descargas": 3250
     },
     "601669858": {
       "release": "v0.5.7",
       "nombre": "IngeTrazo-0.5.7-x86_64.AppImage",
-      "descargas": 1404
+      "descargas": 1406
     },
     "601648918": {
       "release": "v0.5.7",
@@ -261,7 +261,7 @@
     "601648219": {
       "release": "v0.5.7",
       "nombre": "ingetrazo-setup-v0.5.7.exe",
-      "descargas": 12792
+      "descargas": 12793
     },
     "601648216": {
       "release": "v0.5.7",
@@ -276,32 +276,32 @@
     "634004680": {
       "release": "v0.5.8",
       "nombre": "IngeTrazo-0.5.8-linux-x86_64.tar.gz",
-      "descargas": 298
+      "descargas": 303
     },
     "633935247": {
       "release": "v0.5.8",
       "nombre": "IngeTrazo-0.5.8-macos-arm64.dmg",
-      "descargas": 2001
+      "descargas": 2034
     },
     "633945345": {
       "release": "v0.5.8",
       "nombre": "IngeTrazo-0.5.8-macos-x86_64.dmg",
-      "descargas": 348
+      "descargas": 356
     },
     "634004678": {
       "release": "v0.5.8",
       "nombre": "IngeTrazo-0.5.8-x86_64.AppImage",
-      "descargas": 1077
+      "descargas": 1091
     },
     "634004694": {
       "release": "v0.5.8",
       "nombre": "IngeTrazo-0.5.8-x86_64.flatpak",
-      "descargas": 1682
+      "descargas": 1704
     },
     "634004691": {
       "release": "v0.5.8",
       "nombre": "IngeTrazo-ejemplos.zip",
-      "descargas": 198
+      "descargas": 203
     },
     "633945333": {
       "release": "v0.5.8",
@@ -321,21 +321,66 @@
     "635297056": {
       "release": "v0.5.8",
       "nombre": "ingetrazo-setup-v0.5.8.exe",
-      "descargas": 9491
+      "descargas": 9634
     },
     "635297247": {
       "release": "v0.5.8",
       "nombre": "ingetrazo-windows.zip",
-      "descargas": 1864
+      "descargas": 1896
     },
     "653490007": {
       "release": "prueba-spacemouse-1",
       "nombre": "IngeTrazo-prueba-spacemouse-1-windows.zip",
       "descargas": 33
+    },
+    "657066068": {
+      "release": "v0.5.9",
+      "nombre": "IngeTrazo-0.5.9-linux-x86_64.tar.gz",
+      "descargas": 9
+    },
+    "657020766": {
+      "release": "v0.5.9",
+      "nombre": "IngeTrazo-0.5.9-macos-arm64.dmg",
+      "descargas": 40
+    },
+    "657027077": {
+      "release": "v0.5.9",
+      "nombre": "IngeTrazo-0.5.9-macos-x86_64.dmg",
+      "descargas": 12
+    },
+    "657066069": {
+      "release": "v0.5.9",
+      "nombre": "IngeTrazo-0.5.9-x86_64.AppImage",
+      "descargas": 31
+    },
+    "657023775": {
+      "release": "v0.5.9",
+      "nombre": "IngeTrazo-0.5.9-x86_64.flatpak",
+      "descargas": 36
+    },
+    "657066361": {
+      "release": "v0.5.9",
+      "nombre": "IngeTrazo-ejemplos.zip",
+      "descargas": 6
+    },
+    "657025620": {
+      "release": "v0.5.9",
+      "nombre": "ingetrazo-setup-v0.5.9.exe",
+      "descargas": 176
+    },
+    "657025621": {
+      "release": "v0.5.9",
+      "nombre": "ingetrazo-windows.zip",
+      "descargas": 57
+    },
+    "657029730": {
+      "release": "v0.5.9",
+      "nombre": "ingetrazo_0.5.9_amd64.snap",
+      "descargas": 1
     }
   },
   "retiradas": 7170,
-  "publicadas": 46064,
-  "total": 53234,
-  "actualizado": "2026-10-19T15:37Z"
+  "publicadas": 46703,
+  "total": 53873,
+  "actualizado": "2026-10-19T21:04Z"
 }
