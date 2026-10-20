@@ -261,7 +261,7 @@
     "601648219": {
       "release": "v0.5.7",
       "nombre": "ingetrazo-setup-v0.5.7.exe",
-      "descargas": 12798
+      "descargas": 12799
     },
     "601648216": {
       "release": "v0.5.7",
@@ -291,7 +291,7 @@
     "634004678": {
       "release": "v0.5.8",
       "nombre": "IngeTrazo-0.5.8-x86_64.AppImage",
-      "descargas": 1095
+      "descargas": 1096
     },
     "634004694": {
       "release": "v0.5.8",
@@ -321,12 +321,12 @@
     "635297056": {
       "release": "v0.5.8",
       "nombre": "ingetrazo-setup-v0.5.8.exe",
-      "descargas": 9647
+      "descargas": 9654
     },
     "635297247": {
       "release": "v0.5.8",
       "nombre": "ingetrazo-windows.zip",
-      "descargas": 1902
+      "descargas": 1906
     },
     "653490007": {
       "release": "prueba-spacemouse-1",
@@ -336,51 +336,51 @@
     "657066068": {
       "release": "v0.5.9",
       "nombre": "IngeTrazo-0.5.9-linux-x86_64.tar.gz",
-      "descargas": 81
+      "descargas": 90
     },
     "657020766": {
       "release": "v0.5.9",
       "nombre": "IngeTrazo-0.5.9-macos-arm64.dmg",
-      "descargas": 450
+      "descargas": 484
     },
     "657027077": {
       "release": "v0.5.9",
       "nombre": "IngeTrazo-0.5.9-macos-x86_64.dmg",
-      "descargas": 81
+      "descargas": 85
     },
     "657066069": {
       "release": "v0.5.9",
       "nombre": "IngeTrazo-0.5.9-x86_64.AppImage",
-      "descargas": 281
+      "descargas": 310
     },
     "657023775": {
       "release": "v0.5.9",
       "nombre": "IngeTrazo-0.5.9-x86_64.flatpak",
-      "descargas": 303
+      "descargas": 346
     },
     "657066361": {
       "release": "v0.5.9",
       "nombre": "IngeTrazo-ejemplos.zip",
-      "descargas": 51
+      "descargas": 53
     },
     "657025620": {
       "release": "v0.5.9",
       "nombre": "ingetrazo-setup-v0.5.9.exe",
-      "descargas": 2231
+      "descargas": 2460
     },
     "657025621": {
       "release": "v0.5.9",
       "nombre": "ingetrazo-windows.zip",
-      "descargas": 486
+      "descargas": 531
     },
     "657029730": {
       "release": "v0.5.9",
       "nombre": "ingetrazo_0.5.9_amd64.snap",
-      "descargas": 20
+      "descargas": 21
     }
   },
   "retiradas": 7203,
-  "publicadas": 50338,
-  "total": 57541,
-  "actualizado": "2026-10-20T20:36Z"
+  "publicadas": 50747,
+  "total": 57950,
+  "actualizado": "2026-10-20T23:53Z"
 }
