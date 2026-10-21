@@ -261,7 +261,7 @@
     "601648219": {
       "release": "v0.5.7",
       "nombre": "ingetrazo-setup-v0.5.7.exe",
-      "descargas": 12800
+      "descargas": 12802
     },
     "601648216": {
       "release": "v0.5.7",
@@ -291,7 +291,7 @@
     "634004678": {
       "release": "v0.5.8",
       "nombre": "IngeTrazo-0.5.8-x86_64.AppImage",
-      "descargas": 1097
+      "descargas": 1098
     },
     "634004694": {
       "release": "v0.5.8",
@@ -321,7 +321,7 @@
     "635297056": {
       "release": "v0.5.8",
       "nombre": "ingetrazo-setup-v0.5.8.exe",
-      "descargas": 9659
+      "descargas": 9661
     },
     "635297247": {
       "release": "v0.5.8",
@@ -336,51 +336,51 @@
     "657066068": {
       "release": "v0.5.9",
       "nombre": "IngeTrazo-0.5.9-linux-x86_64.tar.gz",
-      "descargas": 109
+      "descargas": 124
     },
     "657020766": {
       "release": "v0.5.9",
       "nombre": "IngeTrazo-0.5.9-macos-arm64.dmg",
-      "descargas": 569
+      "descargas": 635
     },
     "657027077": {
       "release": "v0.5.9",
       "nombre": "IngeTrazo-0.5.9-macos-x86_64.dmg",
-      "descargas": 103
+      "descargas": 116
     },
     "657066069": {
       "release": "v0.5.9",
       "nombre": "IngeTrazo-0.5.9-x86_64.AppImage",
-      "descargas": 360
+      "descargas": 397
     },
     "657023775": {
       "release": "v0.5.9",
       "nombre": "IngeTrazo-0.5.9-x86_64.flatpak",
-      "descargas": 420
+      "descargas": 474
     },
     "657066361": {
       "release": "v0.5.9",
       "nombre": "IngeTrazo-ejemplos.zip",
-      "descargas": 61
+      "descargas": 74
     },
     "657025620": {
       "release": "v0.5.9",
       "nombre": "ingetrazo-setup-v0.5.9.exe",
-      "descargas": 3062
+      "descargas": 3464
     },
     "657025621": {
       "release": "v0.5.9",
       "nombre": "ingetrazo-windows.zip",
-      "descargas": 637
+      "descargas": 723
     },
     "657029730": {
       "release": "v0.5.9",
       "nombre": "ingetrazo_0.5.9_amd64.snap",
-      "descargas": 24
+      "descargas": 31
     }
   },
   "retiradas": 7203,
-  "publicadas": 51725,
-  "total": 58928,
-  "actualizado": "2026-10-21T10:10Z"
+  "publicadas": 52423,
+  "total": 59626,
+  "actualizado": "2026-10-21T15:16Z"
 }
