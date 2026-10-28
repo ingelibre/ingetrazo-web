@@ -6,14 +6,15 @@
   const box = document.getElementById('home-ext-grid');
   if (!box) return;
   const lang = document.documentElement.lang.startsWith('pt') ? 'pt'
+    : document.documentElement.lang.startsWith('ko') ? 'ko'
     : document.documentElement.lang.startsWith('en') ? 'en' : 'es';
-  const page = { es: '/extensiones', en: '/en/extensiones', pt: '/pt/extensiones' }[lang];
-  const by = { es: 'por', en: 'by', pt: 'por' }[lang];
+  const page = { es: '/extensiones', en: '/en/extensiones', pt: '/pt/extensiones', ko: '/ko/extensiones' }[lang];
+  const by = { es: 'por', en: 'by', pt: 'por', ko: '제작:' }[lang];
   const SHOW = 6;
 
   function pick(texts) {
     if (!texts || typeof texts !== 'object') return '';
-    return texts[lang] || texts.es || texts.en || texts.pt || '';
+    return texts[lang] || (lang === 'ko' && texts.en) || texts.es || texts.en || texts.pt || '';
   }
   function el(tagName, cls, text) {
     const n = document.createElement(tagName);

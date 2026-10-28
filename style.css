@@ -54,6 +54,13 @@ body {
   background: var(--canvas);
   -webkit-font-smoothing: antialiased;
 }
+/* Coreano (/ko/): Inter no trae hangul, así que cae a la fuente del sistema
+   (Apple SD Gothic Neo, Malgun Gothic, Noto Sans KR); y sin keep-all el
+   navegador corta las palabras coreanas por la mitad al final de la línea. */
+:lang(ko) {
+  font-family: 'Inter', system-ui, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+  word-break: keep-all;
+}
 
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-decoration: none; }
