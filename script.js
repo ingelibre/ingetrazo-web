@@ -3,7 +3,7 @@
 (function () {
   'use strict';
 
-  /* ── Idioma de la página (es/en/pt) ────────────────────────────────── */
+  /* ── Idioma de la página (es/en/pt/ko) ────────────────────────────────── */
   var LANG = (document.documentElement.lang || 'es').slice(0, 2);
   var STRINGS = {
     es: { locale: 'es-PE', copied: '¡Copiado!', copy: 'Copiar',
@@ -32,7 +32,16 @@
           dlLinuxSub: 'Instala com clique duplo. AppImage, tar.gz e outros sistemas, abaixo.',
           thanks: 'Obrigado por baixar o IngeTrazo!',
           thanksSub: 'É livre e feito por uma pessoa. Se ele te poupa horas, você pode apoiá-lo.',
-          thanksBtn: 'Apoiar', support: '/pt/apoyar', close: 'Fechar' }
+          thanksBtn: 'Apoiar', support: '/pt/apoyar', close: 'Fechar' },
+    ko: { locale: 'ko-KR', copied: '복사됨!', copy: '복사',
+          flatpak: '더블클릭으로 설치', appimage: '설치 불필요', tarball: 'FUSE 불필요',
+          dlWin: 'Windows용 다운로드', dlMac: 'Mac용 다운로드', dlLinux: 'Linux용 다운로드 (Flatpak)',
+          dlWinSub: 'Windows 10/11 · 64비트용 설치 프로그램. 다른 버전과 운영체제는 아래에 있습니다.',
+          dlMacSub: 'Apple Silicon(M1 이상) Mac용. Intel Mac이라면 아래에서 해당 버전을 받으세요.',
+          dlLinuxSub: '더블클릭으로 설치됩니다. AppImage, tar.gz와 다른 운영체제는 아래에 있습니다.',
+          thanks: 'IngeTrazo를 다운로드해 주셔서 감사합니다!',
+          thanksSub: '자유 소프트웨어이며 한 사람이 만듭니다. 시간을 아껴 주었다면 후원해 주세요.',
+          thanksBtn: '후원하기', support: '/ko/apoyar', close: '닫기' }
   };
   var T = STRINGS[LANG] || STRINGS.es;
 
@@ -50,8 +59,8 @@
     var el = document.querySelector('[data-stat="' + name + '"]');
     if (!el || !n) return;
     if (round) n = Math.floor(n / round) * round;
-    /* miles como en el resto de la página: 7.000 (es/pt), 7,000 (en) */
-    var sep = LANG === 'en' ? ',' : '.';
+    /* miles como en el resto de la página: 7.000 (es/pt), 7,000 (en/ko) */
+    var sep = LANG === 'en' || LANG === 'ko' ? ',' : '.';
     el.textContent = String(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep) + (round ? '+' : '');
   }
   fetch('https://api.github.com/repos/ingelibre/ingetrazo')
