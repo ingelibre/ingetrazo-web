@@ -61,6 +61,22 @@
         education: 'Educação', other: 'Outras',
       },
     },
+    ko: {
+      download: '다운로드', code: '소스 코드', reviewed: '검토됨',
+      community: '커뮤니티', by: '제작:', tested: 'IngeTrazo에서 테스트됨',
+      count: (n, t) => n === t ? `확장 ${t}개` : `확장 ${t}개 중 ${n}개`,
+      one: '확장 1개', none: '검색과 일치하는 확장이 없습니다.',
+      error: '카탈로그를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.',
+      all: '전체', updated: '업데이트',
+      more: (n) => `더 보기 (${n})`, prev: '이전', next: '다음',
+      tags: {
+        architecture: '건축', bim: 'BIM', structures: '구조',
+        terrain: '지형', drawing: '드로잉', analysis: '분석',
+        'import-export': '가져오기/내보내기', rendering: '렌더링',
+        fabrication: '제작', productivity: '생산성',
+        education: '교육', other: '기타',
+      },
+    },
   };
   const ui = UI[lang] || UI.es;
 
@@ -77,10 +93,11 @@
   let all = [];
   let tag = '';
 
-  // The visitor's language, else Spanish, else English, else anything.
+  // The visitor's language, else Spanish, else English, else anything
+  // (a Korean visitor gets English before Spanish).
   function pick(texts) {
     if (!texts || typeof texts !== 'object') return '';
-    return texts[lang] || texts.es || texts.en || texts.pt || '';
+    return texts[lang] || (lang === 'ko' && texts.en) || texts.es || texts.en || texts.pt || '';
   }
 
   function safeUrl(u) {

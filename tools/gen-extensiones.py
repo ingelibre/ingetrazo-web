@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Copyright (C) 2026 Marco Sumari Tellez and IngeTrazo contributors.
-"""Write the extensions page in the site's three languages.
+"""Write the extensions page in the site's four languages.
 
-``extensiones.html``, ``en/extensiones.html`` and ``pt/extensiones.html``
+``extensiones.html``, ``en/``, ``pt/`` and ``ko/extensiones.html``
 take the header and the footer from the matching ``apoyar.html``, so the
 navigation stays one thing to edit. The page itself is a shell: the cards
 come from ``/extensiones.json`` (``extensiones.js``), which the Worker reads
@@ -20,11 +20,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CATALOG = "https://github.com/ingelibre/ingetrazo-extensions"
 GUIDE = "https://github.com/ingelibre/ingetrazo/blob/main/docs/plugins.md"
-PAGES = {"es": ROOT, "en": ROOT / "en", "pt": ROOT / "pt"}
+PAGES = {"es": ROOT, "en": ROOT / "en", "pt": ROOT / "pt", "ko": ROOT / "ko"}
 URL = {"es": "https://ingetrazo.com/extensiones",
        "en": "https://ingetrazo.com/en/extensiones",
-       "pt": "https://ingetrazo.com/pt/extensiones"}
-LOCALE = {"es": "es_PE", "en": "en_US", "pt": "pt_BR"}
+       "pt": "https://ingetrazo.com/pt/extensiones",
+       "ko": "https://ingetrazo.com/ko/extensiones"}
+LOCALE = {"es": "es_PE", "en": "en_US", "pt": "pt_BR", "ko": "ko_KR"}
 
 T = {
     "es": {
@@ -169,6 +170,51 @@ T = {
         "guide_btn": "Guia para escrever extensões",
         "readme": "#português",
     },
+    "ko": {
+        "title": "확장 · IngeTrazo",
+        "desc": "커뮤니티가 만든 IngeTrazo 확장: BIM, 구조, 지형, 드로잉 "
+                "등. 모두 자유 소프트웨어이며 코드가 공개되어 있습니다.",
+        "h1": "확장",
+        "lead": "커뮤니티가 IngeTrazo에 더하는 도구입니다. 모두 자유 "
+                "소프트웨어이고 코드가 공개되어 있으며, 필요한 것만 "
+                "설치하면 됩니다.",
+        "search": "확장 검색…",
+        "only": "검토된 것만",
+        "sort": "정렬",
+        "sort_default": "검토된 것 먼저",
+        "sort_recent": "최신순",
+        "sort_name": "이름 (A–Z)",
+        "tags": "주제로 거르기",
+        "loading": "카탈로그를 불러오는 중…",
+        "noscript": "이 목록을 보려면 JavaScript가 필요합니다. 카탈로그는 "
+                    "다음 주소에서 직접 볼 수도 있습니다:",
+        "install_h": "설치 방법",
+        "install": [
+            'IngeTrazo에서 <strong>Extensions ▸ Manage extensions…</strong>(확장 관리)를 엽니다 (버전 0.5.8부터).',
+            '<strong>Browse</strong> 탭에서 확장을 찾아 <strong>Install</strong>을 누릅니다. IngeTrazo가 내려받아 승인된 파일과 정확히 같은지 확인한 뒤 활성화합니다.',
+            '커뮤니티 확장이라면 설치 전에 IngeTrazo가 한 번 더 묻습니다. 설치한 확장은 <strong>Installed</strong> 탭에 있습니다.',
+        ],
+        "how": "어떻게 설치하나요?",
+        "soon": '오프라인이거나 이전 버전을 쓰고 있다면? <strong>다운로드</strong>를 눌러 <code>.zip</code>의 압축을 풀고, 폴더 전체를 <strong>Extensions ▸ Open extensions folder</strong>에 복사한 다음 IngeTrazo를 다시 여세요.',
+        "new_h": '새로 추가됨',
+        "all_h": '모든 확장',
+        "safety_h": "검토됨과 커뮤니티",
+        "reviewed": "검토됨",
+        "reviewed_p": "IngeTrazo 메인테이너가 바로 그 버전의 코드를 읽었습니다.",
+        "community": "커뮤니티",
+        "community_p": "자동 검사는 통과했지만 아무도 코드를 깊이 읽지는 "
+                       "않았습니다. 작성자를 신뢰한다면 설치하세요.",
+        "safety_note": "확장은 Blender와 마찬가지로 IngeTrazo와 같은 권한으로 "
+                       "컴퓨터에 접근하는 프로그램입니다. 다운로드 버튼은 "
+                       "파일이 승인된 것과 정확히 같은지 확인합니다.",
+        "publish_h": "확장을 만드셨나요?",
+        "publish_p": "브라우저에서 짧은 항목 하나로 여기에 올릴 수 있습니다. "
+                     "Git을 몰라도 됩니다. 봇이 1분 안에 검사하고 페이지가 "
+                     "저절로 업데이트됩니다.",
+        "publish_btn": "내 확장 올리기",
+        "guide_btn": "확장 작성 가이드 (영어)",
+        "readme": "#english",
+    },
 }
 
 
@@ -176,7 +222,7 @@ def head(lang: str) -> str:
     t = T[lang]
     alts = "\n".join(
         f'  <link rel="alternate" hreflang="{code}" href="{URL[code]}">'
-        for code in ("es", "en", "pt"))
+        for code in ("es", "en", "pt", "ko"))
     e = html.escape
     return f"""<!DOCTYPE html>
 <html lang="{lang}">
@@ -292,7 +338,7 @@ def build(lang: str) -> str:
     prefix = "" if lang == "es" else f"/{lang}"
     header = header.replace(f'href="{prefix}/apoyar" hreflang',
                             f'href="{prefix}/extensiones" hreflang')
-    for code in ("es", "en", "pt"):
+    for code in ("es", "en", "pt", "ko"):
         p = "" if code == "es" else f"/{code}"
         header = header.replace(f'href="{p}/apoyar" hreflang="{code}"',
                                 f'href="{p}/extensiones" hreflang="{code}"')
