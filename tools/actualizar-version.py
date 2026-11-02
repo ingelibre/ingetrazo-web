@@ -24,6 +24,7 @@ MESES = {
                       'August', 'September', 'October', 'November', 'December'],
     'pt/index.html': ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho',
                       'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'],
+    'ko/index.html': [f'{n}월' for n in range(1, 13)],
 }
 
 raiz = Path(__file__).resolve().parent.parent
@@ -69,14 +70,16 @@ for nombre, meses in MESES.items():
     f = raiz / nombre
     with open(f, encoding='utf-8', newline='') as h:   # respeta LF/CRLF
         s = h.read()
-    fecha = f'{meses[mes - 1]} de {anio}' if nombre == 'pt/index.html' else f'{meses[mes - 1]} {anio}'
+    fecha = (f'{meses[mes - 1]} de {anio}' if nombre == 'pt/index.html'
+             else f'{anio}년 {meses[mes - 1]}' if nombre == 'ko/index.html'
+             else f'{meses[mes - 1]} {anio}')
     s = re.sub(r'(<span id="latest-version">)v[^<]*', rf'\g<1>v{v}', s)
     s = re.sub(r'(<span id="announce-version">)v[^<]*', rf'\g<1>v{v}', s)
     s = re.sub(r'(<span id="dl-version">)[^<]*', rf'\g<1>{v}', s)
     s = re.sub(r'(<span id="dl-date">)[^<]*', rf'\g<1>{fecha}', s)
     s = re.sub(r'("softwareVersion": ")[^"]*', rf'\g<1>{v}', s)
-    # cifra de respaldo del total histórico de descargas (7.300+ / 7,300+)
-    txt = f'{total_redondeado:,}'.replace(',', ',' if nombre.startswith('en/') else '.') + '+'
+    # cifra de respaldo del total histórico de descargas (7.300+ / 7,300+ en en/ko)
+    txt = f'{total_redondeado:,}'.replace(',', ',' if nombre.startswith(('en/', 'ko/')) else '.') + '+'
     s = re.sub(r'(data-stat="downloads">)[^<]*', rf'\g<1>{txt}', s)
     # nombres de archivo en los comandos copiables de AppImage y tar.gz
     s = re.sub(r'IngeTrazo-\d+(?:\.\d+)+(-x86_64\.AppImage|-linux-x86_64\.tar\.gz|/ingetrazo)',

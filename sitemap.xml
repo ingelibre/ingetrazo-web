@@ -7,6 +7,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -17,6 +18,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -27,6 +29,18 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ingetrazo.com/ko/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -37,6 +51,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/apoyar"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/apoyar"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/apoyar"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/apoyar"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/apoyar"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -47,6 +62,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/apoyar"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/apoyar"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/apoyar"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/apoyar"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/apoyar"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -57,6 +73,18 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/apoyar"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/apoyar"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/apoyar"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/apoyar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/apoyar"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ingetrazo.com/ko/apoyar</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/apoyar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/apoyar"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/apoyar"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/apoyar"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/apoyar"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -66,6 +94,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/firma"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/firma"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/firma"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/firma"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/firma"/>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
@@ -75,6 +104,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/firma"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/firma"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/firma"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/firma"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/firma"/>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
@@ -84,6 +114,17 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/firma"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/firma"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/firma"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/firma"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/firma"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://ingetrazo.com/ko/firma</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/firma"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/firma"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/firma"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/firma"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/firma"/>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
@@ -94,6 +135,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/extensiones"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/extensiones"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/extensiones"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/extensiones"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -104,6 +146,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/extensiones"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/extensiones"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/extensiones"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/extensiones"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -114,6 +157,18 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/extensiones"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/extensiones"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/extensiones"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ingetrazo.com/ko/extensiones</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ingetrazo.com/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/extensiones"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/extensiones"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/extensiones"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

@@ -2,11 +2,11 @@
 //
 // El sitio es estático (assets); este Worker solo corre para «/», «/apoyar»,
 // «/firma» y «/extensiones» (run_worker_first en wrangler.jsonc) y decide si
-// ese visitante se queda en español o va a /en/ o /pt/. Orden:
+// ese visitante se queda en español o va a /en/, /pt/ o /ko/. Orden:
 //   1. la cookie `lang` — elegir en el selector de la cabecera gana siempre;
-//   2. el idioma preferido del navegador si es español o portugués;
+//   2. el idioma preferido del navegador si es español, portugués o coreano;
 //   3. el país (Cloudflare): Hispanoamérica y España → español,
-//      Brasil y lusófonos → portugués;
+//      Brasil y lusófonos → portugués, Corea del Sur → coreano;
 //   4. todo lo demás (Alemania, China, EE. UU.…) → inglés.
 // Los buscadores no se redirigen: ven el español y siguen los hreflang.
 //
@@ -17,7 +17,8 @@ const SPANISH = new Set([
   'MX', 'NI', 'PA', 'PE', 'PR', 'PY', 'SV', 'UY', 'VE',
 ]);
 const PORTUGUESE = new Set(['AO', 'BR', 'CV', 'GW', 'MZ', 'PT', 'ST', 'TL']);
-const SUPPORTED = new Set(['es', 'en', 'pt']);
+const KOREAN = new Set(['KR']);
+const SUPPORTED = new Set(['es', 'en', 'pt', 'ko']);
 const LANG_PAGES = new Set(['/', '/apoyar', '/firma', '/extensiones']);
 const BOT = /bot|crawl|spider|slurp|facebookexternalhit|embedly|preview|whatsapp|telegram|discord|lighthouse/i;
 
@@ -35,12 +36,13 @@ export function firstLanguage(acceptLanguage) {
 }
 
 export function pickLang({ cookie, acceptLanguage, country }) {
-  const m = /(?:^|;\s*)lang=(es|en|pt)\b/.exec(cookie || '');
+  const m = /(?:^|;\s*)lang=(es|en|pt|ko)\b/.exec(cookie || '');
   if (m) return m[1];
   const browser = firstLanguage(acceptLanguage);
-  if (browser === 'es' || browser === 'pt') return browser;
+  if (browser === 'es' || browser === 'pt' || browser === 'ko') return browser;
   if (SPANISH.has(country)) return 'es';
   if (PORTUGUESE.has(country)) return 'pt';
+  if (KOREAN.has(country)) return 'ko';
   return 'en';
 }
 

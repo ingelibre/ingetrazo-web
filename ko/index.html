@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A2434">
+
+  <title>IngeTrazo · 건축과 공학을 위한 오픈소스 3D 모델러</title>
+
+  <meta name="description" content="건축, 공학, 디자인을 위한 오픈소스 3D 모델러: 손으로 그리듯 모델링하고, 축척에 맞춘 PDF 도면을 구성하고, Blender로 렌더링합니다. 위성 3D 지형과 종단면도. Linux, Windows, macOS. GPL-3.0.">
+  <meta name="keywords" content="오픈소스 3D 모델러, 리눅스 3D 모델러, 오픈 BIM, IFC 내보내기, 물량 산출, 토목 공학 소프트웨어, 3D 디자인, 3D 모델링, 리눅스 CAD, 3D 지형, 종단면도, 오픈소스, GPL">
+  <meta name="author" content="Ing. Marco Sumari">
+
+  <link rel="canonical" href="https://ingetrazo.com/ko/">
+  <link rel="alternate" hreflang="es" href="https://ingetrazo.com/">
+  <link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/">
+  <link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/">
+  <link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/">
+  <link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/">
+
+  <meta property="og:site_name" content="IngeTrazo">
+  <meta property="og:title" content="IngeTrazo · 건축과 공학을 위한 오픈소스 3D 모델러">
+  <meta property="og:description" content="손으로 그리듯: 면을 밀어 모델링하고, 축척에 맞춘 PDF 도면을 구성하고, Blender로 렌더링합니다. 위성 3D 지형. 오픈소스(GPL-3.0). Linux, Windows, macOS.">
+  <meta property="og:image" content="https://ingetrazo.com/images/og-banner.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://ingetrazo.com/ko/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IngeTrazo · 건축과 공학을 위한 오픈소스 3D 모델러">
+  <meta name="twitter:description" content="손으로 그리듯: 축척 PDF 도면, Blender 렌더, 위성 3D 지형. 오픈소스. Linux, Windows, macOS.">
+  <meta name="twitter:image" content="https://ingetrazo.com/images/og-banner.jpg">
+
+  <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/images/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/images/logo.png" sizes="180x180">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "IngeTrazo",
+    "operatingSystem": "Linux, Windows, macOS",
+    "applicationCategory": "DesignApplication",
+    "description": "건축, 토목 공학, 3D 디자인을 위한 오픈소스 3D 모델러. 손으로 그리는 듯한 밀기/끌기 모델링과 개발 중인 선택형 BIM 레이어(분류 태그와 IFC 내보내기)를 갖추고 있습니다. 컴포넌트 1,510개와 RAL Classic 213색을 포함한 실제 크기 텍스처 427개 라이브러리, 정확한 축척의 도면 시트 구성과 PDF 내보내기, 위성 3D 지형, 드론 사진측량 측량, 종단면도를 제공하며, 모든 버전의 .skp 파일을 열고 .dae, .obj, glTF, STL을 가져오고 내보냅니다. GPL-3.0 오픈소스.",
+    "url": "https://ingetrazo.com/ko/",
+    "softwareVersion": "0.5.10",
+    "downloadUrl": "https://github.com/ingelibre/ingetrazo/releases/latest",
+    "screenshot": "https://ingetrazo.com/images/screenshots/principal.jpeg",
+    "image": "https://ingetrazo.com/images/logo.png",
+    "author": {
+      "@type": "Person",
+      "name": "Ing. Marco Sumari",
+      "email": "ing.sumari@gmail.com"
+    },
+    "inLanguage": "ko",
+    "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "GPL-3.0 라이선스의 오픈소스 소프트웨어."
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "여기서 말하는 오픈소스란 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IngeTrazo는 GPL-3.0 라이선스의 오픈소스 소프트웨어입니다. 어떤 프로젝트에든 사용하고, 작동 방식을 연구하고, 개선하고, 공유할 수 있으며 소스 코드는 GitHub에 공개되어 있습니다. 여러분의 모델은 여러분의 것입니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "IngeTrazo는 무엇이 다른가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "오픈소스 소프트웨어(GPL-3.0)이며 Windows, macOS뿐 아니라 Linux에서도 네이티브로 동작합니다. 닫힌(수밀) 솔리드를 보장하고, 개발 중인 선택형 BIM 레이어를 제공합니다. 축척에 맞춘 시트를 PDF로 구성하고, 실제 지형(위성, 표고, 드론, GPS 점)을 불러오며, 같은 엔진으로 그리는 AI 어시스턴트와 연결됩니다. 모든 단계는 실행 취소할 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "어떤 형식을 열고 저장하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "자체 형식인 .igz 문서, DWG와 DXF 도면, 모든 버전의 .skp 모델(IngeTrazo가 기여하는 오픈 리더 OpenSKP 사용), COLLADA(.dae), OBJ, glTF, STL을 엽니다. 오픈 형식인 .igz로 저장하고, COLLADA, OBJ, glTF, STL, IFC, DXF, PDF 도면으로 내보냅니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "BIM을 지원하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "개발 중인 선택형 레이어로 지원합니다. 형상을 벽, 슬래브, 기둥, 문으로 분류하고, 물량(m², m³, 개수)을 구하고, 다른 프로그램(IngePresupuestos 포함)이 읽는 표준 형식인 IFC로 내보낼 수 있습니다. 버전마다 기능이 늘어납니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "프로젝트 도면을 만들 수 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네. 시트 구성기는 모델의 뷰를 A4–A0 시트에 정확한 축척(1:50, 1:100…)으로 배치합니다. 모델에 연결되어 모델이 바뀌면 함께 갱신되는 치수, 편집 가능한 표제란, 그래픽 축척, 번호가 붙은 뷰 제목, 단면 표시, 레벨 표시와 연속 치수, 상세 콜아웃, 펜과 단면 해치(poché)를 갖춘 벡터 은선 스타일을 제공합니다. 각 시트 또는 전체 세트를 벡터 PDF로, 뷰를 DXF로 내보낼 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "플러그인으로 기능을 추가할 수 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네. 버전 0.3.2부터 IngeTrazo에는 Extensions 메뉴가 있습니다. 플러그인(Python 파일)을 개인 폴더에 복사하면 해당 도구가 메뉴에 나타납니다. 두 가지가 기본 포함되어 있습니다: Model Info(통계, 재질, BIM 객체)와 코드로 모델을 살펴보고 자동화하는 Python Console이며, 모두 실행 취소와 연동됩니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "인공지능 기능이 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네, 두 가지 방식이 있습니다. 내장 AI 어시스턴트는 채팅입니다. 원하는 제공업체의 키를 붙여 넣고(Groq는 무료 등급이 있고, Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek 또는 내 컴퓨터의 Ollama도 가능) 말이나 사진으로 모델을 설명하면 됩니다. 그리고 MCP 브리지를 통해 Claude Desktop이나 Claude Code가 열려 있는 앱에 직접 그릴 수 있습니다. 두 경우 모두 AI는 엔진이 실행하는 레시피를 만들고, 모든 단계는 실행 취소할 수 있으며, 모델은 손으로 계속 편집할 수 있습니다. AI 없이도 IngeTrazo는 똑같이, 오프라인으로 동작합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "오프라인에서도 동작하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네, 모델러 전체가 오프라인으로 동작하며 파일은 여러분의 컴퓨터에 저장됩니다. 위성 지도와 3D 지형만 사용하는 동안 인터넷에서 이미지를 내려받습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "어떻게 설치하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Windows: ingetrazo.com 또는 GitHub 릴리스에서 설치 프로그램을 내려받아 더블클릭하면 끝입니다. Linux: Flatpak(더블클릭하면 앱 스토어가 설치하며 .igz와 .skp 파일이 연결됨), AppImage(실행 권한을 주고 열기) 또는 배포판에 FUSE가 없다면 tar.gz를 내려받아 아무 곳에나 압축을 풀고 ingetrazo를 실행합니다. macOS(Apple Silicon): .dmg를 내려받아 IngeTrazo를 응용 프로그램으로 끌어 놓고, 아직 Apple 계정으로 서명되지 않았으므로 처음 한 번은 시스템 설정 ▸ 개인정보 보호 및 보안 ▸ 그래도 열기로 허용합니다(macOS 14 이하는 마우스 오른쪽 클릭 ▸ 열기). 명령 3개로 소스에서 실행할 수도 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "3D 프린팅에 적합한가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "아직 강점은 아니지만 계획에 있습니다. 지금도 바이너리 STL로 내보내 슬라이서에서 사용할 수 있고, 엔진이 만드는 솔리드는 닫혀 있습니다. 아직 없는 것은 3D 프린팅 전용 도구(벽 두께 검사, 오버행, 메시 복구, 3MF)이며, 앞으로 추가할 예정입니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "문제를 보고하거나 기여하려면 어떻게 하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "프로젝트는 GitHub(github.com/ingelibre/ingetrazo)에 있습니다. 예제 파일과 함께 이슈를 열거나, 개선을 제안하거나, 코드를 보내 주세요. 이메일로 연락하셔도 됩니다."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ AVISO DE NUEVA VERSIÓN ============ -->
+  <div class="announce" id="announce">
+    <p><strong>새 소식:</strong> IngeTrazo <span id="announce-version">v0.5.10</span> 출시 — <a href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">새로운 기능 보기 →</a></p>
+    <button type="button" class="announce-close" aria-label="알림 닫기">×</button>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/ko/" class="nav-brand">
+        <img src="/images/logo.png" alt="IngeTrazo" width="32" height="32">
+        <span>IngeTrazo</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#features">기능</a>
+        <a href="#descargar">다운로드</a>
+        <a href="/ko/extensiones">확장</a>
+        <a href="https://ingetrazo-docs.pages.dev" target="_blank" rel="noopener">매뉴얼 (스페인어)</a>
+        <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">GitHub</a>
+        <a href="/ko/apoyar">후원</a>
+        <span class="lang-switch" aria-label="언어"><a href="/" hreflang="es" data-lang="es">ES</a><a href="/en/" hreflang="en" data-lang="en">EN</a><a href="/pt/" hreflang="pt" data-lang="pt">PT</a><a href="/ko/" hreflang="ko" data-lang="ko" aria-current="true">KO</a></span>
+      </nav>
+      <button class="nav-toggle" aria-label="메뉴 열기" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-center">
+      <span class="hero-badge">오픈소스 · GPL-3.0</span>
+      <h1><span class="grad-text">손으로</span> 그리듯이.</h1>
+      <p class="hero-lead">건축, 공학, 디자인을 위한 오픈소스 3D 모델러.</p>
+      <p class="hero-name"><strong>IngeTrazo</strong>(잉헤트라소): 스페인어 <em>inge</em>(niería) “공학” + <em>trazo</em> “획” — 엔지니어의 선.</p>
+      <div class="hero-ctas">
+        <a href="#descargar" class="btn btn-primary btn-lg" id="hero-dl">IngeTrazo 다운로드</a>
+        <a href="https://github.com/ingelibre/ingetrazo" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">소스 코드 보기</a>
+      </div>
+    </div>
+    <div class="hero-screenshot-wrap">
+      <img class="hero-img zoomable" src="/images/screenshots/principal.webp"
+               srcset="/images/screenshots/principal-480.webp 480w, /images/screenshots/principal-960.webp 960w, /images/screenshots/principal.webp 1600w"
+               sizes="(max-width: 900px) calc(100vw - 32px), 1120px"
+           alt="투우장을 모델링한 IngeTrazo: 계단식 단, 관람석, 아치와 관중, 레이어·장면·컴포넌트 패널과 지형·레벨·AI·렌더 탭"
+           width="1600" height="900" loading="eager" fetchpriority="high">
+    </div>
+  </section>
+
+  <!-- ============ CIFRAS ============ -->
+  <section class="stats" aria-label="숫자로 보는 IngeTrazo">
+    <div class="container stats-row">
+        <div class="stat"><strong data-stat="downloads">11,100+</strong><span>다운로드</span></div>
+        <div class="stat"><strong data-stat="stars">150</strong><span>GitHub 스타</span></div>
+        <div class="stat"><strong>1,510</strong><span>컴포넌트</span></div>
+        <div class="stat"><strong>PDF</strong><span>축척 도면</span></div>
+        <div class="stat"><strong>.igz</strong><span>오픈 형식</span></div>
+        <div class="stat"><strong>3</strong><span>Linux · Windows · macOS</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 3 PASOS ============ -->
+  <section class="steps" aria-label="사용 흐름">
+    <div class="container">
+      <h2>스케치에서 도면까지 3단계</h2>
+      <ol class="steps-row">
+        <li class="step"><span class="step-n">1</span><h3>그리기</h3><p>정확한 치수로 손으로 그리듯 그리거나, 기존 도면과 모델을 가져옵니다.</p></li>
+        <li class="step"><span class="step-n">2</span><h3>완성하기</h3><p>실제 크기의 재질과 텍스처, 컴포넌트, 실제 지형과 태양의 그림자.</p></li>
+        <li class="step"><span class="step-n">3</span><h3>납품하기</h3><p>축척 PDF 도면, Blender로 렌더링한 이미지, DXF·COLLADA·glTF·OBJ 파일.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <div id="features">
+    <div class="container features-head"><h2>모델링, 분류, 도면화에 필요한 모든 것</h2></div>
+
+    <!-- ── 1. Modelado freeform ── -->
+    <section class="feat reveal">
+      <div class="container feat-row">
+        <div class="feat-text">
+          <h2>손으로 그리듯이</h2>
+          <p>선, 사각형, 원, 호를 그리고 면을 밀면 솔리드가 됩니다. 아이디어와 모델 사이에 복잡한 CAD 단계가 끼어들지 않습니다.</p>
+          <ul class="feat-list">
+            <li><strong>밀기/끌기, 경로 따라가기, 간격 띄우기</strong> — 메뉴에 가로막히지 않고 면을 밀어 모델링합니다</li>
+            <li><strong>키보드로 정확한 치수 입력</strong> — <code>3.50</code>을 입력하면 선의 길이가 3.50 m가 됩니다</li>
+            <li><strong>스마트 추론</strong> — 축, 연장선, 평행선, 수직선</li>
+            <li>어떤 면에든 <strong>재질, 텍스처, 치수</strong></li>
+          </ul>
+        </div>
+        <figure class="feat-img">
+          <img class="zoomable" src="/images/screenshots/modelado.webp"
+               srcset="/images/screenshots/modelado-480.webp 480w, /images/screenshots/modelado-960.webp 960w, /images/screenshots/modelado.webp 1600w"
+               sizes="(max-width: 860px) calc(100vw - 64px), 640px"
+               alt="IngeTrazo에서 얀케의 퍼걸러 벤치를 그리는 모습: 콘크리트 기초 위에 그리다 만 사각형과 값 입력란의 크기 0.65 × 1.35 m, 안전모를 쓴 엔지니어 인물 옆" width="1600" height="1007" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── 2. BIM (en desarrollo) ── -->
+    <section class="feat feat-bim reveal">
+      <div class="container feat-row feat-reverse">
+        <div class="feat-text">
+          <h2>한 걸음씩 나아가는 BIM</h2>
+          <p><strong>지금 만들고 있는</strong> 선택형 레이어입니다. 자유롭게 모델링하다가 필요할 때 형상을 벽, 슬래브, 기둥, 문으로 <strong>분류</strong>합니다.</p>
+          <ul class="feat-list">
+            <li><strong>BIM 태그</strong> — 이미 그린 것에 벽, 슬래브, 기둥, 문을 표시합니다</li>
+            <li><strong>물량</strong> — 분류된 요소의 벽 m²와 기둥 m³를 CSV 표로</li>
+            <li><strong>IFC 4 내보내기</strong> — 모델을 다른 프로그램으로 가져가는 오픈 파일</li>
+            <li><strong>개발 중</strong> — 버전마다 늘어납니다. 필요한 기능을 GitHub에 알려 주세요</li>
+          </ul>
+          <p class="feat-muted-light">수밀(닫힌) 솔리드 보장: 어떤 작업이 볼륨을 깨뜨리려 하면 엔진이 물량 산출을 망가뜨리는 대신 그 작업을 거부합니다.</p>
+        </div>
+        <figure class="feat-img">
+          <img class="zoomable" src="/images/screenshots/bim.webp"
+               srcset="/images/screenshots/bim-480.webp 480w, /images/screenshots/bim-960.webp 960w, /images/screenshots/bim.webp 1600w"
+               sizes="(max-width: 860px) calc(100vw - 64px), 640px"
+               alt="지형 위에 놓인 아치형 강철 트러스, 곡면 지붕, 블록 벽의 창고와 레이어·장면·컴포넌트 패널" width="1600" height="900" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── 3. Terreno — verde ── -->
+    <section class="feat feat-terra reveal">
+      <div class="container feat-row">
+        <div class="feat-text">
+          <h2>모든 것은 지형에서 시작합니다</h2>
+          <p>위성 이미지, 3D 지형, 현장 데이터로 프로젝트를 실제 세계에 배치합니다. 모델러 안에서 바로.</p>
+          <ul class="feat-list">
+            <li><strong>위성 이미지를 입힌 3D 지형</strong> — 현장의 실제 표고</li>
+            <li><strong>종단면도</strong> — 노선을 그리면 바로 종단면을 볼 수 있습니다</li>
+            <li><strong>드론 측량(WebODM)</strong> — 텍스처가 입혀진 사진측량 메시를 실제 표고와 함께 참조로 사용</li>
+            <li><strong>GPS / 토털 스테이션 점</strong> — UTM 좌표 CSV를 가져와 정확한 점 위에 그립니다</li>
+            <li><strong>인터페이스 전체에서 UTM WGS84</strong> — 측량 장비가 알려 주는 그대로 존/E/N을 입력합니다</li>
+            <li><strong>프로젝트 북</strong> — 축에 맞춰 반듯하게 그리면 지도, 지형, 그림자가 아래에서 회전합니다</li>
+            <li>측점과 면적이 있는 <strong>지리 참조 노선과 경계</strong></li>
+          </ul>
+          <p class="feat-muted">모델러 전체가 오프라인으로 동작하며, 지도만 인터넷을 사용합니다.</p>
+        </div>
+        <figure class="feat-img">
+          <img class="zoomable" src="/images/screenshots/terreno.webp"
+               srcset="/images/screenshots/terreno-480.webp 480w, /images/screenshots/terreno-960.webp 960w, /images/screenshots/terreno.webp 1600w"
+               sizes="(max-width: 860px) calc(100vw - 64px), 640px"
+               alt="계곡의 드론 사진측량 측량 위에 그린 노선과 그 종단면도, 실시간 UTM 좌표 표시" width="1600" height="1057" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── 4. Láminas / planos ── -->
+    <section class="feat reveal">
+      <div class="container feat-row feat-reverse">
+        <div class="feat-text">
+          <h2>모델에서 출력 도면까지</h2>
+          <p>QGIS처럼 시트를 구성합니다: 모델의 뷰를 <strong>정확한 축척</strong>으로 시트에 배치하고, 치수는 스스로 다시 재며, 설계 도서에 바로 쓸 벡터 PDF로 내보냅니다.</p>
+          <ul class="feat-list">
+            <li><strong>보장되는 실제 축척</strong> — 200 mm 프레임 안의 1:100은 언제나 모델의 20 m입니다</li>
+            <li><strong>모델에 연결된 치수</strong> — 벽을 고치면 치수가 따라 움직이며 다시 잽니다. 합계가 표시되는 연속 치수, 점의 높이를 읽는 레벨 표시</li>
+            <li><strong>정확한 벡터 은선 스타일</strong> — 세 가지 펜(절단, 윤곽, 모서리)과 단면의 해치(poché): 제도사가 잉크로 그릴 도면 그대로</li>
+            <li><strong>번호가 붙은 뷰 제목, 단면 표시, 상세 콜아웃</strong> — 평면도에 A-A 단면이 어디를 자르는지, 각 상세가 어느 시트에서 확대되는지 표시됩니다</li>
+            <li><strong>편집 가능한 표제란, 그래픽 축척, 방위 표시</strong> — 문서 하나에 여러 시트, 클릭 한 번으로 PDF</li>
+            <li><strong><a href="https://ingecad.org" target="_blank" rel="noopener">IngeCAD</a>로 DXF</strong> — 선 종류마다 레이어 하나씩 나뉜 벡터 뷰. 같은 생태계의 무료 CAD에서 2D 상세를 마무리하세요</li>
+          </ul>
+        </div>
+        <figure class="feat-img">
+          <img class="zoomable" src="/images/screenshots/laminas.webp"
+               srcset="/images/screenshots/laminas-480.webp 480w, /images/screenshots/laminas-960.webp 960w, /images/screenshots/laminas.webp 1600w"
+               sizes="(max-width: 860px) calc(100vw - 64px), 640px"
+               data-caption="얀케 광장의 A3 시트를 띄운 IngeTrazo 시트 구성기: 1:100 정면도·좌측면도·우측면도, 위성 지형 위의 3D 뷰와 표제란"
+               alt="얀케 광장의 A3 시트를 띄운 IngeTrazo 시트 구성기: 1:100 정면도·좌측면도·우측면도, 위성 지형 위의 3D 뷰와 표제란" width="1600" height="1007" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── Y además: IA, componentes e importar ── -->
+    <section class="feat more reveal">
+      <div class="container">
+        <h2 class="more-title">그리고 더 있습니다</h2>
+        <div class="more-grid">
+        <article class="more-card">
+          <figure class="more-img">
+            <img class="zoomable" src="/images/screenshots/mcp-claude.webp"
+               srcset="/images/screenshots/mcp-claude-480.webp 480w, /images/screenshots/mcp-claude-960.webp 960w, /images/screenshots/mcp-claude.webp 1600w"
+               sizes="(max-width: 960px) min(640px, calc(100vw - 40px)), 380px"
+                 data-caption="자르지 않은 Ubuntu 데스크톱에서의 MCP 브리지. 터미널의 Claude Code가 옆에 열린 앱에 방금 1.40 × 0.80 × 0.75 m 식탁과 의자 네 개(좌석 0.45 × 0.45, 높이 0.45 m, 등받이 0.90 m)를 그렸습니다 —“의자 4개가 있는 식탁, 표준 치수로”— 그리고 사용한 치수 표로 답합니다. 오른쪽은 연결 명령이 표시된 브리지 대화 상자입니다. 방법: Extensions ▸ AI Bridge (MCP)에서 표시되는 명령을 복사해 터미널(claude mcp add ingetrazo -- …)이나 Claude Desktop 설정에 붙여 넣고, IngeTrazo를 연 채로 원하는 것을 요청하세요."
+                 alt="Ubuntu 전체 데스크톱: 왼쪽 터미널의 Claude Code가 방금 그린 의자 네 개 딸린 식탁의 치수를 나열하고, 오른쪽 IngeTrazo에는 모델과 AI Bridge (MCP) 대화 상자가 열려 있음" width="1600" height="1000" loading="lazy">
+          </figure>
+          <div class="more-body">
+            <h3>AI로 모델링 — 앱 안에서, 또는 Claude에서</h3>
+            <p>원하는 것을 설명하거나 사진을 첨부하면 AI가 <strong>레시피</strong>를 작성합니다: 회전체, 돌출, IngeTrazo 액션 API 위의 Python. 결정론적 엔진이 이를 실행합니다. <strong>각 단계는 실행 취소 한 번</strong>이고, 모든 레시피는 수밀성 검사를 거치며, 모델은 여전히 여러분의 것으로 손으로 편집할 수 있습니다.</p>
+            <ul class="feat-list">
+              <li><strong>내장 AI 어시스턴트</strong>(사이드바의 AI 탭, Ctrl+Shift+A) — 내 키로 쓰는 채팅: Groq(무료 등급 있음), Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek 또는 Ollama 로컬 모델. 중개자 없음</li>
+              <li><strong>자기가 한 일을 봅니다</strong> — 뷰포트 스크린샷을 받아 보고 고칩니다. <strong>Photo…</strong>로 이미지 속 대상을 여러분이 준 치수에 맞춰 다시 만듭니다</li>
+              <li><strong>Claude Desktop과 Claude Code용 MCP 브리지</strong> — 에이전트가 <em>열려 있는 앱에서 실시간으로</em> 모델을 그리고, 조회하고, 봅니다. 동작마다 실행 취소 한 단계이며, 코드가 실패하면 문서는 그대로 돌아옵니다</li>
+            </ul>
+            <p class="feat-muted"><a href="https://ingetrazo-docs.pages.dev/ia/" target="_blank" rel="noopener">매뉴얼의 단계별 가이드 (스페인어) →</a></p>
+          </div>
+        </article>
+        <article class="more-card">
+          <figure class="more-img">
+          <img class="zoomable" src="/images/screenshots/componentes.webp"
+               srcset="/images/screenshots/componentes-480.webp 480w, /images/screenshots/componentes-960.webp 960w, /images/screenshots/componentes.webp 1600w"
+               sizes="(max-width: 960px) min(640px, calc(100vw - 40px)), 380px"
+               data-caption="IngeTrazo 컴포넌트 트레이로 채운 장면: 그림자를 드리운 나무, 픽업트럭, 소파, 분수와 축척 인물, 오른쪽에는 사람·가구·나무·차량 라이브러리"
+               alt="IngeTrazo 컴포넌트 트레이로 채운 장면: 그림자를 드리운 나무, 픽업트럭, 소파, 분수와 축척 인물, 오른쪽에는 사람·가구·나무·차량 라이브러리" width="1600" height="1007" loading="lazy">
+        </figure>
+          <div class="more-body">
+            <h3>장면을 채우느라 오후를 다 쓰지 마세요</h3>
+            <p>모델은 옆에 사람과 나무, 자동차가 있어야 실감이 납니다. IngeTrazo는 클릭 한 번 거리에 <strong>컴포넌트 1,510개</strong>와 <strong>텍스처 427개</strong>를 제공하며, 모두 아무 크기가 아니라 <strong>실제 크기로</strong> 들어옵니다.</p>
+            <ul class="feat-list">
+              <li><strong>온라인 모델 1,510개</strong> — 가구, 문, 창, 나무, 차량, 사람. 둘러보는 데는 킬로바이트 수준이며, 클릭한 것만 내려받아 보관합니다</li>
+              <li><strong>오프라인에서도</strong> — 모델 8개와 축척 인물 6개가 프로그램에 들어 있습니다</li>
+              <li><strong>실제 크기의 텍스처 427개</strong> — 벽돌이 벽돌처럼 보이는 건 눈대중이 아니라 카탈로그가 크기를 알려 주기 때문입니다</li>
+            </ul>
+            <p class="feat-muted">모든 콘텐츠는 자유 라이브러리인 <a href="https://www.sweethome3d.com" target="_blank" rel="noopener">Sweet Home 3D</a>(CC0, CC BY, Free Art License)에서 왔으며, IngeTrazo는 항상 각 항목의 라이선스와 작성자를 표시합니다.</p>
+          </div>
+        </article>
+        <article class="more-card">
+          <figure class="more-img">
+          <img class="zoomable" src="/images/screenshots/importar.webp"
+               srcset="/images/screenshots/importar-480.webp 480w, /images/screenshots/importar-960.webp 960w, /images/screenshots/importar.webp 1600w"
+               sizes="(max-width: 960px) min(640px, calc(100vw - 40px)), 380px"
+               data-caption="위성 지형 위에 IngeTrazo로 모델링한 얀케 중앙 광장: 환영 아치, 퍼걸러, 정원, 분수, 태양광 가로등과 깃발, 측면 패널의 레이어와 장면"
+               alt="위성 지형 위에 IngeTrazo로 모델링한 얀케 중앙 광장: 환영 아치, 퍼걸러, 정원, 분수, 태양광 가로등과 깃발, 측면 패널의 레이어와 장면" width="1600" height="1007" loading="lazy">
+        </figure>
+          <div class="more-body">
+            <h3>기존 도면과 모델을 그대로</h3>
+          <p>오랜 세월 쌓은 라이브러리도, 동료들도 남겨 두지 않습니다. IngeTrazo는 DWG와 DXF 도면, 오픈 리더 <a href="https://github.com/iamahsanmehmood/openskp" target="_blank" rel="noopener"><strong>OpenSKP</strong></a> 덕분에 모든 버전의 <code>.skp</code> 모델, 그리고 OBJ, COLLADA, glTF, STL을 가져옵니다. 변환기도, 추가 설치도 필요 없습니다.</p>
+          <ul class="feat-list">
+            <li><strong>DWG와 DXF 도면</strong> — 레이어마다 그룹 하나로, 바로 따라 그리고 쌓아 올릴 수 있게</li>
+            <li><strong>안에 있는 모든 것과 함께</strong> — 그룹, 컴포넌트, 재질, 텍스처, 레이어, 장면, 치수, 지시선 텍스트</li>
+            <li><strong>모델을 다시 가져가려면</strong> — 거의 모든 3D 프로그램이 여는 COLLADA(.dae), glTF, OBJ로 내보내기</li>
+            <li>그 밖에 <strong>OBJ, COLLADA, glTF, STL</strong>과 <strong>IFC</strong></li>
+          </ul>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============ EXTENSIONES ============ -->
+  <!-- Cards filled by /home-ext.js from /extensiones.json. -->
+  <section id="extensiones" class="section bg-light home-ext reveal">
+    <div class="container">
+      <div class="section-head">
+        <h2>커뮤니티 확장</h2>
+        <p>다른 사용자들이 IngeTrazo에 더하는 도구: 계단, 주방 수납장, 일조와 그림자, AI 렌더링, 다중 뷰포트 등. 모두 무료이며 코드가 공개되어 있고, 필요한 것만 설치하면 됩니다.</p>
+      </div>
+      <div class="ext-grid" id="home-ext-grid"></div>
+      <p class="home-ext-cta">
+        <a class="btn btn-primary" href="/ko/extensiones">확장 <span id="home-ext-n"></span>개 모두 보기 →</a>
+        <a class="home-ext-pub" href="/ko/extensiones#publicar">직접 만드셨나요? 올려 주세요 →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ PUENTE INGEPRESUPUESTOS ============ -->
+  <section class="bridge reveal">
+    <div class="container">
+      <h2>엔지니어링을 위한<br>오픈소스 소프트웨어 패밀리.</h2>
+      <p>IngeTrazo만 있는 것이 아닙니다. 같은 개발자가 같은 라이선스로 만든 두 프로그램이 도면 작성과 건설 공사비 산출을 맡습니다. 세 프로그램은 서로 연동됩니다.</p>
+      <div class="fam-grid">
+        <article class="fam-card fam-lime">
+          <a class="fam-shot" href="https://ingecad.org" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="/images/familia/ingecad.webp"
+               srcset="/images/familia/ingecad-480.webp 480w, /images/familia/ingecad.webp 960w"
+               sizes="(max-width: 700px) calc(100vw - 40px), 460px" alt="" width="960" height="540" loading="lazy">
+          </a>
+          <span class="fam-tag">2D CAD · Linux</span>
+          <h3>IngeCAD</h3>
+          <p>클래식 AutoCAD 스타일의 오픈소스 2D 도면 프로그램으로, DWG와 DXF를 읽고 씁니다. 시트의 뷰가 DXF로 나오므로 바로 열어 작업할 수 있습니다.</p>
+          <p class="fam-links">
+            <a href="https://ingecad.org" target="_blank" rel="noopener">ingecad.org</a>
+            <a href="https://github.com/ingelibre/ingecad" target="_blank" rel="noopener">GitHub의 코드</a>
+          </p>
+        </article>
+        <article class="fam-card fam-orange">
+          <a class="fam-shot" href="https://ingepresupuestos.com" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="/images/familia/ingepresupuestos.webp"
+               srcset="/images/familia/ingepresupuestos-480.webp 480w, /images/familia/ingepresupuestos.webp 960w"
+               sizes="(max-width: 700px) calc(100vw - 40px), 460px" alt="" width="960" height="540" loading="lazy">
+          </a>
+          <span class="fam-tag">건설 공사비 산출</span>
+          <h3>IngePresupuestos</h3>
+          <p>모델의 IFC를 가져와 일위대가 분석으로 견적을 작성하고, MS Project와 주고받는 간트 공정표와 페루 INEI 지수를 쓰는 물가 변동 조정식을 제공합니다.</p>
+          <p class="fam-links">
+            <a href="https://ingepresupuestos.com" target="_blank" rel="noopener">ingepresupuestos.com</a>
+            <a href="https://github.com/ingelibre/ingepresupuestos" target="_blank" rel="noopener">GitHub의 코드</a>
+          </p>
+        </article>
+      </div>
+      <p class="fam-note">모두 GPL-3.0-or-later이며 유료 에디션은 없습니다. 세 프로그램의 코드는 <a href="https://github.com/ingelibre" target="_blank" rel="noopener">github.com/ingelibre</a>에 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- ============ IMPACT ============ -->
+  <section class="impact">
+    <h2>오픈소스.<br>영원히.</h2>
+    <p>IngeTrazo는 GPL-3.0 오픈소스 소프트웨어입니다. 모델은 여러분의 컴퓨터에, 언제나 읽을 수 있는 오픈 형식으로 저장됩니다. 페루에서 전 세계의 엔지니어, 건축가, 디자이너를 위해 만들었습니다.</p>
+    <aside class="impact-card">
+      <p class="impact-card-q">계속 이어 갈 수 있게 도와주세요</p>
+      <p class="impact-card-sub">아무리 작은 후원이라도 개발을 이어 가게 합니다.</p>
+      <a class="btn btn-lg impact-card-btn" href="/ko/apoyar">프로젝트 후원하기</a>
+      <ul class="pay-chips" aria-label="결제 수단"><li>Liberapay</li><li>PayPal</li><li>Yape</li><li>Plin</li></ul>
+      <p class="impact-card-alt">여유가 없다면? 동료에게 알려 주거나 <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">GitHub</a>에 스타를 남겨 주셔도 큰 도움이 됩니다.</p>
+    </aside>
+  </section>
+
+
+  <!-- ============ DESCARGAR ============ -->
+  <section id="descargar" class="download-section">
+    <div class="container">
+      <h2>IngeTrazo 받기</h2>
+      <p class="download-sub">버전 <span id="dl-version">0.5.10</span> — <span id="dl-date">2026년 10월</span>.</p>
+      <div class="dl-primary" id="dl-primary" hidden>
+        <a class="btn btn-primary btn-lg" id="dl-primary-btn" href="#descargar"></a>
+        <p class="dl-primary-sub" id="dl-primary-sub"></p>
+      </div>
+      <div class="dl-row">
+        <div class="dl-group">
+          <span class="dl-group-label">Windows</span>
+          <div class="dl-group-cards">
+            <a class="dl-card dl-card-compact" id="dl-win-btn" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 2.3 6.5 1.4v6.3H0V2.3zM7.3 1.3 16 0v7.7H7.3V1.3zM0 8.5h6.5v6.3L0 13.9V8.5zM7.3 8.5H16V16l-8.7-1.2V8.5z"/></svg>
+              <strong>설치 프로그램 (.exe)</strong>
+              <span>Windows 10/11 · 64비트</span>
+            </a>
+            <a class="dl-card dl-card-compact" id="dl-win-zip" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 0h5l4 4v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1zm5 1v3h3L9 1z"/></svg>
+              <strong>포터블 (.zip)</strong>
+              <span>설치 없음</span>
+            </a>
+          </div>
+          <p class="dl-group-alt">정상입니다: 설치 프로그램은 아직 디지털 서명이 되어 있지 않습니다. SmartScreen이 경고하면 “추가 정보 → 실행”을 선택하세요.</p>
+          <p class="dl-group-alt">SignPath.io의 무료 코드 서명, SignPath Foundation의 인증서(준비 중) — <a href="/ko/firma">코드 서명 정책</a>.</p>
+        </div>
+
+        <div class="dl-divider"></div>
+
+        <div class="dl-group">
+          <span class="dl-group-label">Linux · x86_64</span>
+          <div class="dl-group-cards">
+            <a class="dl-card dl-card-compact" id="dl-flatpak" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0 1 3.5v9L8 16l7-3.5v-9L8 0zm0 1.7 5 2.5-5 2.5-5-2.5 5-2.5zM2.5 5.6l4.75 2.4v5.9L2.5 11.5V5.6zm11 0v5.9l-4.75 2.4V8L13.5 5.6z"/></svg>
+              <strong>Flatpak</strong>
+              <span>더블클릭으로 설치</span>
+            </a>
+            <a class="dl-card dl-card-compact" id="dl-appimage" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              <strong>AppImage</strong>
+              <span>설치 불필요</span>
+            </a>
+            <a class="dl-card dl-card-compact" id="dl-tarball" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 3a1 1 0 0 1 1-1h4l1.5 1.5H13a1 1 0 0 1 1 1V12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3zm6 3v4.29L6.85 9.15l-.7.7L8.5 12.2l2.35-2.35-.7-.7L9 10.29V6H8z"/></svg>
+              <strong>tar.gz</strong>
+              <span>FUSE 불필요</span>
+            </a>
+          </div>
+          <div class="dl-howto">
+            <div class="dl-tabs" role="tablist" aria-label="Linux 설치 방법">
+              <span class="dl-tabs-label">설치 방법 ▾</span>
+              <button type="button" role="tab" class="dl-tab" aria-selected="false" data-tab="flatpak">Flatpak <em>권장</em></button>
+              <button type="button" role="tab" class="dl-tab" aria-selected="false" data-tab="appimage">AppImage</button>
+              <button type="button" role="tab" class="dl-tab" aria-selected="false" data-tab="tarball">tar.gz</button>
+            </div>
+
+            <div class="dl-panel" role="tabpanel" data-panel="flatpak" hidden>
+              <p>저장소에서 설치하면 <code>flatpak update</code>로 새 버전을 모두 받을 수 있습니다. 응용 프로그램 메뉴에 나타나며 <code>.igz</code>와 <code>.skp</code> 파일이 연결됩니다.</p>
+              <div class="dl-code" id="dl-code-flatpak">
+                <code>flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --user --if-not-exists ingetrazo https://ingetrazo.com/ingetrazo.flatpakrepo
+flatpak install --user ingetrazo com.ingetrazo.IngeTrazo
+flatpak run com.ingetrazo.IngeTrazo</code>
+                <button class="dl-code-copy" type="button" data-copy="flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && flatpak remote-add --user --if-not-exists ingetrazo https://ingetrazo.com/ingetrazo.flatpakrepo && flatpak install --user ingetrazo com.ingetrazo.IngeTrazo && flatpak run com.ingetrazo.IngeTrazo">복사</button>
+              </div>
+              <p class="dl-panel-small">단독 파일이 좋으신가요? 위 카드로 내려받아 더블클릭하면 설치되지만, 그 방식은 <strong>스스로 업데이트되지 않습니다</strong>.</p>
+            </div>
+
+            <div class="dl-panel" role="tabpanel" data-panel="appimage" hidden>
+              <p>아무것도 설치하지 않습니다: 실행 권한을 주고 여세요(또는 파일 관리자에서 더블클릭).</p>
+              <div class="dl-code" id="dl-code-appimage">
+                <code>chmod +x IngeTrazo-0.5.10-x86_64.AppImage
+./IngeTrazo-0.5.10-x86_64.AppImage</code>
+                <button class="dl-code-copy" type="button" data-copy="chmod +x IngeTrazo-0.5.10-x86_64.AppImage && ./IngeTrazo-0.5.10-x86_64.AppImage">복사</button>
+              </div>
+              <p class="dl-panel-small">FUSE가 필요하며, 거의 모든 배포판에 들어 있습니다. 없다면 tar.gz를 사용하세요.</p>
+            </div>
+
+            <div class="dl-panel" role="tabpanel" data-panel="tarball" hidden>
+              <p>FUSE가 없는 배포판이나 <code>/opt</code> 아래에 설치하려는 경우: 압축을 풀고 실행하세요.</p>
+              <div class="dl-code" id="dl-code-tarball">
+                <code>tar -xzf IngeTrazo-0.5.10-linux-x86_64.tar.gz
+IngeTrazo-0.5.10/ingetrazo</code>
+                <button class="dl-code-copy" type="button" data-copy="tar -xzf IngeTrazo-0.5.10-linux-x86_64.tar.gz && IngeTrazo-0.5.10/ingetrazo">복사</button>
+              </div>
+              <p class="dl-panel-small">AppImage와 내용이 같습니다: Python, Qt, .skp 리더가 함께 들어 있습니다.</p>
+            </div>
+
+            <p class="dl-howto-foot" hidden>세 가지 모두 Ubuntu 22.04 이상에서 동작합니다. 문제가 있으면 <code>--check</code> 옵션으로 실행하면 무엇이 빠졌는지 알려 줍니다(예: <code>flatpak run com.ingetrazo.IngeTrazo --check</code> 또는 <code>./IngeTrazo-*-x86_64.AppImage --check</code>).</p>
+          </div>
+          <p class="dl-note"><a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">소스에서</a> 실행할 수도 있습니다(명령 3개, README 참고). 모든 파일은 <a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">GitHub 릴리스</a>에 있습니다.</p>
+        </div>
+
+        <div class="dl-divider"></div>
+
+        <div class="dl-group" id="mac">
+          <span class="dl-group-label">macOS · Apple Silicon · Intel</span>
+          <div class="dl-group-cards">
+            <a class="dl-card dl-card-compact" id="dl-mac" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/></svg>
+              <strong>Mac용 IngeTrazo (.dmg)</strong>
+              <span>Apple Silicon · macOS</span>
+            </a>
+            <a class="dl-card dl-card-compact" id="dl-mac-intel" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/></svg>
+              <strong>Mac용 IngeTrazo (.dmg)</strong>
+              <span>Intel · macOS</span>
+            </a>
+          </div>
+          <p class="dl-group-alt"><code>.dmg</code>를 열고 IngeTrazo를 <strong>응용 프로그램</strong> 폴더로 끌어 놓으세요. 아직 Apple 계정으로 서명되지 않았기 때문에 <strong>처음 한 번은</strong> 더블클릭으로 열리지 않고 개발자를 확인할 수 없다는 메시지가 나옵니다. 아래 방법으로 한 번만 허용하면 됩니다. 그 뒤로는 평소처럼 열리고, <code>.igz</code>와 <code>.skp</code> 파일도 더블클릭으로 열립니다. 패키징: <a href="https://github.com/felixriestra" target="_blank" rel="noopener">Félix Riestra</a>.</p>
+          <details class="mac-help">
+            <summary>macOS에서 IngeTrazo가 열리지 않을 때: 허용하는 방법</summary>
+            <p><strong>macOS 15 Sequoia 이상</strong>(마우스 오른쪽 클릭만으로는 더 이상 안 됨):</p>
+            <ol>
+              <li>IngeTrazo를 열어 보고 경고 창에서 <strong>완료</strong>를 누릅니다.</li>
+              <li>Apple 메뉴 ▸ <strong>시스템 설정</strong> ▸ <strong>개인정보 보호 및 보안</strong>을 엽니다.</li>
+              <li>아래쪽 <strong>보안</strong> 항목에 IngeTrazo가 차단되었다고 나옵니다. <strong>그래도 열기</strong>를 누르고 Touch ID나 암호로 확인합니다.</li>
+            </ol>
+            <p><strong>macOS 14 이하:</strong> 응용 프로그램 폴더에서 IngeTrazo를 <strong>마우스 오른쪽 버튼으로 클릭</strong>(또는 Control-클릭) ▸ <strong>열기</strong>를 선택하고, 경고 창에서 다시 <strong>열기</strong>를 누릅니다.</p>
+            <p><strong>그래도 열리지 않으면</strong> 터미널에서 "인터넷에서 다운로드됨" 표시를 지우고 다시 여세요:</p>
+            <pre><code>xattr -dr com.apple.quarantine /Applications/IngeTrazo.app</code></pre>
+            <p>신뢰하는 소프트웨어에만 이렇게 하세요. 이 페이지의 프로그램은 GitHub에 공개된 코드와 같습니다. 커뮤니티가 <a href="https://github.com/ingelibre/ingetrazo/discussions/324" target="_blank" rel="noopener">토론 #324</a>에서 기여한 가이드입니다.</p>
+          </details>
+          <p class="dl-group-alt">내 Mac에 맞는 것을 고르세요: Apple 메뉴 ▸ <strong>이 Mac에 관하여</strong>에서 «칩 Apple M…»이면 <strong>Apple Silicon</strong>, «프로세서 Intel»이면 <strong>Intel</strong>입니다. Mac에서 아직 안 되는 것: DWG 가져오기(<code>.skp</code> 열기는 됩니다). 문제가 있으면 <a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">GitHub 이슈</a>로 알려 주세요.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EJEMPLOS ============ -->
+  <section id="ejemplos" class="section bg-light">
+    <div class="container">
+      <div class="section-head">
+        <h2>열어 보고 뜯어볼 수 있는 예제</h2>
+        <p>얀케 광장 리모델링(페루 아레키파, 치차스 지구, 2026)의 실제 문서 네 개: 장면이 담긴 모델과 A3 시트를 IngeTrazo에서 나온 그대로, PDF와 함께 제공합니다. 내려받아 File ▸ Open으로 여세요.</p>
+      </div>
+      <div class="ej-grid">
+        <article class="ej-card">
+          <img class="zoomable" src="/images/ejemplos/pileta-fuente-yanque.webp"
+               srcset="/images/ejemplos/pileta-fuente-yanque-480.webp 480w, /images/ejemplos/pileta-fuente-yanque.webp 993w"
+               sizes="(max-width: 560px) calc(100vw - 40px), 280px" alt="장식 분수의 A3 시트: 치수와 표제란이 있는 1:40 정면도, 3D, 평면도, 단면도" width="993" height="702" loading="lazy">
+          <h3>분수</h3>
+          <p>팔각형 받침, 홈이 파인 기둥, 물결 테두리의 수반 두 개: 컴포넌트 인스턴스 22개, 실제 태양의 그림자, 단면 평면. 시트에는 1:40 정면도, 3D, 평면도, 단면도가 있습니다.</p>
+          <p class="ej-links"><a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/pileta-fuente-yanque.igz">IngeTrazo로 열기 — .igz (1.8 MB)</a> · <a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/pileta-fuente-yanque.pdf" target="_blank" rel="noopener">시트 PDF</a></p>
+        </article>
+        <article class="ej-card">
+          <img class="zoomable" src="/images/ejemplos/banca-pergola-yanque.webp"
+               srcset="/images/ejemplos/banca-pergola-yanque-480.webp 480w, /images/ejemplos/banca-pergola-yanque.webp 993w"
+               sizes="(max-width: 560px) calc(100vw - 40px), 280px" alt="퍼걸러 벤치의 A3 시트: 뷰, 연속 치수와 라벨" width="993" height="702" loading="lazy">
+          <h3>퍼걸러 벤치</h3>
+          <p>목재 퍼걸러가 있는 콘크리트 벤치로, 컴포넌트로 만들었고 장면 다섯 개가 저장되어 있습니다. 시트: 뷰 네 개, 치수 23개, 지시선 라벨 12개.</p>
+          <p class="ej-links"><a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/banca-pergola-yanque.igz">IngeTrazo로 열기 — .igz (0.5 MB)</a> · <a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/banca-pergola-yanque.pdf" target="_blank" rel="noopener">시트 PDF</a></p>
+        </article>
+        <article class="ej-card">
+          <img class="zoomable" src="/images/ejemplos/luminaria-solar-yanque.webp"
+               srcset="/images/ejemplos/luminaria-solar-yanque-480.webp 480w, /images/ejemplos/luminaria-solar-yanque.webp 993w"
+               sizes="(max-width: 560px) calc(100vw - 40px), 280px" alt="태양광 가로등의 A3 시트: 기둥, 콘크리트 받침과 철근 상세" width="993" height="702" loading="lazy">
+          <h3>태양광 가로등</h3>
+          <p>투광등 두 개와 패널이 달린 4.5 m 기둥, 원뿔대 받침, 매립 기초와 그 안에 그린 3/8&quot; 철근 — AI 어시스턴트의 레시피로 모델링했습니다. 시트에는 받침 상세가 들어 있습니다.</p>
+          <p class="ej-links"><a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/luminaria-solar-yanque.igz">IngeTrazo로 열기 — .igz (0.5 MB)</a> · <a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/luminaria-solar-yanque.pdf" target="_blank" rel="noopener">시트 PDF</a></p>
+        </article>
+        <article class="ej-card">
+          <img class="zoomable" src="/images/ejemplos/arco-yanque.webp"
+               srcset="/images/ejemplos/arco-yanque-480.webp 480w, /images/ejemplos/arco-yanque.webp 993w"
+               sizes="(max-width: 560px) calc(100vw - 40px), 280px" alt="YANQUE 환영 아치의 A3 시트 D04: 1:50 정면도·우측면도·평면도·3D, 1:25 글자와 조각 상세, 1:20 마름돌 주두 상세, 치수·레벨·지반선·표제란" width="993" height="702" loading="lazy">
+          <h3>“YANQUE” 환영 아치</h3>
+          <p>구조 도면 E02를 따라: 콘크리트와 <strong>모든 철근</strong>(기초, 기둥, 활꼴 아치, 보, 팀파눔), 마름돌 주두, 장식등 네 개, 글자와 조각. X-Ray로 살펴보세요. 시트 D04: 1:50 정면도·측면도·평면도·3D, 1:25 글자와 조각 상세, 1:20 주두 상세, 레벨·지반선·지시선 라벨 포함.</p>
+          <p class="ej-links"><a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/arco-yanque.igz">IngeTrazo로 열기 — .igz (3.6 MB)</a> · <a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/arco-yanque.pdf" target="_blank" rel="noopener">시트 PDF</a></p>
+        </article>
+      </div>
+      <p class="ej-note">모든 릴리스에 함께 들어 있습니다: <a href="https://github.com/ingelibre/ingetrazo/releases/latest/download/IngeTrazo-ejemplos.zip">IngeTrazo-ejemplos.zip</a> · 또는 저장소의 <a href="https://github.com/ingelibre/ingetrazo/tree/main/examples" target="_blank" rel="noopener">examples/</a> 폴더. Ing. Marco Sumari의 문서이며 <a href="https://creativecommons.org/licenses/by/4.0/deed.ko" target="_blank" rel="noopener">CC BY 4.0</a> 라이선스입니다. IngeTrazo 0.3.15 이상이 필요합니다.</p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" class="section">
+    <div class="container container-narrow">
+      <div class="section-head">
+        <h2>자주 묻는 질문</h2>
+        <p>첫 선을 긋기 전에 다들 묻는 것들.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>여기서 말하는 오픈소스란 무엇인가요?</summary>
+          <p>IngeTrazo는 <strong>GPL-3.0 오픈소스 소프트웨어</strong>입니다. 어떤 프로젝트에든 사용하고, 작동 방식을 연구하고, 개선하고, 공유할 수 있으며 소스 코드는 GitHub에 공개되어 있습니다. 여러분의 모델은 여러분의 것입니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>IngeTrazo는 무엇이 다른가요?</summary>
+          <p><strong>오픈소스 소프트웨어</strong>(GPL-3.0)이며 Windows, macOS뿐 아니라 <strong>Linux에서도 네이티브로</strong> 동작합니다. <strong>수밀(닫힌) 솔리드</strong>를 보장하고, 개발 중인 선택형 <strong>BIM 레이어</strong>를 제공합니다. <strong>축척에 맞춘 시트</strong>를 PDF로 구성하고, <strong>실제 지형</strong>(위성, 표고, 드론, GPS 점)을 불러오며, 같은 엔진으로 그리는 <strong>AI 어시스턴트</strong>와 연결됩니다. 모든 단계는 실행 취소할 수 있습니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>어떤 형식을 열고 저장하나요?</summary>
+          <p>자체 형식인 <strong>.igz</strong> 문서, <strong>DWG와 DXF</strong> 도면, 모든 버전의 <strong>.skp</strong> 모델(IngeTrazo가 기여하는 오픈 리더 <a href="https://github.com/iamahsanmehmood/openskp" target="_blank" rel="noopener"><strong>OpenSKP</strong></a> 사용), <strong>COLLADA(.dae)</strong>, <strong>OBJ</strong>, <strong>glTF</strong>, <strong>STL</strong>을 엽니다. 오픈 형식인 <strong>.igz</strong>로 저장하고, COLLADA, OBJ, glTF, STL, IFC, DXF, PDF 도면으로 내보냅니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>BIM을 지원하나요?</summary>
+          <p><strong>개발 중인</strong> 선택형 레이어로 지원합니다. 형상을 벽, 슬래브, 기둥, 문으로 분류하고, 물량(m², m³, 개수)을 구하고, 다른 프로그램(IngePresupuestos 포함)이 읽는 표준 형식인 <strong>IFC</strong>로 내보낼 수 있습니다. 버전마다 기능이 늘어납니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>프로젝트 도면을 만들 수 있나요?</summary>
+          <p>네. <strong>시트 구성기</strong>는 모델의 뷰를 A4–A0 시트에 <strong>정확한 축척</strong>(1:50, 1:100…)으로 배치합니다. 모델에 연결되어 모델이 바뀌면 함께 갱신되는 치수, 편집 가능한 표제란, 그래픽 축척, 번호가 붙은 뷰 제목, 단면 표시, 레벨 표시와 연속 치수, 상세 콜아웃, 펜과 단면 해치(poché)를 갖춘 벡터 은선 스타일을 제공합니다. 각 시트 또는 전체 세트를 <strong>벡터 PDF</strong>로, 뷰를 <strong>DXF</strong>로 내보낼 수 있습니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>플러그인으로 기능을 추가할 수 있나요?</summary>
+          <p>네. 버전 0.3.2부터 IngeTrazo에는 <strong>Extensions 메뉴</strong>가 있습니다. 플러그인(Python 파일)을 개인 폴더에 복사하면 해당 도구가 메뉴에 나타납니다. 두 가지가 기본 포함되어 있습니다: <strong>Model Info</strong>(통계, 칠해진 m²가 표시되는 재질, BIM 객체)와 코드로 모델을 살펴보고 자동화하는 <strong>Python Console</strong>이며, 모두 실행 취소와 연동됩니다. 가이드는 <a href="https://ingetrazo-docs.pages.dev/extensiones/" target="_blank" rel="noopener">매뉴얼(스페인어)</a>에 있습니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>인공지능 기능이 있나요?</summary>
+          <p>네, 두 가지 방식이 있습니다. 내장 <strong>AI 어시스턴트</strong>는 채팅입니다. 원하는 제공업체의 키를 붙여 넣고(Groq는 무료 등급이 있고, Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek 또는 내 컴퓨터의 Ollama도 가능) 말이나 사진으로 모델을 설명하면 됩니다. 그리고 <strong>MCP 브리지</strong>를 통해 Claude Desktop이나 Claude Code가 열려 있는 앱에 직접 그릴 수 있습니다. 두 경우 모두 AI는 엔진이 실행하는 <em>레시피</em>를 만들고 —맹목적인 메시는 절대 아닙니다—, 모든 단계는 실행 취소할 수 있으며, 모델은 손으로 계속 편집할 수 있습니다. AI 없이도 IngeTrazo는 똑같이, 오프라인으로 동작합니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>오프라인에서도 동작하나요?</summary>
+          <p>네, 모델러 전체가 <strong>오프라인</strong>으로 동작하며 파일은 여러분의 컴퓨터에 저장됩니다. 위성 지도와 3D 지형만 사용하는 동안 인터넷에서 이미지를 내려받습니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>어떻게 설치하나요?</summary>
+          <p><strong>Windows</strong>: 다운로드 섹션에서 설치 프로그램을 내려받아 더블클릭하면 끝입니다(.igz 파일이 연결됨). <strong>Linux</strong>: <strong>Flatpak</strong>(더블클릭하면 GNOME 소프트웨어 / KDE Discover가 설치하며 .igz와 .skp 파일이 연결됨), <strong>AppImage</strong>(실행 권한을 주고 열기) 또는 배포판에 FUSE가 없다면 <strong>tar.gz</strong>를 내려받아 아무 곳에나 압축을 풀고 <code>ingetrazo</code>를 실행합니다. 동작하지 않으면 <code>--check</code>가 무엇이 빠졌는지 알려 줍니다. <strong>macOS</strong>(Apple Silicon): <a href="#mac">다운로드 ▸ macOS</a>에서 <strong>.dmg</strong>를 내려받아 IngeTrazo를 응용 프로그램으로 끌어 놓고, 아직 Apple 계정으로 서명되지 않았으므로 처음 한 번은 시스템 설정 ▸ 개인정보 보호 및 보안 ▸ 그래도 열기로 허용합니다(macOS 14 이하는 마우스 오른쪽 클릭 ▸ 열기). 명령 3개로 소스에서 실행할 수도 있습니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>3D 프린팅에 적합한가요?</summary>
+          <p>아직 강점은 아니지만 계획에 있습니다. 지금도 <strong>바이너리 STL</strong>로 내보내 슬라이서에서 사용할 수 있고, 엔진이 만드는 솔리드는 닫혀 있습니다. 아직 없는 것은 3D 프린팅 전용 도구(벽 두께 검사, 오버행, 메시 복구, 3MF)이며, <strong>앞으로 추가할 예정</strong>입니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>문제를 보고하거나 기여하려면 어떻게 하나요?</summary>
+          <p>프로젝트는 <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">GitHub</a>에 있습니다. 예제 파일과 함께 이슈를 열거나, 개선을 제안하거나, 코드를 보내 주세요. <a href="mailto:ing.sumari@gmail.com">이메일</a>로 연락하셔도 됩니다.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRANJA FINAL ============ -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>오늘 모델링을 시작하세요</h2>
+      <p>Linux, Windows, macOS에서.</p>
+      <div class="final-cta-btns">
+        <a href="#descargar" class="btn btn-lg final-cta-dl">IngeTrazo 다운로드</a>
+        <a href="https://ingetrazo-docs.pages.dev" class="btn btn-lg final-cta-man" target="_blank" rel="noopener">매뉴얼 읽기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contacto" class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <img src="/images/logo.png" alt="IngeTrazo 로고" width="36" height="36">
+          <strong>IngeTrazo</strong>
+        </div>
+        <p>건축, 공학, 디자인을 위한 오픈소스 3D 모델러.</p>
+        <a class="btn btn-heart footer-support" href="/ko/apoyar">프로젝트 후원하기</a>
+        <p class="footer-copy">© 2026 Marco Sumari Tellez · 오픈소스 소프트웨어, GPL-3.0</p>
+      </div>
+      <div class="footer-col">
+        <h4>제품</h4>
+        <ul>
+          <li><a href="#features">기능</a></li>
+          <li><a href="#descargar">다운로드</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">릴리스</a></li>
+          <li><a href="#faq">자주 묻는 질문</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>자료</h4>
+        <ul>
+          <li><a href="https://ingetrazo-docs.pages.dev" target="_blank" rel="noopener">사용자 매뉴얼 (스페인어)</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">소스 코드 (GitHub)</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">문제 보고</a></li>
+          <li><a href="/ko/extensiones">확장</a></li>
+          <li><a href="/ko/firma">코드 서명 정책</a></li>
+          <li><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPL-3.0 라이선스</a></li>
+          <li><a href="https://ingepresupuestos.com" target="_blank" rel="noopener">IngePresupuestos</a></li>
+          <li><a href="https://ingecad.org" target="_blank" rel="noopener">IngeCAD</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>연락처</h4>
+        <ul>
+          <li><a href="mailto:ing.sumari@gmail.com">ing.sumari@gmail.com</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox para ampliar capturas -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="닫기">×</button>
+    <img alt="">
+  </div>
+
+  <script src="/script.js"></script>
+  <script src="/home-ext.js" defer></script>
+</body>
+</html>
