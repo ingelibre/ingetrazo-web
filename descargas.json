@@ -366,7 +366,7 @@
     "657025620": {
       "release": "v0.5.9",
       "nombre": "ingetrazo-setup-v0.5.9.exe",
-      "descargas": 8999
+      "descargas": 9000
     },
     "657025621": {
       "release": "v0.5.9",
@@ -386,7 +386,7 @@
     "679400559": {
       "release": "v0.5.10",
       "nombre": "IngeTrazo-0.5.10-macos-arm64.dmg",
-      "descargas": 72
+      "descargas": 73
     },
     "679411617": {
       "release": "v0.5.10",
@@ -501,7 +501,7 @@
     "683543767": {
       "release": "v0.5.11",
       "nombre": "ingetrazo-setup-v0.5.11.exe",
-      "descargas": 5333
+      "descargas": 5335
     },
     "683543766": {
       "release": "v0.5.11",
@@ -516,27 +516,27 @@
     "698506802": {
       "release": "v0.6.0",
       "nombre": "IngeTrazo-0.6.0-linux-x86_64.tar.gz",
-      "descargas": 137
+      "descargas": 140
     },
     "698402843": {
       "release": "v0.6.0",
       "nombre": "IngeTrazo-0.6.0-macos-arm64.dmg",
-      "descargas": 782
+      "descargas": 823
     },
     "698411693": {
       "release": "v0.6.0",
       "nombre": "IngeTrazo-0.6.0-macos-x86_64.dmg",
-      "descargas": 131
+      "descargas": 138
     },
     "698506803": {
       "release": "v0.6.0",
       "nombre": "IngeTrazo-0.6.0-x86_64.AppImage",
-      "descargas": 433
+      "descargas": 454
     },
     "698416280": {
       "release": "v0.6.0",
       "nombre": "IngeTrazo-0.6.0-x86_64.flatpak",
-      "descargas": 501
+      "descargas": 531
     },
     "698507187": {
       "release": "v0.6.0",
@@ -546,12 +546,12 @@
     "698408436": {
       "release": "v0.6.0",
       "nombre": "ingetrazo-setup-v0.6.0.exe",
-      "descargas": 4177
+      "descargas": 4417
     },
     "698408437": {
       "release": "v0.6.0",
       "nombre": "ingetrazo-windows.zip",
-      "descargas": 873
+      "descargas": 900
     },
     "698407355": {
       "release": "v0.6.0",
@@ -560,7 +560,7 @@
     }
   },
   "retiradas": 7203,
-  "publicadas": 82207,
-  "total": 89410,
-  "actualizado": "2026-11-04T17:19Z"
+  "publicadas": 82580,
+  "total": 89783,
+  "actualizado": "2026-11-04T23:40Z"
 }
