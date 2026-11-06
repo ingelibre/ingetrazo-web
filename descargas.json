@@ -31,7 +31,7 @@
     "596217231": {
       "release": "v0.5.5",
       "nombre": "ingetrazo-setup-v0.5.5.exe",
-      "descargas": 1067
+      "descargas": 1068
     },
     "596217227": {
       "release": "v0.5.5",
@@ -66,7 +66,7 @@
     "584217929": {
       "release": "v0.5.0",
       "nombre": "IngeTrazo-ejemplos.zip",
-      "descargas": 123
+      "descargas": 124
     },
     "580363272": {
       "release": "v0.4.9",
@@ -326,7 +326,7 @@
     "635297247": {
       "release": "v0.5.8",
       "nombre": "ingetrazo-windows.zip",
-      "descargas": 1955
+      "descargas": 1956
     },
     "653490007": {
       "release": "prueba-spacemouse-1",
@@ -516,42 +516,42 @@
     "698506802": {
       "release": "v0.6.0",
       "nombre": "IngeTrazo-0.6.0-linux-x86_64.tar.gz",
-      "descargas": 156
+      "descargas": 159
     },
     "698402843": {
       "release": "v0.6.0",
       "nombre": "IngeTrazo-0.6.0-macos-arm64.dmg",
-      "descargas": 958
+      "descargas": 979
     },
     "698411693": {
       "release": "v0.6.0",
       "nombre": "IngeTrazo-0.6.0-macos-x86_64.dmg",
-      "descargas": 161
+      "descargas": 164
     },
     "698506803": {
       "release": "v0.6.0",
       "nombre": "IngeTrazo-0.6.0-x86_64.AppImage",
-      "descargas": 515
+      "descargas": 533
     },
     "698416280": {
       "release": "v0.6.0",
       "nombre": "IngeTrazo-0.6.0-x86_64.flatpak",
-      "descargas": 619
+      "descargas": 636
     },
     "698507187": {
       "release": "v0.6.0",
       "nombre": "IngeTrazo-ejemplos.zip",
-      "descargas": 93
+      "descargas": 94
     },
     "698408436": {
       "release": "v0.6.0",
       "nombre": "ingetrazo-setup-v0.6.0.exe",
-      "descargas": 5177
+      "descargas": 5311
     },
     "698408437": {
       "release": "v0.6.0",
       "nombre": "ingetrazo-windows.zip",
-      "descargas": 1063
+      "descargas": 1089
     },
     "698407355": {
       "release": "v0.6.0",
@@ -560,7 +560,7 @@
     }
   },
   "retiradas": 7203,
-  "publicadas": 83868,
-  "total": 91071,
-  "actualizado": "2026-11-05T21:59Z"
+  "publicadas": 84094,
+  "total": 91297,
+  "actualizado": "2026-11-06T02:28Z"
 }
