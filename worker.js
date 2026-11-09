@@ -51,6 +51,9 @@ export function pickLang({ cookie, acceptLanguage, country }) {
 // responde, sirve la copia `extensiones.json` que va con el sitio.
 //   /extensiones.json            el catálogo
 //   /extensiones-img/<archivo>   la captura de una extensión
+//   /extensiones-img/thumbs/<archivo>   su miniatura (la del gestor)
+//     ?v=<huella> (screenshot_sha del catálogo) cambia la clave de caché:
+//     una captura nueva con el mismo nombre no espera un día.
 //   /extensiones-descarga/<id>   el archivo de la extensión, SOLO si su
 //                                SHA-256 es el aprobado en el catálogo
 // Nada más se reenvía: no es un proxy abierto.
@@ -98,12 +101,13 @@ export async function extensions(url, request, env) {
       },
     });
   }
-  let m = /^\/extensiones-img\/([a-z0-9_.-]+\.(png|jpe?g|webp))$/.exec(path);
+  let m = /^\/extensiones-img\/(thumbs\/)?([a-z0-9_.-]+\.(png|jpe?g|webp))$/.exec(path);
   if (m) {
-    const r = await fetch(CATALOG_RAW + 'screenshots/' + m[1], { cf: { cacheTtl: 86400, cacheEverything: true } });
+    const v = /^[0-9a-f]{8,64}$/.test(url.searchParams.get('v') || '') ? '?v=' + url.searchParams.get('v') : '';
+    const r = await fetch(CATALOG_RAW + (m[1] ? 'thumbs/' : 'screenshots/') + m[2] + v, { cf: { cacheTtl: 86400, cacheEverything: true } });
     if (!r.ok) return plain(404, 'Not found');
     return new Response(r.body, {
-      headers: { 'Content-Type': IMG_TYPES[m[2]], 'Cache-Control': 'public, max-age=86400' },
+      headers: { 'Content-Type': IMG_TYPES[m[3]], 'Cache-Control': 'public, max-age=86400' },
     });
   }
   m = /^\/extensiones-descarga\/([a-z][a-z0-9_]{1,47})$/.exec(path);

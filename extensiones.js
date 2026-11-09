@@ -99,7 +99,8 @@
     const shot = el('div', 'ext-shot');
     if (typeof x.screenshot === 'string' && /^[a-z0-9_.-]+$/.test(x.screenshot)) {
       const img = document.createElement('img');
-      img.src = '/extensiones-img/' + x.screenshot;
+      img.src = '/extensiones-img/' + x.screenshot +
+        (typeof x.screenshot_sha === 'string' && /^[0-9a-f]{16}$/.test(x.screenshot_sha) ? '?v=' + x.screenshot_sha : '');
       img.alt = '';
       img.loading = 'lazy';
       img.width = 600;
