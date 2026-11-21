@@ -49,9 +49,9 @@
     "name": "IngeTrazo",
     "operatingSystem": "Linux, Windows, macOS",
     "applicationCategory": "DesignApplication",
-    "description": "Modelador 3D libre para arquitectura, ingeniería civil y diseño 3D, con modelado por empujar/tirar que se siente como trazar a mano y una capa BIM opcional en desarrollo (etiquetas y exportación IFC). Incluye biblioteca de 1510 componentes y 427 texturas a tamaño real con los 213 colores RAL Classic, composición de láminas con planos a escala exacta y export a PDF, terreno satelital 3D, levantamientos fotogramétricos de dron, perfiles longitudinales; abre archivos .skp de todas las versiones, e importa y exporta .dae, .obj, glTF y STL. Código abierto bajo GPL-3.0.",
+    "description": "Modelador 3D libre para arquitectura, ingeniería civil y diseño 3D, con modelado por empujar/tirar que se siente como trazar a mano y una capa BIM opcional en desarrollo (etiquetas y exportación IFC). Incluye biblioteca de 1510 componentes y 427 texturas a tamaño real con los 213 colores RAL Classic, composición de láminas con planos a escala exacta y export a PDF, terreno satelital 3D, levantamientos fotogramétricos de dron, perfiles longitudinales; abre archivos .skp de todas las versiones, e importa y exporta .dae, .obj, glTF y STL. Se maneja desde asistentes de IA por MCP, también sin ventana para automatizar. Código abierto bajo GPL-3.0.",
     "url": "https://ingetrazo.com/",
-    "softwareVersion": "0.6.1",
+    "softwareVersion": "0.6.3",
     "downloadUrl": "https://github.com/ingelibre/ingetrazo/releases/latest",
     "screenshot": "https://ingetrazo.com/images/screenshots/principal.jpeg",
     "image": "https://ingetrazo.com/images/logo.png",
@@ -105,7 +105,7 @@
         "name": "¿Tiene BIM?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Una capa opcional, en desarrollo: puedes etiquetar la geometría como muro, losa, columna o puerta, obtener sus cantidades (m², m³, unidades) y exportarla en IFC, el formato estándar que leen otros programas — incluido IngePresupuestos. La vamos ampliando con cada versión."
+          "text": "Sí, como una capa opcional que crece con cada versión: etiquetas la geometría que ya trazaste con su clase IFC (muro, losa, columna, viga, puerta, ventana, espacio…), ves sus cantidades en la tabla BIM —con buscador, filtro por clase, agrupación y totales de metrado y volumen— y la exportas en IFC4 o IFC4.3, con coordenadas de mundo, norte del proyecto y ubicación. IngePresupuestos lee ese IFC para los metrados del presupuesto."
         }
       },
       {
@@ -121,7 +121,7 @@
         "name": "¿Puedo agregarle funciones con plugins?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sí, desde la versión 0.3.2 IngeTrazo tiene un menú Extensiones: copias un plugin (un archivo Python) a tu carpeta personal y sus herramientas aparecen en el menú. Vienen dos incluidas: Info del modelo (estadísticas, materiales y objetos BIM) y una Consola Python para inspeccionar y automatizar el modelo por código, con todo integrado al deshacer."
+          "text": "Sí. Extensiones ▸ Gestionar extensiones… abre el catálogo de la comunidad: más de 130 extensiones gratuitas en Python que se instalan con un clic, comprobadas contra su huella SHA-256. Escribir la tuya es sencillo: un archivo Python con tus herramientas, integrado al deshacer. Vienen incluidas Info del modelo y una Consola Python para inspeccionar y automatizar el modelo por código. La guía está en el manual."
         }
       },
       {
@@ -129,7 +129,7 @@
         "name": "¿Tiene inteligencia artificial?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sí, de dos formas. El Asistente IA integrado es un chat en español: pegas la clave del proveedor que prefieras (Groq tiene cuota gratis; también Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek u Ollama en tu propia máquina) y le pides el modelo con palabras o con una foto. Y el puente MCP deja que Claude Desktop o Claude Code dibujen directamente en la app abierta. En los dos casos la IA genera recetas que el motor ejecuta, cada paso se puede deshacer y el modelo queda editable a mano. Sin IA, IngeTrazo funciona igual y sin internet."
+          "text": "Sí, de dos formas. El Asistente IA integrado es un chat en español: pegas la clave del proveedor que prefieras (Groq tiene cuota gratis; también Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek u Ollama en tu propia máquina) y le pides el modelo con palabras o con una foto. Y el puente MCP deja que Claude o cualquier cliente MCP manejen la app abierta —o una IngeTrazo sin ventana, para automatizar— con herramientas con nombre y un paso de deshacer por acción. IngeTrazo no pide cuenta ni pone límite de usos, y con un modelo local todo queda en tu equipo. Sin IA, IngeTrazo funciona igual y sin internet."
         }
       },
       {
@@ -172,7 +172,7 @@
 
   <!-- ============ AVISO DE NUEVA VERSIÓN ============ -->
   <div class="announce" id="announce">
-    <p><strong>Nuevo:</strong> IngeTrazo <span id="announce-version">v0.6.1</span> ya disponible — <a href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">ver novedades →</a></p>
+    <p><strong>Nuevo:</strong> IngeTrazo <span id="announce-version">v0.6.3</span> ya disponible — <a href="/novedades">ver novedades →</a></p>
     <button type="button" class="announce-close" aria-label="Cerrar aviso">×</button>
   </div>
 
@@ -231,6 +231,51 @@
     </div>
   </section>
 
+  <!-- ============ NOVEDADES 0.6.3 ============ -->
+  <section id="novedades" class="section bg-light reveal">
+    <div class="container">
+      <div class="section-head">
+        <h2>Novedades de la 0.6.3</h2>
+        <p>Una versión dedicada a los grupos y componentes, con el arrastre mucho más fluido gracias al motor Rust, láminas más cómodas, un BIM que sigue creciendo e IngeTrazo listo para trabajar con asistentes de IA. Más de 30 personas aportaron código a esta versión.</p>
+      </div>
+      <div class="ej-grid nov-grid">
+        <article class="ej-card nov-card">
+          <h3>Grupos y componentes</h3>
+          <p>Editas dentro de un grupo sin tirones y lo que cambias en un componente llega a todas sus copias. Los <code>.skp</code> complejos se importan con sus componentes anidados, y <strong>Mi biblioteca</strong> guarda tus propias carpetas de componentes.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Arrastrar sin esperas</h3>
+          <p>Mover, Rotar y Escalar ya no rehacen el modelo en cada fotograma: el motor Rust dibuja el arrastre y el modelo cambia una sola vez, al soltar. En una escena de prueba de 6.400 caras, de unos 320 ms a entre 1,3 y 3 ms por fotograma.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Láminas</h3>
+          <p>Pestañas que se reordenan arrastrando, un panel con la miniatura de cada lámina, leyenda editable, índice de láminas y fondo para la escala y el norte sobre una ortofoto.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Caja de sección y Terreno</h3>
+          <p>Recorta el modelo con una caja de seis caras, en la vista y en las láminas. <strong>Dibujo ▸ Terreno</strong> crea, deforma, estampa y proyecta terreno editable, también desde los puntos topográficos de un DXF.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Cámara desde foto y Abrir hueco</h3>
+          <p>Encuentra la cámara que tomó una foto para que el modelo calce con ella. Y una ventana o una puerta abre su propio hueco en el muro —aunque el muro sea un grupo— y el hueco la sigue al moverla.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Un BIM que crece</h3>
+          <p>La tabla BIM busca, filtra por clase IFC, agrupa y suma metrado y volumen. La exportación IFC4.3 es estable, y el IFC sale en coordenadas de mundo con el norte del proyecto y la ubicación.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Para agentes de IA</h3>
+          <p>Herramientas MCP con nombre y con deshacer, <code>ingetrazo --server</code>, un modo sin ventana para automatizar y guardado en JSON plano para el control de versiones.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Turco y catalán</h3>
+          <p>Dos idiomas nuevos en la interfaz, y términos en vietnamita. Gracias a quienes los tradujeron.</p>
+        </article>
+      </div>
+      <p class="nov-cta"><a class="btn btn-primary" href="/novedades">Todas las novedades de la 0.6.2 y la 0.6.3 →</a></p>
+    </div>
+  </section>
+
   <!-- ============ 3 PASOS ============ -->
   <section class="steps" aria-label="Cómo funciona">
     <div class="container">
@@ -273,16 +318,19 @@
     <section class="feat feat-bim reveal">
       <div class="container feat-row feat-reverse">
         <div class="feat-text">
-          <h2>BIM, paso a paso</h2>
-          <p>Una capa opcional que <strong>estamos construyendo</strong>: modelas libre y, si lo necesitas, <strong>etiquetas</strong> la geometría como muro, losa, columna o puerta.</p>
+          <h2>BIM que no te encierra</h2>
+          <p>Modelas libre, empujando caras, y cuando lo necesitas <strong>etiquetas</strong> esa misma geometría con su clase IFC: muro, losa, columna, viga, zapata, puerta, ventana, espacio, acero de refuerzo… El BIM va encima de tu dibujo, no en primitivas rígidas.</p>
           <ul class="feat-list">
-            <li><strong>Etiquetas BIM</strong> — marca muros, losas, columnas y puertas sobre lo que ya trazaste</li>
-            <li><strong>Cantidades</strong> — m² de muro y m³ de columna de lo etiquetado, en una tabla CSV</li>
-            <li><strong>Exporta IFC 4</strong> — un archivo abierto para llevar el modelo a otros programas</li>
-            <li><strong>En desarrollo</strong> — crece con cada versión; cuéntanos qué necesitas en GitHub</li>
+            <li><strong>Etiquetas IFC sobre geometría libre</strong> — caras sueltas o grupos enteros, con 16 clases de arquitectura y obra civil; agrupar nunca borra una etiqueta</li>
+            <li><strong>Tabla BIM</strong> — busca por nombre, clase o ruta, filtra por clase IFC y agrupa por grupo, clase o nombre, con los totales de metrado y volumen; exporta todo o solo lo que ves a CSV</li>
+            <li><strong>Exporta IFC4 e IFC4.3</strong> — en coordenadas de mundo, con el norte del proyecto, la ubicación del sitio y las cantidades base de cada objeto</li>
+            <li><strong>Paquetes de entrega verificados</strong> — comprobaciones del modelo con evidencia, separadas de la revisión de un profesional; el primer perfil es el de Türkiye</li>
+            <li><strong>Pestaña Ubicación</strong> en Info del modelo — ve, fija o borra dónde está tu proyecto</li>
+            <li><strong>Metrados hacia <a href="https://ingepresupuestos.com" target="_blank" rel="noopener">IngePresupuestos</a></strong> — el IFC lleva las cantidades con las que armas el presupuesto</li>
           </ul>
-          <p class="feat-muted-light">Sólidos garantizados herméticos: si una operación rompería el volumen, el motor la rechaza en vez de corromper tu metrado.</p>
+          <p class="feat-muted-light">Sólidos garantizados herméticos: si una operación rompería el volumen, el motor la rechaza en vez de corromper tu metrado. Es una capa en desarrollo que crece con cada versión; cuéntanos qué necesitas en GitHub.</p>
         </div>
+        <!-- CAPTURA: tabla BIM de la 0.6.3 — pestaña BIM de la barra lateral con un edificio pequeño etiquetado (IfcWall, IfcSlab, IfcColumn, IfcSpace), «Agrupar por clase IFC» elegido, encabezados con su número de objetos y los totales de metrado y volumen, la columna «Ruta en el esquema» visible y el embudo de clases abierto. Hasta tenerla se usa bim (nave industrial). -->
         <figure class="feat-img">
           <img class="zoomable" src="/images/screenshots/bim.webp"
                srcset="/images/screenshots/bim-480.webp 480w, /images/screenshots/bim-960.webp 960w, /images/screenshots/bim.webp 1600w"
@@ -343,26 +391,98 @@
       </div>
     </section>
 
-    <!-- ── Y además: IA, componentes e importar ── -->
+    <!-- ── 5. IA y MCP ── -->
+    <section class="feat reveal" id="ia">
+      <div class="container feat-row">
+        <div class="feat-text">
+          <h2>Maneja IngeTrazo desde tu asistente de IA</h2>
+          <p>Conecta Claude o cualquier cliente compatible con MCP y pídele el modelo con palabras: dibuja, consulta, mira capturas de la vista y corrige, <em>en la app abierta</em>. Cada acción es <strong>un paso de deshacer</strong> y, si algo falla, el documento vuelve entero.</p>
+          <ul class="feat-list">
+            <li><strong>Gratis, sin cuenta y sin límite de usos</strong> — IngeTrazo no te pide registrarte ni cuenta tus generaciones, a diferencia de los servicios en la nube de pago</li>
+            <li><strong>Tu modelo vive en tu equipo</strong> — el puente solo escucha en tu propia máquina; con un modelo local, nada sale de ella y todo funciona sin internet</li>
+            <li><strong>Herramientas MCP con nombre</strong> — escena, objetos, capas, escenas, cámara, selección, capturas, render de láminas, abrir, guardar, importar, exportar y materiales; ninguna ejecuta código y todas se deshacen</li>
+            <li><strong>Sin ventana, para automatizar</strong> — <code>ingetrazo --server</code> o <code>--headless --ai-bridge</code> abren el documento sin pantalla, en un servidor o en la integración continua</li>
+            <li><strong>JSON plano para control de versiones</strong> — el <code>.igz</code> se guarda como texto legible y Git muestra qué cambió en cada revisión</li>
+            <li><strong>Software libre</strong> — el puente y su servidor MCP son GPL-3.0, como todo IngeTrazo</li>
+          </ul>
+          <p class="feat-muted">Guardar desde el agente viene apagado: lo permites tú. <a href="https://ingetrazo-docs.pages.dev/ia/" target="_blank" rel="noopener">Guía paso a paso en el manual →</a></p>
+        </div>
+        <!-- CAPTURA: MCP en acción con la 0.6.3 — un cliente MCP (Claude Code o Claude Desktop) a un lado pidiendo, por ejemplo, «abre plaza.igz, pon la escena Planta, oculta la capa Mobiliario y renderiza la lámina L-02»; IngeTrazo al otro con el resultado, y en el chat la lista de herramientas con nombre que usó (get_scene_info, show_scene, set_layer_visibility, render_sheet) y la imagen de la lámina devuelta. Hasta tenerla se usa mcp-claude (0.5.x). -->
+        <figure class="feat-img">
+          <img class="zoomable" src="/images/screenshots/mcp-claude.webp"
+               srcset="/images/screenshots/mcp-claude-480.webp 480w, /images/screenshots/mcp-claude-960.webp 960w, /images/screenshots/mcp-claude.webp 1600w"
+               sizes="(max-width: 860px) calc(100vw - 64px), 640px"
+               data-caption="El puente MCP en un escritorio Ubuntu, sin recortes: Claude Code en la terminal acaba de dibujar en la app abierta al lado una mesa de comedor de 1,40 × 0,80 × 0,75 m con cuatro sillas (asiento de 0,45 × 0,45 a 0,45 m, respaldo a 0,90 m) —«una mesa con 4 sillas, medidas estándar»— y responde con la tabla de dimensiones que usó; a la derecha, el diálogo del puente con la línea de conexión. Cómo se hace: pestaña IA ▸ Puente IA (MCP), copiar la línea que te muestra, pegarla en la terminal (claude mcp add ingetrazo -- …) o en la configuración de tu cliente MCP, y pedirle lo que quieras con IngeTrazo abierto."
+               alt="Escritorio Ubuntu completo: Claude Code en una terminal a la izquierda listando las medidas de la mesa con cuatro sillas que acaba de dibujar, e IngeTrazo a la derecha con el modelo y el diálogo del Puente IA (MCP) abierto" width="1600" height="1000" loading="lazy">
+        </figure>
+      </div>
+      <div class="container">
+        <h3 class="feat-ia-title">Así se conecta</h3>
+        <div class="feat-ia-grid">
+          <div class="feat-ia-cfg">
+            <h3>Claude Code, en Windows</h3>
+<div class="dl-code">
+<code>claude mcp add ingetrazo -- "C:\Program Files\IngeTrazo\ingetrazo-mcp.exe"</code>
+<button class="dl-code-copy" type="button" data-copy="claude mcp add ingetrazo -- &quot;C:\Program Files\IngeTrazo\ingetrazo-mcp.exe&quot;">Copiar</button>
+</div>
+            <p>En Linux, el comando es el ejecutable de IngeTrazo seguido de <code>--mcp</code>. La pestaña IA ▸ Puente IA (MCP) te muestra la línea exacta de tu sistema, lista para copiar.</p>
+          </div>
+          <div class="feat-ia-cfg">
+            <h3>Cualquier cliente MCP</h3>
+<div class="dl-code">
+<code>{
+  "mcpServers": {
+    "ingetrazo": {
+      "command": "C:\\Program Files\\IngeTrazo\\ingetrazo-mcp.exe",
+      "args": []
+    }
+  }
+}</code>
+<button class="dl-code-copy" type="button" data-copy="{
+  &quot;mcpServers&quot;: {
+    &quot;ingetrazo&quot;: {
+      &quot;command&quot;: &quot;C:\\Program Files\\IngeTrazo\\ingetrazo-mcp.exe&quot;,
+      &quot;args&quot;: []
+    }
+  }
+}">Copiar</button>
+</div>
+            <p>El bloque <code>mcpServers</code> del archivo de configuración de tu cliente. Regístralo una vez y sirve para todas las ventanas con el puente encendido.</p>
+          </div>
+          <div class="feat-ia-cfg">
+            <h3>Sin ventana, para automatizar</h3>
+<div class="dl-code">
+<code>ingetrazo --server Casa.igz
+
+ingetrazo --headless --ai-bridge --open Casa.igz \
+    --allow-save --save-format json --allow-shutdown</code>
+<button class="dl-code-copy" type="button" data-copy="ingetrazo --headless --ai-bridge --open Casa.igz --allow-save --save-format json --allow-shutdown">Copiar</button>
+</div>
+            <p>El agente trabaja el documento de principio a fin, lo guarda como JSON plano y cierra con <code>shutdown</code>: listo para revisarlo en un pull request.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Y además: asistente IA, componentes e importar ── -->
     <section class="feat more reveal">
       <div class="container">
         <h2 class="more-title">Y además</h2>
         <div class="more-grid">
         <article class="more-card">
           <figure class="more-img">
-            <img class="zoomable" src="/images/screenshots/mcp-claude.webp"
-               srcset="/images/screenshots/mcp-claude-480.webp 480w, /images/screenshots/mcp-claude-960.webp 960w, /images/screenshots/mcp-claude.webp 1600w"
+            <img class="zoomable" src="/images/screenshots/asistente-ia.webp"
                sizes="(max-width: 960px) min(640px, calc(100vw - 40px)), 380px"
-                 data-caption="El puente MCP en un escritorio Ubuntu, sin recortes: Claude Code en la terminal acaba de dibujar en la app abierta al lado una mesa de comedor de 1,40 × 0,80 × 0,75 m con cuatro sillas (asiento de 0,45 × 0,45 a 0,45 m, respaldo a 0,90 m) —«una mesa con 4 sillas, medidas estándar»— y responde con la tabla de dimensiones que usó; a la derecha, el diálogo del puente con la línea de conexión. Cómo se hace: Extensiones ▸ Puente IA (MCP), copiar la línea que te muestra, pegarla en la terminal (claude mcp add ingetrazo -- …) o en la configuración de Claude Desktop, y pedirle lo que quieras con IngeTrazo abierto."
-                 alt="Escritorio Ubuntu completo: Claude Code en una terminal a la izquierda listando las medidas de la mesa con cuatro sillas que acaba de dibujar, e IngeTrazo a la derecha con el modelo y el diálogo del Puente IA (MCP) abierto" width="1600" height="1000" loading="lazy">
+                 data-caption="El Asistente IA dentro de IngeTrazo: el poste de alumbrado solar de los ejemplos con el chat abierto encima y el pedido escrito en la caja"
+                 alt="El Asistente IA dentro de IngeTrazo: el poste de alumbrado solar de los ejemplos con el chat abierto encima y el pedido escrito en la caja" width="1600" height="965" loading="lazy">
           </figure>
           <div class="more-body">
-            <h3>Modela con la IA, dentro de la app o desde Claude</h3>
+            <h3>Asistente IA dentro de la app</h3>
             <p>Describe lo que quieres —o adjunta una foto— y la IA escribe la <strong>receta</strong>: revoluciones, extrusiones, Python sobre la API de acciones de IngeTrazo. El motor determinista la ejecuta: <strong>cada paso es un deshacer</strong>, cada receta pasa por el guard de hermeticidad y el modelo sigue siendo tuyo, editable a mano.</p>
             <ul class="feat-list">
-              <li><strong>Asistente IA integrado</strong> (pestaña IA de la barra lateral, Ctrl+Mayús+A) — chat en español con tu propia clave: Groq (con cuota gratis), Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek o un modelo local con Ollama. Sin intermediarios</li>
+              <li><strong>Asistente IA integrado</strong> (pestaña IA de la barra lateral, Ctrl+Mayús+A) — chat con tu propia clave: Groq (con cuota gratis), Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek o un modelo local con Ollama. Sin intermediarios</li>
               <li><strong>Ve lo que hace</strong> — recibe capturas del viewport y corrige sobre lo que mira; con <strong>Foto…</strong> reconstruye lo que muestra una imagen con las medidas que le des</li>
-              <li><strong>Puente MCP para Claude Desktop y Claude Code</strong> — el agente dibuja, consulta y ve el modelo <em>en vivo, en la app abierta</em>; un paso de deshacer por acción y, si su código falla, el documento vuelve entero</li>
+              <li><strong>En tu equipo, si quieres</strong> — con Ollama el modelo corre en tu PC: sin internet, sin clave y sin pagar por uso</li>
             </ul>
             <p class="feat-muted"><a href="https://ingetrazo-docs.pages.dev/ia/" target="_blank" rel="noopener">Guía paso a paso en el manual →</a></p>
           </div>
@@ -417,13 +537,55 @@
     <div class="container">
       <div class="section-head">
         <h2>Extensiones de la comunidad</h2>
-        <p>Herramientas que otros usuarios agregan a IngeTrazo: escaleras, muebles de cocina, sol y sombras, render con IA, vistas múltiples y más. Todas gratis y con su código publicado; cada una se instala solo si la necesitas.</p>
+        <p>Más de 130 extensiones gratuitas, escritas en Python por más de 50 autores: arquitectura, dibujo, fabricación, estructuras, terreno, render y más. Se instalan desde la propia app, en <strong>Extensiones ▸ Gestionar extensiones…</strong>, que comprueba cada descarga y te avisa cuando hay una versión nueva.</p>
       </div>
+      <!-- CAPTURA: catálogo de extensiones dentro de la app — Extensiones ▸ Gestionar extensiones… con la lista del catálogo de la comunidad (miniaturas, etiquetas, «Revisada»/«Comunidad», botón Descargar y una con «Actualizar»), filtrada por la etiqueta Arquitectura para que se vean varias de eddy-99. Iría en esta sección, encima de las tarjetas. -->
       <div class="ext-grid" id="home-ext-grid"></div>
       <p class="home-ext-cta">
         <a class="btn btn-primary" href="/extensiones">Ver las <span id="home-ext-n"></span> extensiones →</a>
         <a class="home-ext-pub" href="/extensiones#publicar">¿Hiciste una? Publícala →</a>
       </p>
+      <div class="home-ext-more">
+        <div>
+          <h3>Autores que no paran</h3>
+          <p><a href="https://github.com/eddy-99" target="_blank" rel="noopener">Phillip Edwards (eddy-99)</a> ya publicó 28 extensiones de arquitectura y construcción: huecos en muros, tejas, chimeneas, canalones, ventanas y puertas de época, subestructura, planta 3D… Le siguen Pesi con 11, aashishzharbade-arch con 9 y Ezequiel M. Rezende con 7, entre más de 50 autores.</p>
+          <h3>Recién llegadas</h3>
+          <p>Huecos 3D, Planta 3D, Componentes dinámicos, Estudio de materiales, FGId Escenas, Estirar vértices, Puntos de ajuste redondeados y Progresivas para carreteras y canales.</p>
+        </div>
+        <div class="home-ext-dev">
+          <h3>Escribe la tuya</h3>
+          <p>Una extensión es un archivo Python: una clase con su nombre y lo que hace al activarse. Lo que cambia el modelo pasa por el deshacer, y una extensión que falla no tumba IngeTrazo. Con la <strong>biblioteca de recursos</strong>, tu extensión guarda sus propios recursos y los comparte en paquetes portátiles <code>.iglib</code>.</p>
+<div class="dl-code">
+<code># ~/.local/share/ingetrazo/plugins/hola.py
+from tools.base import Tool
+
+
+class Hola(Tool):
+    name = "Hola"
+    description = "Saluda en la barra de estado."
+
+    def on_activate(self, viewport):
+        viewport.flash_status("¡Hola desde una extensión!", 3000)
+
+    def on_deactivate(self, viewport):
+        pass</code>
+<button class="dl-code-copy" type="button" data-copy="# ~/.local/share/ingetrazo/plugins/hola.py
+from tools.base import Tool
+
+
+class Hola(Tool):
+    name = &quot;Hola&quot;
+    description = &quot;Saluda en la barra de estado.&quot;
+
+    def on_activate(self, viewport):
+        viewport.flash_status(&quot;¡Hola desde una extensión!&quot;, 3000)
+
+    def on_deactivate(self, viewport):
+        pass">Copiar</button>
+</div>
+          <p><a href="https://github.com/ingelibre/ingetrazo/blob/main/docs/plugins.md" target="_blank" rel="noopener">Guía para escribir extensiones (en inglés) →</a></p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -484,7 +646,7 @@
   <section id="descargar" class="download-section">
     <div class="container">
       <h2>Consigue IngeTrazo</h2>
-      <p class="download-sub">Versión <span id="dl-version">0.6.1</span> — <span id="dl-date">noviembre 2026</span>.</p>
+      <p class="download-sub">Versión <span id="dl-version">0.6.3</span> — <span id="dl-date">noviembre 2026</span>.</p>
       <div class="dl-primary" id="dl-primary" hidden>
         <a class="btn btn-primary btn-lg" id="dl-primary-btn" href="#descargar"></a>
         <p class="dl-primary-sub" id="dl-primary-sub"></p>
@@ -552,9 +714,9 @@ flatpak run com.ingetrazo.IngeTrazo</code>
             <div class="dl-panel" role="tabpanel" data-panel="appimage" hidden>
               <p>No instala nada: dale permiso de ejecución y ábrelo (o doble clic desde tu gestor de archivos).</p>
               <div class="dl-code" id="dl-code-appimage">
-                <code>chmod +x IngeTrazo-0.6.1-x86_64.AppImage
-./IngeTrazo-0.6.1-x86_64.AppImage</code>
-                <button class="dl-code-copy" type="button" data-copy="chmod +x IngeTrazo-0.6.1-x86_64.AppImage && ./IngeTrazo-0.6.1-x86_64.AppImage">Copiar</button>
+                <code>chmod +x IngeTrazo-0.6.3-x86_64.AppImage
+./IngeTrazo-0.6.3-x86_64.AppImage</code>
+                <button class="dl-code-copy" type="button" data-copy="chmod +x IngeTrazo-0.6.3-x86_64.AppImage && ./IngeTrazo-0.6.3-x86_64.AppImage">Copiar</button>
               </div>
               <p class="dl-panel-small">Necesita FUSE, que casi todas las distros traen. Si la tuya no, usa el tar.gz.</p>
             </div>
@@ -562,9 +724,9 @@ flatpak run com.ingetrazo.IngeTrazo</code>
             <div class="dl-panel" role="tabpanel" data-panel="tarball" hidden>
               <p>Para distros sin FUSE, o para instalarlo en <code>/opt</code>: descomprime y ejecuta.</p>
               <div class="dl-code" id="dl-code-tarball">
-                <code>tar -xzf IngeTrazo-0.6.1-linux-x86_64.tar.gz
-IngeTrazo-0.6.1/ingetrazo</code>
-                <button class="dl-code-copy" type="button" data-copy="tar -xzf IngeTrazo-0.6.1-linux-x86_64.tar.gz && IngeTrazo-0.6.1/ingetrazo">Copiar</button>
+                <code>tar -xzf IngeTrazo-0.6.3-linux-x86_64.tar.gz
+IngeTrazo-0.6.3/ingetrazo</code>
+                <button class="dl-code-copy" type="button" data-copy="tar -xzf IngeTrazo-0.6.3-linux-x86_64.tar.gz && IngeTrazo-0.6.3/ingetrazo">Copiar</button>
               </div>
               <p class="dl-panel-small">Trae lo mismo que el AppImage: Python, Qt y el lector de .skp viajan dentro.</p>
             </div>
@@ -677,7 +839,7 @@ IngeTrazo-0.6.1/ingetrazo</code>
         </details>
         <details class="faq-item">
           <summary>¿Tiene BIM?</summary>
-          <p>Una capa opcional, <strong>en desarrollo</strong>: puedes etiquetar la geometría como muro, losa, columna o puerta, obtener sus cantidades (m², m³, unidades) y exportarla en <strong>IFC</strong>, el formato estándar que leen otros programas — incluido IngePresupuestos. La vamos ampliando con cada versión.</p>
+          <p>Sí, como una capa opcional que crece con cada versión: etiquetas la geometría que ya trazaste con su clase IFC (muro, losa, columna, viga, puerta, ventana, espacio…), ves sus cantidades en la <strong>tabla BIM</strong> —con buscador, filtro por clase, agrupación y totales de metrado y volumen— y la exportas en <strong>IFC4 o IFC4.3</strong>, con coordenadas de mundo, norte del proyecto y ubicación. IngePresupuestos lee ese IFC para los metrados del presupuesto.</p>
         </details>
         <details class="faq-item">
           <summary>¿Puedo generar los planos del proyecto?</summary>
@@ -685,11 +847,11 @@ IngeTrazo-0.6.1/ingetrazo</code>
         </details>
         <details class="faq-item">
           <summary>¿Puedo agregarle funciones con plugins?</summary>
-          <p>Sí, desde la versión 0.3.2 IngeTrazo tiene un <strong>menú Extensiones</strong>: copias un plugin (un archivo Python) a tu carpeta personal y sus herramientas aparecen en el menú. Vienen dos incluidas: <strong>Info del modelo</strong> (estadísticas, materiales con m² pintados y objetos BIM) y una <strong>Consola Python</strong> para inspeccionar y automatizar el modelo por código, con todo integrado al deshacer. La guía está en el <a href="https://ingetrazo-docs.pages.dev/extensiones/" target="_blank" rel="noopener">manual</a>.</p>
+          <p>Sí. <strong>Extensiones ▸ Gestionar extensiones…</strong> abre el catálogo de la comunidad: más de 130 extensiones gratuitas en Python que se instalan con un clic, comprobadas contra su huella SHA-256. Escribir la tuya es sencillo: un archivo Python con tus herramientas, integrado al deshacer. Vienen incluidas <strong>Info del modelo</strong> y una <strong>Consola Python</strong> para inspeccionar y automatizar el modelo por código. La guía está en el <a href="https://ingetrazo-docs.pages.dev/extensiones/" target="_blank" rel="noopener">manual</a>.</p>
         </details>
         <details class="faq-item">
           <summary>¿Tiene inteligencia artificial?</summary>
-          <p>Sí, de dos formas. El <strong>Asistente IA</strong> integrado es un chat en español: pegas la clave del proveedor que prefieras (Groq tiene cuota gratis; también Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek u Ollama en tu propia máquina) y le pides el modelo con palabras o con una foto. Y el <strong>puente MCP</strong> deja que Claude Desktop o Claude Code dibujen directamente en la app abierta. En los dos casos la IA genera <em>recetas</em> que el motor ejecuta —nunca mallas a ciegas—, cada paso se puede deshacer y el modelo queda editable a mano. Sin IA, IngeTrazo funciona igual y sin internet.</p>
+          <p>Sí, de dos formas. El <strong>Asistente IA</strong> integrado es un chat en español: pegas la clave del proveedor que prefieras (Groq tiene cuota gratis; también Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek u Ollama en tu propia máquina) y le pides el modelo con palabras o con una foto. Y el <strong>puente MCP</strong> deja que Claude o cualquier cliente MCP manejen la app abierta —o una IngeTrazo sin ventana, para automatizar— con herramientas con nombre y un paso de deshacer por acción. IngeTrazo no pide cuenta ni pone límite de usos, y con un modelo local todo queda en tu equipo. Sin IA, IngeTrazo funciona igual y sin internet.</p>
         </details>
         <details class="faq-item">
           <summary>¿Funciona sin internet?</summary>
@@ -740,6 +902,7 @@ IngeTrazo-0.6.1/ingetrazo</code>
         <ul>
           <li><a href="#features">Características</a></li>
           <li><a href="#descargar">Descargar</a></li>
+          <li><a href="/novedades">Novedades</a></li>
           <li><a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">Releases</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>

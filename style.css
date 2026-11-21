@@ -1305,3 +1305,30 @@ code {
 .mac-help pre { margin: 6px 0; padding: 8px 10px; background: rgba(0,0,0,0.06); border-radius: 6px; overflow-x: auto; white-space: pre; }
 .mac-help pre code { background: none; padding: 0; font-size: 12.5px; color: var(--head); }
 .mac-help a { color: var(--accent-dk); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ============ 0.6.3: novedades, IA y MCP, extensiones ============ */
+.nov-grid .ej-card { padding-bottom: 6px; }
+.nov-grid .ej-card .feat-list { margin: 0 18px 14px; }
+.nov-grid .ej-card .feat-list li { font-size: 14px; }
+.nov-card code { font-size: 12.5px; }
+.nov-note { font-size: 12.5px !important; color: var(--muted) !important; margin-top: auto !important; padding-bottom: 12px; }
+.nov-cta { margin-top: 28px; display: flex; gap: 18px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.nov-cta-top { justify-content: flex-start; margin-top: -16px; }
+.nov-release:not(.bg-light) { background: var(--white); }
+
+.feat-ia-title { font-size: 20px; font-weight: 700; color: var(--head); margin: 44px 0 14px; letter-spacing: -0.01em; }
+.feat-ia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px; }
+.feat-ia-cfg { min-width: 0; }
+.feat-ia-cfg h3 { font-size: 15px; font-weight: 700; color: var(--head); margin-bottom: 2px; }
+.feat-ia-cfg p { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin-top: 8px; }
+.feat-ia-cfg .dl-code, .home-ext-dev .dl-code { margin: 8px 0 0; width: auto; max-width: 100%; align-items: flex-start; }
+.feat-ia-cfg .dl-code code, .home-ext-dev .dl-code code { flex: 1; min-width: 0; max-width: none; overflow-x: auto; }
+.feat-ia-cfg .dl-code code { white-space: pre-wrap; overflow-wrap: anywhere; }   /* comandos largos: que se lean enteros */
+
+.home-ext-more { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 52px; text-align: left; }
+.home-ext-more > div { min-width: 0; }
+.home-ext-more h3 { font-size: 19px; font-weight: 700; color: var(--head); margin-bottom: 8px; }
+.home-ext-more p { font-size: 15px; line-height: 1.6; color: var(--text); margin-bottom: 18px; }
+.home-ext-more a { color: var(--accent-dk); }
+.home-ext-dev p:last-child { margin: 12px 0 0; font-weight: 600; }
+@media (max-width: 860px) { .home-ext-more { grid-template-columns: 1fr; gap: 12px; } }

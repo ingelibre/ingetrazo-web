@@ -1,7 +1,7 @@
 // Idioma automático de ingetrazo.com.
 //
 // El sitio es estático (assets); este Worker solo corre para «/», «/apoyar»,
-// «/firma» y «/extensiones» (run_worker_first en wrangler.jsonc) y decide si
+// «/firma», «/extensiones» y «/novedades» (run_worker_first en wrangler.jsonc) y decide si
 // ese visitante se queda en español o va a /en/ o /pt/. Orden:
 //   1. la cookie `lang` — elegir en el selector de la cabecera gana siempre;
 //   2. el idioma preferido del navegador si es español o portugués;
@@ -18,7 +18,7 @@ const SPANISH = new Set([
 ]);
 const PORTUGUESE = new Set(['AO', 'BR', 'CV', 'GW', 'MZ', 'PT', 'ST', 'TL']);
 const SUPPORTED = new Set(['es', 'en', 'pt']);
-const LANG_PAGES = new Set(['/', '/apoyar', '/firma', '/extensiones']);
+const LANG_PAGES = new Set(['/', '/apoyar', '/firma', '/extensiones', '/novedades']);
 const BOT = /bot|crawl|spider|slurp|facebookexternalhit|embedly|preview|whatsapp|telegram|discord|lighthouse/i;
 
 export function firstLanguage(acceptLanguage) {

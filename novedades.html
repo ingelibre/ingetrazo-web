@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A2434">
+
+  <title>Novedades 0.6.3 y 0.6.2 · IngeTrazo</title>
+
+  <meta name="description" content="Lo nuevo en IngeTrazo 0.6.3 —grupos y componentes, arrastre más fluido con el motor Rust, láminas, caja de sección, terreno, BIM con IFC4.3 y herramientas MCP para asistentes de IA— y en la 0.6.2, dedicada a las láminas y el acotar.">
+
+  <link rel="canonical" href="https://ingetrazo.com/novedades">
+  <link rel="alternate" hreflang="es" href="https://ingetrazo.com/novedades">
+  <link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/novedades">
+  <link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/novedades">
+  <link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/novedades">
+
+  <meta property="og:site_name" content="IngeTrazo">
+  <meta property="og:title" content="Novedades 0.6.3 y 0.6.2 · IngeTrazo">
+  <meta property="og:description" content="Grupos y componentes, arrastre más fluido con el motor Rust, láminas, caja de sección, terreno, BIM con IFC4.3 y herramientas MCP para asistentes de IA.">
+  <meta property="og:image" content="https://ingetrazo.com/images/og-banner.jpg">
+  <meta property="og:url" content="https://ingetrazo.com/novedades">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PE">
+
+  <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/images/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/images/logo.png" sizes="180x180">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="/images/logo.png" alt="IngeTrazo" width="32" height="32">
+        <span>IngeTrazo</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/#features">Características</a>
+        <a href="/#descargar">Descargar</a>
+        <a href="/extensiones">Extensiones</a>
+        <a href="https://ingetrazo-docs.pages.dev" target="_blank" rel="noopener">Manual</a>
+        <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">GitHub</a>
+        <a href="/apoyar">Apoyar</a>
+        <span class="lang-switch" aria-label="Idioma"><a href="/novedades" hreflang="es" data-lang="es" aria-current="true">ES</a><a href="/en/novedades" hreflang="en" data-lang="en">EN</a><a href="/pt/novedades" hreflang="pt" data-lang="pt">PT</a></span>
+      </nav>
+      <button class="nav-toggle" aria-label="Abrir menú" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ NOVEDADES ============ -->
+  <!-- Generada desde el CHANGELOG (0.6.2.1) y el borrador de la 0.6.3; las
+       notas completas y los créditos van en los releases de GitHub. -->
+  <section class="section bg-light nov-page">
+    <div class="container">
+      <div class="section-head">
+        <h2>Novedades de IngeTrazo</h2>
+        <p>Lo nuevo de las dos últimas versiones: la <strong>0.6.3</strong>, dedicada a los grupos y componentes, y la <strong>0.6.2</strong>, dedicada a las láminas y el acotar. Las notas completas, con cada cambio y su autor, están en los <a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">releases de GitHub</a>.</p>
+      </div>
+      <p class="nov-cta nov-cta-top">
+        <a class="btn btn-primary" href="/#descargar">Descargar IngeTrazo</a>
+        <a class="home-ext-pub" href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">Notas completas en GitHub →</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="v063" class="section nov-release">
+    <div class="container">
+      <div class="section-head">
+        <h2>0.6.3 · Grupos y componentes</h2>
+        <p>Noviembre de 2026. Más de 30 personas aportaron código a esta versión: gracias a todas.</p>
+      </div>
+      <!-- CAPTURA: láminas de la 0.6.3 — el compositor con el panel «Láminas» abierto (miniaturas de L-01…L-06), las pestañas de lámina arriba, una lámina con la leyenda editable y la barra de escala y el norte con su fondo sobre la ortofoto. Formato 1600 px de ancho, como laminas.jpeg. -->
+      <!-- CAPTURA: caja de sección — un edificio de dos plantas recortado por la caja de seis caras, con las asas visibles, y al lado la misma vista en una lámina. -->
+      <div class="ej-grid nov-grid">
+        <article class="ej-card nov-card">
+          <h3>Grupos y componentes</h3>
+          <ul class="feat-list">
+            <li><strong>Las copias de un componente reflejan los cambios</strong>: mover o escalar un grupo dentro de un componente llega a todas sus copias</li>
+            <li><strong>Dibujar dentro de un conjunto</strong> llega a sus copias, cada una en su sitio</li>
+            <li><strong>Componentes anidados al importar <code>.skp</code></strong>: los modelos complejos ya no se funden en un solo componente</li>
+            <li><strong>Mi biblioteca</strong>: tus propias carpetas de componentes, en árbol, y el árbol de componentes en la barra lateral</li>
+            <li><strong>Gestor de escala</strong> con XYZ enlazados y pivote elegible</li>
+            <li>Editar dentro de un grupo ya no deja el tirón de ~0,4 s que seguía a cada edición</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Más fluido, con el motor Rust</h3>
+          <ul class="feat-list">
+            <li><strong>Mover, Rotar y Escalar no tocan el modelo mientras arrastras</strong>: cambia una sola vez, al soltar, con el mismo deshacer y los valores tecleados exactos</li>
+            <li>6.400 caras de geometría suelta: de ~320–350 ms a <strong>1,3–3 ms</strong> por fotograma</li>
+            <li>Escalar un grupo antiguo: de 87 a <strong>1,3 ms</strong></li>
+            <li>Empujar/Tirar una losa con huecos: de 51 a <strong>5 ms</strong> por fotograma</li>
+            <li>Ajuste a líneas: de ~31 a <strong>~6 ms</strong> por movimiento</li>
+            <li>Cambiar de lámina con un modelo grande: de ~2 s a <strong>~0,1 s</strong></li>
+          </ul>
+          <p class="nov-note">Medido en nuestros modelos de prueba; en tu equipo y con tu modelo las cifras serán otras.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Láminas</h3>
+          <ul class="feat-list">
+            <li><strong>Pestañas de láminas</strong> que se reordenan arrastrando, con deshacer</li>
+            <li><strong>Panel «Láminas»</strong> con la miniatura de cada una: seleccionar, reordenar, renombrar y eliminar</li>
+            <li><strong>Leyenda editable</strong>: nombre y color propios por capa, y entradas libres</li>
+            <li><strong>Fondo</strong> para la barra de escala, el norte y la leyenda, legibles sobre una ortofoto</li>
+            <li><strong>Índice de láminas</strong> y navegador de láminas</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Dibujo y modelado</h3>
+          <ul class="feat-list">
+            <li><strong>Caja de sección</strong>: recorta el modelo con una caja de seis caras, en la vista y en las láminas</li>
+            <li><strong>Dibujo ▸ Terreno</strong>: crear, deformar, estampar y proyectar terreno editable, también desde los puntos topográficos de un DXF</li>
+            <li><strong>Abrir hueco</strong>: una ventana o una puerta abre su hueco en el muro, aunque el muro sea un grupo, y el hueco la sigue al moverla</li>
+            <li><strong>Crear caras y Extruir</strong>: cada contorno se vuelve su propio sólido en un paso</li>
+            <li><strong>Calculadora</strong> en la caja de medidas: escribe <code>=1.25*2+2.45/2</code> donde va una medida</li>
+            <li>Herramienta <strong>Punto guía</strong>, inferencias que se encienden una a una y Cinta métrica que reescala el modelo</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Vista, cámara y presentación</h3>
+          <ul class="feat-list">
+            <li><strong>Cámara desde foto</strong>: encuentra la cámara que tomó una foto para que el modelo coincida con ella</li>
+            <li><strong>Guías de composición</strong> y Ocultar escenas (Ctrl+E)</li>
+            <li><strong>Editor de estilos</strong> completo, degradado del horizonte, niebla y opacidad en capas y materiales</li>
+            <li>Exportar escenas como <strong>secuencia PNG</strong>, con fondo transparente opcional</li>
+            <li><strong>Trackpad</strong>: pellizcar hace zoom hacia los dedos; ratón 3D con giro de cámara y SpaceMouse en macOS</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>BIM e IFC</h3>
+          <ul class="feat-list">
+            <li><strong>Tabla BIM</strong>: buscar, filtrar por clase IFC, agrupar y ver la ruta en el esquema, con totales de metrado y volumen</li>
+            <li><strong>Exportación IFC4.3 estable</strong> y paquetes de entrega verificados (el primer perfil, para Türkiye)</li>
+            <li><strong>IFC en coordenadas de mundo</strong>, con cabecera Reference View, unidades, norte del proyecto y ubicación del sitio</li>
+            <li><strong>Pestaña Ubicación</strong> en Info del modelo, y la tabla de materiales en uso a CSV</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>IA y automatización</h3>
+          <ul class="feat-list">
+            <li><strong>Herramientas MCP con nombre</strong>, sin código arbitrario y todas con deshacer</li>
+            <li><strong>Modo servidor</strong>: <code>ingetrazo --server [archivo] [--port N]</code></li>
+            <li><strong>Sin ventana</strong>: <code>ingetrazo --headless --ai-bridge --open Casa.igz</code>, con guardar y cerrar desde MCP</li>
+            <li><strong>Guardar como JSON plano</strong> para el control de versiones</li>
+            <li>Cada documento abierto se direcciona por separado entre ventanas</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Materiales, extensiones, idiomas</h3>
+          <ul class="feat-list">
+            <li>Exportar e importar <strong>materiales <code>.igmat</code></strong>, «Mis materiales» e importar materiales <code>.skm</code></li>
+            <li><strong>Tinte de color de textura</strong> que conserva sus partes vivas y apagadas</li>
+            <li><strong>Gestor de extensiones</strong> mejorado y biblioteca de recursos con paquetes <code>.iglib</code></li>
+            <li><strong>Turco</strong> y <strong>catalán</strong> en la interfaz, y términos en vietnamita</li>
+            <li><strong>Windows</strong>: miniatura del <code>.igz</code> en el Explorador, archivos recientes en la barra de tareas y publicación en Winget</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="v062" class="section bg-light nov-release">
+    <div class="container">
+      <div class="section-head">
+        <h2>0.6.2 · Láminas y acotar</h2>
+        <p>14 de noviembre de 2026, con el arreglo 0.6.2.1 de esa misma noche.</p>
+      </div>
+      <div class="ej-grid nov-grid">
+        <article class="ej-card nov-card">
+          <h3>Láminas y cotas</h3>
+          <ul class="feat-list">
+            <li><strong>Cotas de lámina</strong> que enganchan a lo largo de las aristas, con la etiqueta debajo o volteada y separada del texto</li>
+            <li><strong>Peso y trama de corte por capa</strong>, en las láminas, en el DXF y en la vista 3D</li>
+            <li><strong>Las extensiones dibujan en las láminas</strong>: las progresivas de un camino o un canal salen en vectorial</li>
+            <li>Exportar todas las láminas a PDF <strong>desde la línea de órdenes</strong>, sin ventana</li>
+            <li>El compositor de una plaza de prueba abre en <strong>2,5 s</strong> en vez de 57 s</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Escenas, cámara y vídeo</h3>
+          <ul class="feat-list">
+            <li><strong>Transiciones entre escenas</strong>, Reproducir y exportar el recorrido como vídeo</li>
+            <li><strong>Escenas con carpetas y miniaturas</strong> en su propia pestaña</li>
+            <li><strong>Herramienta Norte</strong> y Cámara ▸ Ajustes de cámara: distancia focal, sensor y desplazamiento de lente</li>
+            <li><strong>Varias vistas</strong>, cada una con su estilo, proyección y escena</li>
+            <li><strong>Alinear vista</strong>: la cámara mira de frente la cara elegida</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Interfaz y exportación</h3>
+          <ul class="feat-list">
+            <li><strong>Cuatro temas nuevos</strong> —Estudio, Solarized, Campbell y Arena—, Oscuro mejorado e iconos más finos</li>
+            <li><strong>Exportar la vista como SVG en capas</strong>, con caras, texturas y sombras del sol</li>
+            <li><strong>Sombras suaves</strong>, círculos guía analíticos y enganche «Centro de cara»</li>
+            <li><strong>Empujar/Tirar varias caras</strong> a la vez, cada una por su normal</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Modelos enormes</h3>
+          <ul class="feat-list">
+            <li>Un modelo de 21.000 grupos: primer cuadro de 60 s a <strong>21 s</strong> y memoria de 9 GB a <strong>5,4 GB</strong></li>
+            <li>Una plaza de 1.035 objetos exporta su planta en SVG en <strong>17 s</strong> en vez de 170</li>
+            <li>0.6.2.1: la barra lateral ya no congela la ventana con modelos grandes (de 12–22 s a una décima de segundo)</li>
+            <li>Decenas de arreglos: Ctrl+S con extensiones abiertas, copias exactas con Mover+Ctrl y el cierre en Mac al importar un <code>.skp</code> con escenas</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRANJA FINAL ============ -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Pruébala hoy</h2>
+      <p>Gratis, sin cuenta y en Linux, Windows y macOS.</p>
+      <div class="final-cta-btns">
+        <a href="/#descargar" class="btn btn-lg final-cta-dl">Descargar IngeTrazo</a>
+        <a href="https://ingetrazo-docs.pages.dev" class="btn btn-lg final-cta-man" target="_blank" rel="noopener">Leer el manual</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contacto" class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <img src="/images/logo.png" alt="Logo de IngeTrazo" width="36" height="36">
+          <strong>IngeTrazo</strong>
+        </div>
+        <p>Modelador 3D libre para arquitectura, ingeniería y diseño.</p>
+        <a class="btn btn-heart footer-support" href="/apoyar">Apoyar el proyecto</a>
+        <p class="footer-copy">© 2026 Marco Sumari Tellez · Software libre GPL-3.0</p>
+      </div>
+      <div class="footer-col">
+        <h4>Producto</h4>
+        <ul>
+          <li><a href="/#features">Características</a></li>
+          <li><a href="/#descargar">Descargar</a></li>
+          <li><a href="/novedades">Novedades</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">Releases</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="https://ingetrazo-docs.pages.dev" target="_blank" rel="noopener">Manual de usuario</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">Código abierto (GitHub)</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">Reportar un problema</a></li>
+          <li><a href="/extensiones">Extensiones</a></li>
+          <li><a href="/firma">Política de firma de código</a></li>
+          <li><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">Licencia GPL-3.0</a></li>
+          <li><a href="https://ingepresupuestos.com" target="_blank" rel="noopener">IngePresupuestos</a></li>
+          <li><a href="https://ingecad.org" target="_blank" rel="noopener">IngeCAD</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:ing.sumari@gmail.com">ing.sumari@gmail.com</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>
