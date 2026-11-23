@@ -62,7 +62,7 @@
   /* Descargas de instaladores que ya no están en GitHub: al borrar un archivo
      de un release, GitHub borra también su contador. La cifra la mantiene
      tools/actualizar-version.py (tools/descargas.json); no editar a mano. */
-  var DESCARGAS_RETIRADAS = 6852;
+  var DESCARGAS_RETIRADAS = 7203;
   /* Registro vivo (workflow horario, rama datos-descargas): lo retirado y el
      último total visto. Si falla, queda la cifra de arriba. */
   var registro = fetch('https://api.github.com/repos/ingelibre/ingetrazo-web/contents/descargas.json?ref=datos-descargas',
