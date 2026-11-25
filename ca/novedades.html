@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A2434">
+
+  <title>Novetats 0.6.3 i 0.6.2 · IngeTrazo</title>
+
+  <meta name="description" content="Les novetats d'IngeTrazo 0.6.3 —grups i components, arrossegament més fluid amb el motor Rust, làmines, caixa de secció, terreny, BIM amb IFC4.3 i eines MCP per a assistents d'IA— i de la 0.6.2, dedicada a les làmines i l'acotació.">
+
+  <link rel="canonical" href="https://ingetrazo.com/ca/novedades">
+  <link rel="alternate" hreflang="es" href="https://ingetrazo.com/novedades">
+  <link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/novedades">
+  <link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/novedades">
+  <link rel="alternate" hreflang="ca" href="https://ingetrazo.com/ca/novedades">
+  <link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/novedades">
+
+  <meta property="og:site_name" content="IngeTrazo">
+  <meta property="og:title" content="Novetats 0.6.3 i 0.6.2 · IngeTrazo">
+  <meta property="og:description" content="Grups i components, arrossegament més fluid amb el motor Rust, làmines, caixa de secció, terreny, BIM amb IFC4.3 i eines MCP per a assistents d'IA.">
+  <meta property="og:image" content="https://ingetrazo.com/images/og-banner.jpg">
+  <meta property="og:url" content="https://ingetrazo.com/ca/novedades">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ca_ES">
+
+  <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/images/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/images/logo.png" sizes="180x180">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/ca/" class="nav-brand">
+        <img src="/images/logo.png" alt="IngeTrazo" width="32" height="32">
+        <span>IngeTrazo</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/ca/#features">Característiques</a>
+        <a href="/ca/#descargar">Descarrega</a>
+        <a href="/ca/extensiones">Extensions</a>
+        <a href="https://ingetrazo-docs.pages.dev" target="_blank" rel="noopener">Manual (en castellà)</a>
+        <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">GitHub</a>
+        <a href="/ca/apoyar">Dona suport</a>
+        <span class="lang-switch" aria-label="Idioma"><a href="/novedades" hreflang="es" data-lang="es">ES</a><a href="/en/novedades" hreflang="en" data-lang="en">EN</a><a href="/pt/novedades" hreflang="pt" data-lang="pt">PT</a><a href="/ca/novedades" hreflang="ca" data-lang="ca" aria-current="true">CA</a></span>
+      </nav>
+      <button class="nav-toggle" aria-label="Obre el menú" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ NOVEDADES ============ -->
+  <!-- Generada desde el CHANGELOG (0.6.2.1) y el borrador de la 0.6.3; las
+       notas completas y los créditos van en los releases de GitHub. -->
+  <section class="section bg-light nov-page">
+    <div class="container">
+      <div class="section-head">
+        <h2>Novetats d'IngeTrazo</h2>
+        <p>Les novetats de les dues últimes versions: la <strong>0.6.3</strong>, dedicada als grups i components, i la <strong>0.6.2</strong>, dedicada a les làmines i l'acotació. Les notes completes, amb cada canvi i qui l'ha fet, són a les <a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">versions publicades a GitHub</a>.</p>
+      </div>
+      <p class="nov-cta nov-cta-top">
+        <a class="btn btn-primary" href="/ca/#descargar">Descarrega IngeTrazo</a>
+        <a class="home-ext-pub" href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">Notes completes a GitHub →</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="v063" class="section nov-release">
+    <div class="container">
+      <div class="section-head">
+        <h2>0.6.3 · Grups i components</h2>
+        <p>Novembre del 2026. Més de 30 persones han aportat codi a aquesta versió: gràcies a totes.</p>
+      </div>
+      <!-- CAPTURA: láminas de la 0.6.3 — el compositor con el panel «Láminas» abierto (miniaturas de L-01…L-06), las pestañas de lámina arriba, una lámina con la leyenda editable y la barra de escala y el norte con su fondo sobre la ortofoto. Formato 1600 px de ancho, como laminas.jpeg. -->
+      <!-- CAPTURA: caja de sección — un edificio de dos plantas recortado por la caja de seis caras, con las asas visibles, y al lado la misma vista en una lámina. -->
+      <div class="ej-grid nov-grid">
+        <article class="ej-card nov-card">
+          <h3>Grups i components</h3>
+          <ul class="feat-list">
+            <li><strong>Les còpies d'un component reflecteixen els canvis</strong>: moure o escalar un grup dins d'un component arriba a totes les còpies</li>
+            <li><strong>Dibuixar dins d'un conjunt</strong> arriba a les còpies, cadascuna al seu lloc</li>
+            <li><strong>Components niats en importar <code>.skp</code></strong>: els models complexos ja no es fonen en un sol component</li>
+            <li><strong>La meva biblioteca</strong>: les teves pròpies carpetes de components, en arbre, i l'arbre de components a la barra lateral</li>
+            <li><strong>Gestor d'escala</strong> amb XYZ enllaçats i pivot que es pot triar</li>
+            <li>Editar dins d'un grup ja no deixa l'estrebada d'uns 0,4 s que venia després de cada edició</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Més fluid, amb el motor Rust</h3>
+          <ul class="feat-list">
+            <li><strong>Mou, Gira i Escala no toquen el model mentre arrossegues</strong>: canvia una sola vegada, quan deixes anar, amb el mateix desfer i els valors teclejats exactes</li>
+            <li>6.400 cares de geometria solta: d'uns 320–350 ms a <strong>1,3–3 ms</strong> per fotograma</li>
+            <li>Escalar un grup antic: de 87 a <strong>1,3 ms</strong></li>
+            <li>Empeny/Estira en una llosa amb forats: de 51 a <strong>5 ms</strong> per fotograma</li>
+            <li>Ajust a línies: d'uns 31 a <strong>uns 6 ms</strong> per moviment</li>
+            <li>Canviar de làmina amb un model gros: d'uns 2 s a <strong>uns 0,1 s</strong></li>
+          </ul>
+          <p class="nov-note">Mesurat amb els nostres models de prova; al teu ordinador i amb el teu model les xifres seran unes altres.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Làmines</h3>
+          <ul class="feat-list">
+            <li><strong>Pestanyes de làmines</strong> que es reordenen arrossegant-les, amb desfer</li>
+            <li><strong>Panell «Làmines»</strong> amb la miniatura de cadascuna: seleccionar, reordenar, canviar el nom i eliminar</li>
+            <li><strong>Llegenda editable</strong>: nom i color propis per capa, i entrades lliures</li>
+            <li><strong>Fons</strong> per a l'escala gràfica, la fletxa de nord i la llegenda, llegibles sobre una ortofoto</li>
+            <li><strong>Índex de làmines</strong> i navegador de làmines</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Dibuix i modelatge</h3>
+          <ul class="feat-list">
+            <li><strong>Caixa de secció</strong>: retalla el model amb una caixa de sis cares, a la vista i a les làmines</li>
+            <li><strong>Dibuix ▸ Terreny</strong>: crea, deforma, estampa i projecta terreny editable, també a partir dels punts topogràfics d'un DXF</li>
+            <li><strong>Talla l'obertura</strong>: una finestra o una porta obre la seva obertura al mur, encara que el mur sigui un grup, i l'obertura la segueix quan la mous</li>
+            <li><strong>Crear cares i Extrudir</strong>: cada contorn es converteix en el seu propi sòlid en un sol pas</li>
+            <li><strong>Calculadora</strong> al quadre de mides: escriu <code>=1.25*2+2.45/2</code> allà on va una mida</li>
+            <li>Eina <strong>Punt guia</strong>, inferències que s'activen una per una i una Mesura que reescala el model</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Vista, càmera i presentació</h3>
+          <ul class="feat-list">
+            <li><strong>Càmera des d'una foto</strong>: troba la càmera que va fer una foto perquè el model hi coincideixi</li>
+            <li><strong>Guies de composició</strong> i Oculta les escenes (Ctrl+E)</li>
+            <li><strong>Editor d'estils</strong> complet, degradat de l'horitzó, boira i opacitat a les capes i els materials</li>
+            <li>Exportació de les escenes com a <strong>seqüència PNG</strong>, amb fons transparent opcional</li>
+            <li><strong>Panell tàctil</strong>: pessigar fa zoom cap als dits; ratolí 3D amb gir de càmera i SpaceMouse a macOS</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>BIM i IFC</h3>
+          <ul class="feat-list">
+            <li><strong>Taula BIM</strong>: cerca, filtra per classe IFC, agrupa i mostra la ruta a l'esquema, amb totals d'amidament i volum</li>
+            <li><strong>Exportació IFC4.3 estable</strong> i paquets de lliurament verificats (el primer perfil, per a Türkiye)</li>
+            <li><strong>IFC en coordenades globals</strong>, amb capçalera Reference View, unitats, nord del projecte i ubicació de l'emplaçament</li>
+            <li><strong>Pestanya Ubicació</strong> a Informació del model, i la taula de materials en ús a CSV</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>IA i automatització</h3>
+          <ul class="feat-list">
+            <li><strong>Eines MCP amb nom</strong>, sense codi arbitrari i totes amb desfer</li>
+            <li><strong>Mode servidor</strong>: <code>ingetrazo --server [fitxer] [--port N]</code></li>
+            <li><strong>Sense finestra</strong>: <code>ingetrazo --headless --ai-bridge --open Casa.igz</code>, amb desar i tancar des de l'MCP</li>
+            <li><strong>Desa com a JSON pla</strong> per al control de versions</li>
+            <li>Cada document obert té la seva pròpia adreça entre finestres</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Materials, extensions i idiomes</h3>
+          <ul class="feat-list">
+            <li>Exporta i importa <strong>materials <code>.igmat</code></strong>, «Els meus materials» i importació de materials <code>.skm</code></li>
+            <li><strong>Tint de color de textura</strong> que en conserva les parts vives i les apagades</li>
+            <li><strong>Gestor d'extensions</strong> millorat i biblioteca de recursos amb paquets <code>.iglib</code></li>
+            <li><strong>Turc</strong> i <strong>català</strong> a la interfície, i termes en vietnamita</li>
+            <li><strong>Windows</strong>: miniatura de l'<code>.igz</code> a l'Explorador, fitxers recents a la barra de tasques i publicació a Winget</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="v062" class="section bg-light nov-release">
+    <div class="container">
+      <div class="section-head">
+        <h2>0.6.2 · Làmines i acotació</h2>
+        <p>14 de novembre del 2026, amb la correcció 0.6.2.1 d'aquella mateixa nit.</p>
+      </div>
+      <div class="ej-grid nov-grid">
+        <article class="ej-card nov-card">
+          <h3>Làmines i cotes</h3>
+          <ul class="feat-list">
+            <li><strong>Cotes de làmina</strong> que s'ajusten al llarg de les arestes, amb l'etiqueta a sota o girada i separada del text</li>
+            <li><strong>Gruix i trama de secció per capa</strong>, a les làmines, al DXF i a la vista 3D</li>
+            <li><strong>Les extensions dibuixen a les làmines</strong>: les progressives d'un camí o d'un canal surten en vectorial</li>
+            <li>Exportació de totes les làmines a PDF <strong>des de la línia d'ordres</strong>, sense finestra</li>
+            <li>El compositor d'una plaça de prova s'obre en <strong>2,5 s</strong> en lloc de 57 s</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Escenes, càmera i vídeo</h3>
+          <ul class="feat-list">
+            <li><strong>Transicions entre escenes</strong>, Reprodueix i exportació del recorregut com a vídeo</li>
+            <li><strong>Escenes amb carpetes i miniatures</strong> en una pestanya pròpia</li>
+            <li><strong>Eina Nord</strong> i Càmera ▸ Configuració de càmera: distància focal, sensor i desplaçament de l'objectiu</li>
+            <li><strong>Diverses vistes</strong>, cadascuna amb el seu estil, projecció i escena</li>
+            <li><strong>Alinea la vista</strong>: la càmera mira de cara la cara triada</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Interfície i exportació</h3>
+          <ul class="feat-list">
+            <li><strong>Quatre temes nous</strong> —Estudi, Solarized, Campbell i Sorra—, el tema Fosc millorat i icones més fines</li>
+            <li><strong>Exportació de la vista com a SVG per capes</strong>, amb cares, textures i ombres del sol</li>
+            <li><strong>Ombres suaus</strong>, cercles guia analítics i l'ajust «Centre de la cara»</li>
+            <li><strong>Empeny/Estira diverses cares</strong> alhora, cadascuna segons la seva normal</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Models enormes</h3>
+          <ul class="feat-list">
+            <li>Un model de 21.000 grups: el primer fotograma passa de 60 s a <strong>21 s</strong> i la memòria de 9 GB a <strong>5,4 GB</strong></li>
+            <li>Una plaça de 1.035 objectes exporta la planta en SVG en <strong>17 s</strong> en lloc de 170</li>
+            <li>0.6.2.1: la barra lateral ja no congela la finestra amb models grossos (de 12–22 s a una dècima de segon)</li>
+            <li>Desenes de correccions: Ctrl+S amb extensions obertes, còpies exactes amb Mou+Ctrl i el tancament inesperat al Mac en importar un <code>.skp</code> amb escenes</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRANJA FINAL ============ -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Prova-ho avui</h2>
+      <p>Gratis, sense compte i a Linux, Windows i macOS.</p>
+      <div class="final-cta-btns">
+        <a href="/ca/#descargar" class="btn btn-lg final-cta-dl">Descarrega IngeTrazo</a>
+        <a href="https://ingetrazo-docs.pages.dev" class="btn btn-lg final-cta-man" target="_blank" rel="noopener">Llegeix el manual (en castellà)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contacto" class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <img src="/images/logo.png" alt="Logotip d'IngeTrazo" width="36" height="36">
+          <strong>IngeTrazo</strong>
+        </div>
+        <p>Modelador 3D lliure per a arquitectura, enginyeria i disseny.</p>
+        <a class="btn btn-heart footer-support" href="/ca/apoyar">Dona-hi suport</a>
+        <p class="footer-copy">© 2026 Marco Sumari Tellez · Programari lliure GPL-3.0</p>
+      </div>
+      <div class="footer-col">
+        <h4>Producte</h4>
+        <ul>
+          <li><a href="/ca/#features">Característiques</a></li>
+          <li><a href="/ca/#descargar">Descarrega</a></li>
+          <li><a href="/ca/novedades">Novetats</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">Versions</a></li>
+          <li><a href="/ca/#faq">Preguntes freqüents</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="https://ingetrazo-docs.pages.dev" target="_blank" rel="noopener">Manual d'usuari (en castellà)</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">Codi obert (GitHub)</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">Informa d'un problema</a></li>
+          <li><a href="/ca/extensiones">Extensions</a></li>
+          <li><a href="/ca/firma">Política de signatura de codi</a></li>
+          <li><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">Llicència GPL-3.0</a></li>
+          <li><a href="https://ingepresupuestos.com" target="_blank" rel="noopener">IngePresupuestos</a></li>
+          <li><a href="https://ingecad.org" target="_blank" rel="noopener">IngeCAD</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacte</h4>
+        <ul>
+          <li><a href="mailto:ing.sumari@gmail.com">ing.sumari@gmail.com</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>

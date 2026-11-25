@@ -24,6 +24,8 @@ MESES = {
                       'August', 'September', 'October', 'November', 'December'],
     'pt/index.html': ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho',
                       'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'],
+    'ca/index.html': ['gener', 'febrer', 'març', 'abril', 'maig', 'juny', 'juliol',
+                      'agost', 'setembre', 'octubre', 'novembre', 'desembre'],
 }
 
 raiz = Path(__file__).resolve().parent.parent
@@ -69,7 +71,8 @@ for nombre, meses in MESES.items():
     f = raiz / nombre
     with open(f, encoding='utf-8', newline='') as h:   # respeta LF/CRLF
         s = h.read()
-    fecha = f'{meses[mes - 1]} de {anio}' if nombre == 'pt/index.html' else f'{meses[mes - 1]} {anio}'
+    union = {'pt/index.html': ' de ', 'ca/index.html': ' del '}.get(nombre, ' ')
+    fecha = f'{meses[mes - 1]}{union}{anio}'
     s = re.sub(r'(<span id="latest-version">)v[^<]*', rf'\g<1>v{v}', s)
     s = re.sub(r'(<span id="announce-version">)v[^<]*', rf'\g<1>v{v}', s)
     s = re.sub(r'(<span id="dl-version">)[^<]*', rf'\g<1>{v}', s)

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Copyright (C) 2026 Marco Sumari Tellez and IngeTrazo contributors.
-"""Write the extensions page in the site's three languages.
+"""Write the extensions page in the site's four languages.
 
-``extensiones.html``, ``en/extensiones.html`` and ``pt/extensiones.html``
-take the header and the footer from the matching ``apoyar.html``, so the
+``extensiones.html``, ``en/extensiones.html``, ``pt/extensiones.html`` and
+``ca/extensiones.html`` take the header and the footer from the matching ``apoyar.html``, so the
 navigation stays one thing to edit. The page itself is a shell: the cards
 come from ``/extensiones.json`` (``extensiones.js``), which the Worker reads
 from the catalog repository — approving an entry there updates the page
@@ -20,11 +20,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CATALOG = "https://github.com/ingelibre/ingetrazo-extensions"
 GUIDE = "https://github.com/ingelibre/ingetrazo/blob/main/docs/plugins.md"
-PAGES = {"es": ROOT, "en": ROOT / "en", "pt": ROOT / "pt"}
+PAGES = {"es": ROOT, "en": ROOT / "en", "pt": ROOT / "pt",
+         "ca": ROOT / "ca"}
 URL = {"es": "https://ingetrazo.com/extensiones",
        "en": "https://ingetrazo.com/en/extensiones",
-       "pt": "https://ingetrazo.com/pt/extensiones"}
-LOCALE = {"es": "es_PE", "en": "en_US", "pt": "pt_BR"}
+       "pt": "https://ingetrazo.com/pt/extensiones",
+       "ca": "https://ingetrazo.com/ca/extensiones"}
+LOCALE = {"es": "es_PE", "en": "en_US", "pt": "pt_BR", "ca": "ca_ES"}
 
 T = {
     "es": {
@@ -169,6 +171,55 @@ T = {
         "guide_btn": "Guia para escrever extensões",
         "readme": "#português",
     },
+    "ca": {
+        "title": "Extensions · IngeTrazo",
+        "desc": "Extensions per a IngeTrazo fetes per la comunitat: BIM, "
+                "estructures, terreny, dibuix i més. Lliures, amb el codi "
+                "a la vista.",
+        "h1": "Extensions",
+        "lead": "Eines que la comunitat afegeix a IngeTrazo. Totes són "
+                "lliures i tenen el codi publicat; instal·la només les "
+                "que necessitis.",
+        "search": "Cerca extensions…",
+        "only": "Només revisades",
+        "sort": "Ordena",
+        "sort_default": "Revisades primer",
+        "sort_recent": "Més recents",
+        "sort_name": "Nom (A–Z)",
+        "tags": "Filtra per tema",
+        "loading": "Carregant el catàleg…",
+        "noscript": "Aquesta llista necessita JavaScript. També pots veure el "
+                    "catàleg directament a",
+        "install_h": "Com s'instal·len",
+        "install": [
+            'A IngeTrazo, obre <strong>Extensions ▸ Gestiona les extensions…</strong> (a partir de la versió 0.5.8).',
+            'A la pestanya <strong>Explora</strong>, busca l\'extensió i prem <strong>Instal·la</strong>. IngeTrazo la baixa, comprova que sigui exactament el fitxer aprovat i l\'activa.',
+            'Si l\'extensió és de la comunitat, IngeTrazo t\'ho pregunta abans d\'instal·lar-la. Les que ja tens són a la pestanya <strong>Instal·lades</strong>.',
+        ],
+        "how": "Com s'instal·len?",
+        "soon": 'No tens connexió o fas servir una versió anterior? Prem <strong>Descarrega</strong>, descomprimeix el <code>.zip</code>, copia la carpeta sencera a <strong>Extensions ▸ Obre la carpeta d\'extensions</strong> i torna a obrir IngeTrazo.',
+        "new_h": 'Acabades d\'arribar',
+        "all_h": 'Totes les extensions',
+        "safety_h": "Revisades i de la comunitat",
+        "reviewed": "Revisada",
+        "reviewed_p": "algú que manté IngeTrazo ha llegit el codi d'aquella "
+                      "versió exacta.",
+        "community": "Comunitat",
+        "community_p": "ha passat la revisió automàtica, però ningú no n'ha "
+                       "llegit el codi a fons. Instal·la-la si confies en qui "
+                       "l'ha feta.",
+        "safety_note": "Una extensió és un programa amb el mateix accés al teu "
+                       "ordinador que IngeTrazo, igual que a Blender. El botó "
+                       "Descarrega comprova que el fitxer sigui exactament el "
+                       "que es va aprovar.",
+        "publish_h": "Has fet una extensió?",
+        "publish_p": "Publica-la aquí: s'afegeix amb una fitxa des del "
+                     "navegador, sense saber Git. Un robot la revisa en un "
+                     "minut i la pàgina s'actualitza sola.",
+        "publish_btn": "Publica la meva extensió",
+        "guide_btn": "Guia per escriure extensions (en anglès)",
+        "readme": "#español",
+    },
 }
 
 
@@ -176,7 +227,7 @@ def head(lang: str) -> str:
     t = T[lang]
     alts = "\n".join(
         f'  <link rel="alternate" hreflang="{code}" href="{URL[code]}">'
-        for code in ("es", "en", "pt"))
+        for code in ("es", "en", "pt", "ca"))
     e = html.escape
     return f"""<!DOCTYPE html>
 <html lang="{lang}">
@@ -292,7 +343,7 @@ def build(lang: str) -> str:
     prefix = "" if lang == "es" else f"/{lang}"
     header = header.replace(f'href="{prefix}/apoyar" hreflang',
                             f'href="{prefix}/extensiones" hreflang')
-    for code in ("es", "en", "pt"):
+    for code in ("es", "en", "pt", "ca"):
         p = "" if code == "es" else f"/{code}"
         header = header.replace(f'href="{p}/apoyar" hreflang="{code}"',
                                 f'href="{p}/extensiones" hreflang="{code}"')

@@ -3,7 +3,7 @@
 (function () {
   'use strict';
 
-  /* ── Idioma de la página (es/en/pt) ────────────────────────────────── */
+  /* ── Idioma de la página (es/en/pt/ca) ────────────────────────────────── */
   var LANG = (document.documentElement.lang || 'es').slice(0, 2);
   var STRINGS = {
     es: { locale: 'es-PE', copied: '¡Copiado!', copy: 'Copiar',
@@ -32,7 +32,16 @@
           dlLinuxSub: 'Instala com clique duplo. AppImage, tar.gz e outros sistemas, abaixo.',
           thanks: 'Obrigado por baixar o IngeTrazo!',
           thanksSub: 'É livre e feito por uma pessoa. Se ele te poupa horas, você pode apoiá-lo.',
-          thanksBtn: 'Apoiar', support: '/pt/apoyar', close: 'Fechar' }
+          thanksBtn: 'Apoiar', support: '/pt/apoyar', close: 'Fechar' },
+    ca: { locale: 'ca-ES', copied: 'Copiat!', copy: 'Copia',
+          flatpak: 'doble clic i s\'instal·la', appimage: 'no instal·la res', tarball: 'sense FUSE',
+          dlWin: 'Descarrega per a Windows', dlMac: 'Descarrega per a Mac', dlLinux: 'Descarrega per a Linux (Flatpak)',
+          dlWinSub: 'Instal·lador per a Windows 10/11 · 64 bits. Altres versions i sistemes, a sota.',
+          dlMacSub: 'Per a Mac amb Apple Silicon (M1 o posterior). Tens un Mac amb Intel? La seva versió és a sota.',
+          dlLinuxSub: 'S\'instal·la amb doble clic. AppImage, tar.gz i els altres sistemes, a sota.',
+          thanks: 'Gràcies per descarregar IngeTrazo!',
+          thanksSub: 'És lliure i el fa una sola persona. Si t\'estalvia hores, pots donar-li suport.',
+          thanksBtn: 'Dona suport', support: '/ca/apoyar', close: 'Tanca' }
   };
   var T = STRINGS[LANG] || STRINGS.es;
 
@@ -50,7 +59,7 @@
     var el = document.querySelector('[data-stat="' + name + '"]');
     if (!el || !n) return;
     if (round) n = Math.floor(n / round) * round;
-    /* miles como en el resto de la página: 7.000 (es/pt), 7,000 (en) */
+    /* miles como en el resto de la página: 7.000 (es/pt/ca), 7,000 (en) */
     var sep = LANG === 'en' ? ',' : '.';
     el.textContent = String(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep) + (round ? '+' : '');
   }
