@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A2434">
+
+  <title>IngeTrazo · Modelador 3D lliure per a arquitectura i enginyeria</title>
+
+  <meta name="description" content="Modelador 3D lliure per a arquitectura, enginyeria i disseny: traça com a mà alçada, compon plànols en PDF a escala i renderitza amb Blender. Terreny 3D amb imatge de satèl·lit i perfils. Linux, Windows i macOS. Codi obert GPL-3.0.">
+  <meta name="keywords" content="modelador 3D lliure, modelador 3D Linux, BIM lliure, exportar IFC, amidaments, programari d'enginyeria civil, disseny 3D, modelatge 3D, CAD Linux, terreny 3D, perfil longitudinal, codi obert, GPL">
+  <meta name="author" content="Ing. Marco Sumari">
+
+  <link rel="canonical" href="https://ingetrazo.com/ca/">
+  <link rel="alternate" hreflang="es" href="https://ingetrazo.com/">
+  <link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/">
+  <link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/">
+  <link rel="alternate" hreflang="ca" href="https://ingetrazo.com/ca/">
+  <link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/">
+
+  <meta property="og:site_name" content="IngeTrazo">
+  <meta property="og:title" content="IngeTrazo · Modelador 3D lliure per a arquitectura i enginyeria">
+  <meta property="og:description" content="Traça com a mà alçada: modela empenyent cares, compon plànols en PDF a escala i renderitza amb Blender. Terreny 3D amb imatge de satèl·lit. Lliure i de codi obert (GPL-3.0). Linux, Windows i macOS.">
+  <meta property="og:image" content="https://ingetrazo.com/images/og-banner.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://ingetrazo.com/ca/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ca_ES">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IngeTrazo · Modelador 3D lliure per a arquitectura i enginyeria">
+  <meta name="twitter:description" content="Traça com a mà alçada: plànols en PDF a escala, renders amb Blender i terreny 3D amb imatge de satèl·lit. Lliure i de codi obert. Linux, Windows i macOS.">
+  <meta name="twitter:image" content="https://ingetrazo.com/images/og-banner.jpg">
+
+  <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/images/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/images/logo.png" sizes="180x180">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "IngeTrazo",
+    "operatingSystem": "Linux, Windows, macOS",
+    "applicationCategory": "DesignApplication",
+    "description": "Modelador 3D lliure per a arquitectura, enginyeria civil i disseny 3D, amb un modelatge d'empènyer i estirar que fa la sensació de traçar a mà alçada i una capa BIM opcional en desenvolupament (etiquetes i exportació IFC). Inclou una biblioteca de 1510 components i 427 textures a mida real amb els 213 colors RAL Classic, composició de làmines amb plànols a escala exacta i exportació a PDF, terreny 3D amb imatge de satèl·lit, aixecaments fotogramètrics amb dron i perfils longitudinals; obre fitxers .skp de totes les versions, i importa i exporta .dae, .obj, glTF i STL. Es pot fer anar des d'assistents d'IA per MCP, també sense finestra per automatitzar. Codi obert sota GPL-3.0.",
+    "url": "https://ingetrazo.com/ca/",
+    "softwareVersion": "0.6.3.2",
+    "downloadUrl": "https://github.com/ingelibre/ingetrazo/releases/latest",
+    "screenshot": "https://ingetrazo.com/images/screenshots/principal.jpeg",
+    "image": "https://ingetrazo.com/images/logo.png",
+    "author": {
+      "@type": "Person",
+      "name": "Ing. Marco Sumari",
+      "email": "ing.sumari@gmail.com"
+    },
+    "inLanguage": "ca",
+    "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Programari lliure sota llicència GPL-3.0."
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Què vol dir que sigui lliure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IngeTrazo és programari lliure sota llicència GPL-3.0: el pots fer servir per a qualsevol projecte, estudiar com funciona, millorar-lo i compartir-lo, amb el codi font publicat a GitHub. Els teus models són teus."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Què fa diferent IngeTrazo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "És lliure (GPL-3.0) i funciona de manera nativa a Linux, a més de Windows i macOS. Garanteix sòlids hermètics i porta una capa BIM opcional, en desenvolupament. Compon làmines a escala en PDF, porta el terreny real (satèl·lit, elevació, dron, punts GPS) i es connecta amb assistents d'IA que dibuixen amb el mateix motor, i cada pas es pot desfer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quins formats obre i desa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Obre els seus documents .igz, plànols DWG i DXF, models .skp de totes les versions (amb OpenSKP, un lector lliure al qual IngeTrazo contribueix), COLLADA (.dae), OBJ, glTF i STL. Desa en .igz, un format obert, i exporta COLLADA, OBJ, glTF, STL, IFC, DXF i plànols en PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Té BIM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, com una capa opcional que creix amb cada versió: etiquetes la geometria que ja has traçat amb la seva classe IFC (mur, llosa, pilar, biga, porta, finestra, espai…), en veus les quantitats a la taula BIM —amb cercador, filtre per classe, agrupació i totals d'amidament i volum— i l'exportes en IFC4 o IFC4.3, amb coordenades globals, nord del projecte i ubicació. IngePresupuestos llegeix aquest IFC per treure els amidaments del pressupost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Puc generar els plànols del projecte?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. El compositor de làmines col·loca vistes del model a escala exacta (1:50, 1:100…) en fulls A4–A0, amb cotes ancorades al model que s'actualitzen si el model canvia, caixetí editable, escala gràfica, títols de vista numerats, marques de secció, cotes de nivell i en cadena, crides de detall i un estil vectorial de línies ocultes amb plomes i poché. Exporta cada làmina — o el joc complet — a PDF vectorial, i la vista a DXF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hi puc afegir funcions amb extensions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Extensions ▸ Gestiona les extensions… obre el catàleg de la comunitat: més de 130 extensions gratuïtes en Python que s'instal·len amb un clic, comprovades amb la seva empremta SHA-256. Escriure la teva és senzill: un fitxer Python amb les teves eines, integrat amb el desfer. Ja hi venen incloses la Informació del model i una Consola Python per inspeccionar i automatitzar el model amb codi. La guia és al manual (en castellà)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Té intel·ligència artificial?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, de dues maneres. L'Assistent IA integrat és un xat: hi enganxes la clau del proveïdor que prefereixis (Groq té quota gratuïta; també Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek o Ollama al teu propi ordinador) i li demanes el model amb paraules o amb una foto. I el pont MCP permet que Claude o qualsevol client MCP facin anar l'aplicació oberta —o un IngeTrazo sense finestra, per automatitzar— amb eines amb nom i un pas de desfer per cada acció. IngeTrazo no demana cap compte ni limita els usos, i amb un model local tot es queda al teu ordinador. Sense IA, IngeTrazo funciona igual i sense internet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Funciona sense internet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, tot el modelador funciona sense connexió i els teus fitxers són al teu ordinador. Només el mapa de satèl·lit i el terreny 3D baixen imatges d'internet mentre els fas servir."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Com l'instal·lo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Windows: baixa l'instal·lador d'ingetrazo.com o de les versions publicades a GitHub, fes-hi doble clic i llestos. A Linux: baixa el Flatpak (fes-hi doble clic i la botiga d'aplicacions l'instal·la, amb els fitxers .igz i .skp associats), l'AppImage (dona-li permís d'execució i obre'l) o, si la teva distribució no porta FUSE, el tar.gz — descomprimeix-lo on vulguis i executa ingetrazo. A macOS (Apple Silicon): baixa el .dmg, arrossega IngeTrazo a Aplicacions i la primera vegada autoritza'l a Configuració del Sistema ▸ Privacitat i seguretat ▸ Obre igualment (a macOS 14 o anterior, clic dret ▸ Obre), perquè encara no està signat amb un compte d'Apple. També el pots executar des del codi font amb 3 ordres."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Serveix per a la impressió 3D?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Encara no és el seu punt fort, però és a l'horitzó. Avui pots exportar a STL binari i portar-lo al laminador, i els sòlids que fa el motor són tancats; el que encara no porta són les eines pròpies de la impressió 3D (revisar gruixos de paret, voladissos, reparar malles, 3MF). Estan previstes per més endavant."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Com informo d'un problema o hi col·laboro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El projecte és a GitHub (github.com/ingelibre/ingetrazo): obre-hi una incidència amb el teu fitxer d'exemple, proposa millores o envia codi. També pots escriure per correu."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ AVISO DE NUEVA VERSIÓN ============ -->
+  <div class="announce" id="announce">
+    <p><strong>Novetat:</strong> ja pots descarregar IngeTrazo <span id="announce-version">v0.6.3.2</span> — <a href="/ca/novedades">mira les novetats →</a></p>
+    <button type="button" class="announce-close" aria-label="Tanca l'avís">×</button>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-brand">
+        <img src="/images/logo.png" alt="IngeTrazo" width="32" height="32">
+        <span>IngeTrazo</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#features">Característiques</a>
+        <a href="#descargar">Descarrega</a>
+        <a href="/ca/extensiones">Extensions</a>
+        <a href="https://ingetrazo-docs.pages.dev" target="_blank" rel="noopener">Manual (en castellà)</a>
+        <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">GitHub</a>
+        <a href="/ca/apoyar">Dona suport</a>
+        <span class="lang-switch" aria-label="Idioma"><a href="/" hreflang="es" data-lang="es">ES</a><a href="/en/" hreflang="en" data-lang="en">EN</a><a href="/pt/" hreflang="pt" data-lang="pt">PT</a><a href="/ca/" hreflang="ca" data-lang="ca" aria-current="true">CA</a></span>
+      </nav>
+      <button class="nav-toggle" aria-label="Obre el menú" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-center">
+      <span class="hero-badge">Programari lliure · GPL-3.0</span>
+      <h1>Traça com a <span class="grad-text">mà&nbsp;alçada</span>.</h1>
+      <p class="hero-lead">El modelador 3D lliure per a arquitectura, enginyeria i disseny.</p>
+      <p class="hero-name"><strong>IngeTrazo</strong> (in-khe-TRA-sso): del castellà <em>inge</em>(niería) + <em>trazo</em> — el traç de l'enginyer.</p>
+      <div class="hero-ctas">
+        <a href="#descargar" class="btn btn-primary btn-lg" id="hero-dl">Descarrega IngeTrazo</a>
+        <a href="https://github.com/ingelibre/ingetrazo" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">Mira el codi</a>
+      </div>
+    </div>
+    <div class="hero-screenshot-wrap">
+      <img class="hero-img zoomable" src="/images/screenshots/principal.webp"
+               srcset="/images/screenshots/principal-480.webp 480w, /images/screenshots/principal-960.webp 960w, /images/screenshots/principal.webp 1600w"
+               sizes="(max-width: 900px) calc(100vw - 32px), 1120px"
+           alt="IngeTrazo amb la plaça de toros: terrasses, graderies, arcs i públic, amb els panells de capes, escenes i components i les pestanyes de Terreny, Nivells, IA i Renderització"
+           width="1600" height="900" loading="eager" fetchpriority="high">
+    </div>
+  </section>
+
+  <!-- ============ CIFRAS ============ -->
+  <section class="stats" aria-label="IngeTrazo en xifres">
+    <div class="container stats-row">
+        <div class="stat"><strong data-stat="downloads">120.400+</strong><span>descàrregues</span></div>
+        <div class="stat"><strong data-stat="stars">150</strong><span>estrelles a GitHub</span></div>
+        <div class="stat"><strong>1.510</strong><span>components</span></div>
+        <div class="stat"><strong>PDF</strong><span>plànols a escala</span></div>
+        <div class="stat"><strong>.igz</strong><span>format obert</span></div>
+        <div class="stat"><strong>3</strong><span>Linux · Windows · macOS</span></div>
+    </div>
+  </section>
+
+  <!-- ============ NOVEDADES 0.6.3 ============ -->
+  <section id="novedades" class="section bg-light reveal">
+    <div class="container">
+      <div class="section-head">
+        <h2>Novetats de la 0.6.3</h2>
+        <p>Una versió dedicada als grups i components, amb l'arrossegament molt més fluid gràcies al motor Rust, làmines més còmodes, un BIM que continua creixent i IngeTrazo a punt per treballar amb assistents d'IA. Més de 30 persones han aportat codi a aquesta versió.</p>
+      </div>
+      <div class="ej-grid nov-grid">
+        <article class="ej-card nov-card">
+          <h3>Grups i components</h3>
+          <p>Edites dins d'un grup sense estrebades i el que canvies en un component arriba a totes les còpies. Els fitxers <code>.skp</code> complexos s'importen amb els components niats, i <strong>La meva biblioteca</strong> desa les teves pròpies carpetes de components.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Arrossegar sense esperes</h3>
+          <p>Mou, Gira i Escala ja no refan el model a cada fotograma: el motor Rust dibuixa l'arrossegament i el model canvia una sola vegada, quan deixes anar. En una escena de prova de 6.400 cares, d'uns 320 ms a entre 1,3 i 3 ms per fotograma.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Làmines</h3>
+          <p>Pestanyes que es reordenen arrossegant-les, un panell amb la miniatura de cada làmina, llegenda editable, índex de làmines i un fons per a l'escala i la fletxa de nord sobre una ortofoto.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Caixa de secció i Terreny</h3>
+          <p>Retalla el model amb una caixa de sis cares, a la vista i a les làmines. <strong>Dibuix ▸ Terreny</strong> crea, deforma, estampa i projecta terreny editable, també a partir dels punts topogràfics d'un DXF.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Càmera des d'una foto i Talla l'obertura</h3>
+          <p>Troba la càmera que va fer una foto perquè el model hi encaixi. I una finestra o una porta obre la seva pròpia obertura al mur —encara que el mur sigui un grup— i l'obertura la segueix quan la mous.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Un BIM que creix</h3>
+          <p>La taula BIM cerca, filtra per classe IFC, agrupa i suma amidaments i volum. L'exportació IFC4.3 és estable, i l'IFC surt en coordenades globals amb el nord del projecte i la ubicació.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Per a agents d'IA</h3>
+          <p>Eines MCP amb nom i amb desfer, <code>ingetrazo --server</code>, un mode sense finestra per automatitzar i desat en JSON pla per al control de versions.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Turc i català</h3>
+          <p>Dos idiomes nous a la interfície, i termes en vietnamita. Gràcies a les persones que els han traduït.</p>
+        </article>
+      </div>
+      <p class="nov-cta"><a class="btn btn-primary" href="/ca/novedades">Totes les novetats de la 0.6.2 i la 0.6.3 →</a></p>
+    </div>
+  </section>
+
+  <!-- ============ 3 PASOS ============ -->
+  <section class="steps" aria-label="Com funciona">
+    <div class="container">
+      <h2>De l'esbós al plànol en 3 passos</h2>
+      <ol class="steps-row">
+        <li class="step"><span class="step-n">1</span><h3>Traça</h3><p>Dibuixa com a mà alçada amb mides exactes, o importa els teus plànols i models.</p></li>
+        <li class="step"><span class="step-n">2</span><h3>Completa</h3><p>Materials i textures a mida real, components, el terreny del lloc i l'ombra del sol.</p></li>
+        <li class="step"><span class="step-n">3</span><h3>Lliura</h3><p>Plànols en PDF a escala, imatges amb Blender i fitxers DXF, COLLADA, glTF o OBJ.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <div id="features">
+    <div class="container features-head"><h2>Tot el que necessites per modelar, etiquetar i dibuixar</h2></div>
+
+    <!-- ── 1. Modelado freeform ── -->
+    <section class="feat reveal">
+      <div class="container feat-row">
+        <div class="feat-text">
+          <h2>Traça com a mà alçada</h2>
+          <p>Dibuixa línies, rectangles, cercles i arcs; empeny una cara i ja tens un sòlid. Sense capes de complexitat CAD entre la teva idea i el model.</p>
+          <ul class="feat-list">
+            <li><strong>Empeny/Estira, Segueix-me, Equidistància</strong> — modeles empenyent cares, sense menús pel mig</li>
+            <li><strong>Mides exactes amb el teclat</strong> — escriu <code>3.50</code> i la línia fa 3,50 m</li>
+            <li><strong>Inferències intel·ligents</strong> — eixos, prolongacions, paral·leles i perpendiculars</li>
+            <li><strong>Materials, textures i cotes</strong> sobre qualsevol cara</li>
+          </ul>
+        </div>
+        <figure class="feat-img">
+          <img class="zoomable" src="/images/screenshots/modelado.webp"
+               srcset="/images/screenshots/modelado-480.webp 480w, /images/screenshots/modelado-960.webp 960w, /images/screenshots/modelado.webp 1600w"
+               sizes="(max-width: 860px) calc(100vw - 64px), 640px"
+               alt="Dibuixant amb IngeTrazo el banc amb pèrgola de Yanque: un rectangle a mig traçar sobre el dau de formigó amb la mida 0,65 × 1,35 m al quadre de valors, al costat de la figura de l'enginyer amb casc" width="1600" height="1007" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── 2. BIM (en desarrollo) ── -->
+    <section class="feat feat-bim reveal">
+      <div class="container feat-row feat-reverse">
+        <div class="feat-text">
+          <h2>Un BIM que no t'encotilla</h2>
+          <p>Modeles amb llibertat, empenyent cares, i quan cal <strong>etiquetes</strong> aquesta mateixa geometria amb la seva classe IFC: mur, llosa, pilar, biga, sabata, porta, finestra, espai, armadura d'acer… El BIM va a sobre del teu dibuix, no en primitives rígides.</p>
+          <ul class="feat-list">
+            <li><strong>Etiquetes IFC sobre geometria lliure</strong> — cares soltes o grups sencers, amb 16 classes d'arquitectura i obra civil; agrupar no esborra mai cap etiqueta</li>
+            <li><strong>Taula BIM</strong> — cerca per nom, classe o ruta, filtra per classe IFC i agrupa per grup, classe o nom, amb els totals d'amidament i volum; exporta-ho tot o només el que veus a CSV</li>
+            <li><strong>Exporta IFC4 i IFC4.3</strong> — en coordenades globals, amb el nord del projecte, la ubicació de l'emplaçament i les quantitats base de cada objecte</li>
+            <li><strong>Paquets de lliurament verificats</strong> — comprovacions del model amb evidències, separades de la revisió d'un professional; el primer perfil és el de Türkiye</li>
+            <li><strong>Pestanya Ubicació</strong> a Informació del model — consulta, fixa o esborra on és el teu projecte</li>
+            <li><strong>Amidaments cap a <a href="https://ingepresupuestos.com" target="_blank" rel="noopener">IngePresupuestos</a></strong> — l'IFC porta les quantitats amb què muntes el pressupost</li>
+          </ul>
+          <p class="feat-muted-light">Sòlids hermètics garantits: si una operació hagués de trencar el volum, el motor la rebutja en lloc de malmetre els amidaments. És una capa en desenvolupament que creix amb cada versió; explica'ns a GitHub què necessites.</p>
+        </div>
+        <!-- CAPTURA: tabla BIM de la 0.6.3 — pestaña BIM de la barra lateral con un edificio pequeño etiquetado (IfcWall, IfcSlab, IfcColumn, IfcSpace), «Agrupar por clase IFC» elegido, encabezados con su número de objetos y los totales de metrado y volumen, la columna «Ruta en el esquema» visible y el embudo de clases abierto. Hasta tenerla se usa bim (nave industrial). -->
+        <figure class="feat-img">
+          <img class="zoomable" src="/images/screenshots/bim.webp"
+               srcset="/images/screenshots/bim-480.webp 480w, /images/screenshots/bim-960.webp 960w, /images/screenshots/bim.webp 1600w"
+               sizes="(max-width: 860px) calc(100vw - 64px), 640px"
+               alt="Magatzem amb arcs d'encavallades metàl·liques, coberta corba i murs de bloc sobre el terreny, amb els panells de capes, escenes i components" width="1600" height="900" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── 3. Terreno — verde ── -->
+    <section class="feat feat-terra reveal">
+      <div class="container feat-row">
+        <div class="feat-text">
+          <h2>El terreny és el punt de partida</h2>
+          <p>Situa el teu projecte al món real: imatge de satèl·lit, relleu 3D i dades de camp, directament al modelador.</p>
+          <ul class="feat-list">
+            <li><strong>Terreny 3D amb imatge de satèl·lit</strong> — elevacions reals de la teva zona</li>
+            <li><strong>Perfil longitudinal</strong> — traça una ruta i mira'n el perfil a l'instant</li>
+            <li><strong>Aixecament amb dron (WebODM)</strong> — la teva malla fotogramètrica amb textura com a referència, amb cotes reals</li>
+            <li><strong>Punts GPS / estació total</strong> — importa el teu CSV en UTM i dibuixa sobre punts exactes</li>
+            <li><strong>UTM WGS84 a tota la interfície</strong> — escriu Zona/E/N tal com ho indica el teu aparell</li>
+            <li><strong>Nord del projecte</strong> — dibuixa a escaire amb els eixos; el mapa, el terreny i les ombres giren per sota</li>
+            <li><strong>Rutes i límits de parcel·la</strong> georeferenciats, amb progressives i àrees</li>
+          </ul>
+          <p class="feat-muted">Tot el modelador funciona sense connexió; només el mapa fa servir internet.</p>
+        </div>
+        <figure class="feat-img">
+          <img class="zoomable" src="/images/screenshots/terreno.webp"
+               srcset="/images/screenshots/terreno-480.webp 480w, /images/screenshots/terreno-960.webp 960w, /images/screenshots/terreno.webp 1600w"
+               sizes="(max-width: 860px) calc(100vw - 64px), 640px"
+               alt="Aixecament fotogramètric amb dron d'una vall amb una ruta traçada, el perfil longitudinal i la lectura UTM en viu" width="1600" height="1057" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── 4. Láminas / planos ── -->
+    <section class="feat reveal">
+      <div class="container feat-row feat-reverse">
+        <div class="feat-text">
+          <h2>Del model al plànol imprès</h2>
+          <p>Compon làmines com a QGIS: vistes del model a <strong>escala exacta</strong> sobre el full, cotes que es tornen a mesurar soles i un PDF vectorial a punt per a l'expedient.</p>
+          <ul class="feat-list">
+            <li><strong>Escala real garantida</strong> — a 1:100, un marc de 200 mm són 20 m de model, sempre</li>
+            <li><strong>Cotes ancorades al model</strong> — edites el mur i la cota es mou i es torna a mesurar sola; cotes en cadena amb el total i cotes de nivell que llegeixen l'alçada del punt</li>
+            <li><strong>Estil vectorial amb línies ocultes exactes</strong> — tres plomes (tall, perfils, arestes) i poché a les seccions: el dibuix que passaria a tinta un delineant</li>
+            <li><strong>Títols numerats, marques de secció i crides de detall</strong> — la planta diu per on passa la secció A-A i quina làmina amplia cada detall</li>
+            <li><strong>Caixetí editable, escala gràfica i fletxa de nord</strong> — i diverses làmines per document, a PDF amb un clic</li>
+            <li><strong>DXF cap a <a href="https://ingecad.org" target="_blank" rel="noopener">IngeCAD</a></strong> — la vista vectorial, amb una capa per cada classe de línia, a punt per acabar els detalls 2D al CAD lliure de l'ecosistema</li>
+          </ul>
+        </div>
+        <figure class="feat-img">
+          <img class="zoomable" src="/images/screenshots/laminas.webp"
+               srcset="/images/screenshots/laminas-480.webp 480w, /images/screenshots/laminas-960.webp 960w, /images/screenshots/laminas.webp 1600w"
+               sizes="(max-width: 860px) calc(100vw - 64px), 640px"
+               data-caption="Compositor de làmines d'IngeTrazo amb una làmina A3 de la plaça de Yanque: vistes frontal, esquerra i dreta a 1:100, una vista 3D sobre el terreny de satèl·lit i el caixetí"
+               alt="Compositor de làmines d'IngeTrazo amb una làmina A3 de la plaça de Yanque: vistes frontal, esquerra i dreta a 1:100, una vista 3D sobre el terreny de satèl·lit i el caixetí" width="1600" height="1007" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── 5. IA y MCP ── -->
+    <section class="feat reveal" id="ia">
+      <div class="container feat-row">
+        <div class="feat-text">
+          <h2>Fes anar IngeTrazo des del teu assistent d'IA</h2>
+          <p>Connecta Claude o qualsevol client compatible amb MCP i demana-li el model amb paraules: dibuixa, consulta, mira captures de la vista i corregeix, <em>a l'aplicació oberta</em>. Cada acció és <strong>un pas de desfer</strong> i, si alguna cosa falla, el document torna sencer a com era.</p>
+          <ul class="feat-list">
+            <li><strong>Gratis, sense compte i sense límit d'usos</strong> — IngeTrazo no et demana que et registris ni compta les teves generacions, a diferència dels serveis de pagament al núvol</li>
+            <li><strong>El teu model és al teu ordinador</strong> — el pont només escolta a la teva pròpia màquina; amb un model local, res no en surt i tot funciona sense internet</li>
+            <li><strong>Eines MCP amb nom</strong> — escena, objectes, capes, escenes, càmera, selecció, captures, render de làmines, obrir, desar, importar, exportar i materials; cap no executa codi i totes es poden desfer</li>
+            <li><strong>Sense finestra, per automatitzar</strong> — <code>ingetrazo --server</code> o <code>--headless --ai-bridge</code> obren el document sense pantalla, en un servidor o a la integració contínua</li>
+            <li><strong>JSON pla per al control de versions</strong> — el <code>.igz</code> es desa com a text llegible i Git mostra què ha canviat a cada revisió</li>
+            <li><strong>Programari lliure</strong> — el pont i el seu servidor MCP són GPL-3.0, com tot IngeTrazo</li>
+          </ul>
+          <p class="feat-muted">Desar des de l'agent ve desactivat: ets tu qui ho permet. <a href="https://ingetrazo-docs.pages.dev/ia/" target="_blank" rel="noopener">Guia pas a pas al manual (en castellà) →</a></p>
+        </div>
+        <!-- CAPTURA: MCP en acción con la 0.6.3 — un cliente MCP (Claude Code o Claude Desktop) a un lado pidiendo, por ejemplo, «abre plaza.igz, pon la escena Planta, oculta la capa Mobiliario y renderiza la lámina L-02»; IngeTrazo al otro con el resultado, y en el chat la lista de herramientas con nombre que usó (get_scene_info, show_scene, set_layer_visibility, render_sheet) y la imagen de la lámina devuelta. Hasta tenerla se usa mcp-claude (0.5.x). -->
+        <figure class="feat-img">
+          <img class="zoomable" src="/images/screenshots/mcp-claude.webp"
+               srcset="/images/screenshots/mcp-claude-480.webp 480w, /images/screenshots/mcp-claude-960.webp 960w, /images/screenshots/mcp-claude.webp 1600w"
+               sizes="(max-width: 860px) calc(100vw - 64px), 640px"
+               data-caption="El pont MCP en un escriptori Ubuntu, sense retallar: Claude Code, al terminal, acaba de dibuixar a l'aplicació oberta del costat una taula de menjador d'1,40 × 0,80 × 0,75 m amb quatre cadires (seient de 0,45 × 0,45 a 0,45 m, respatller a 0,90 m) —«una taula amb 4 cadires, mides estàndard»— i respon amb la taula de dimensions que ha fet servir; a la dreta, el diàleg del pont amb la línia de connexió. Com es fa: pestanya IA ▸ Pont IA (MCP), copia la línia que et mostra, enganxa-la al terminal (claude mcp add ingetrazo -- …) o a la configuració del teu client MCP, i demana-li el que vulguis amb IngeTrazo obert."
+               alt="Escriptori Ubuntu sencer: Claude Code en un terminal a l'esquerra amb la llista de mides de la taula amb quatre cadires que acaba de dibuixar, i IngeTrazo a la dreta amb el model i el diàleg Pont IA (MCP) obert" width="1600" height="1000" loading="lazy">
+        </figure>
+      </div>
+      <div class="container">
+        <h3 class="feat-ia-title">Així es connecta</h3>
+        <div class="feat-ia-grid">
+          <div class="feat-ia-cfg">
+            <h3>Claude Code, a Windows</h3>
+<div class="dl-code">
+<code>claude mcp add ingetrazo -- "C:\Program Files\IngeTrazo\ingetrazo-mcp.exe"</code>
+<button class="dl-code-copy" type="button" data-copy="claude mcp add ingetrazo -- &quot;C:\Program Files\IngeTrazo\ingetrazo-mcp.exe&quot;">Copia</button>
+</div>
+            <p>A Linux, l'ordre és l'executable d'IngeTrazo seguit de <code>--mcp</code>. La pestanya IA ▸ Pont IA (MCP) et mostra la línia exacta del teu sistema, a punt per copiar.</p>
+          </div>
+          <div class="feat-ia-cfg">
+            <h3>Qualsevol client MCP</h3>
+<div class="dl-code">
+<code>{
+  "mcpServers": {
+    "ingetrazo": {
+      "command": "C:\\Program Files\\IngeTrazo\\ingetrazo-mcp.exe",
+      "args": []
+    }
+  }
+}</code>
+<button class="dl-code-copy" type="button" data-copy="{
+  &quot;mcpServers&quot;: {
+    &quot;ingetrazo&quot;: {
+      &quot;command&quot;: &quot;C:\\Program Files\\IngeTrazo\\ingetrazo-mcp.exe&quot;,
+      &quot;args&quot;: []
+    }
+  }
+}">Copia</button>
+</div>
+            <p>El bloc <code>mcpServers</code> del fitxer de configuració del teu client. Registra'l una vegada i serveix per a totes les finestres que tinguin el pont engegat.</p>
+          </div>
+          <div class="feat-ia-cfg">
+            <h3>Sense finestra, per automatitzar</h3>
+<div class="dl-code">
+<code>ingetrazo --server Casa.igz
+
+ingetrazo --headless --ai-bridge --open Casa.igz \
+    --allow-save --save-format json --allow-shutdown</code>
+<button class="dl-code-copy" type="button" data-copy="ingetrazo --headless --ai-bridge --open Casa.igz --allow-save --save-format json --allow-shutdown">Copia</button>
+</div>
+            <p>L'agent treballa el document de cap a cap, el desa com a JSON pla i tanca amb <code>shutdown</code>: a punt per revisar-lo en una <em lang="en">pull request</em>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Y además: asistente IA, componentes e importar ── -->
+    <section class="feat more reveal">
+      <div class="container">
+        <h2 class="more-title">I a més</h2>
+        <div class="more-grid">
+        <article class="more-card">
+          <figure class="more-img">
+            <img class="zoomable" src="/images/screenshots/asistente-ia.webp"
+               sizes="(max-width: 960px) min(640px, calc(100vw - 40px)), 380px"
+                 data-caption="L'Assistent IA dins d'IngeTrazo: el fanal solar dels exemples amb el xat obert a sobre i l'encàrrec escrit al quadre"
+                 alt="L'Assistent IA dins d'IngeTrazo: el fanal solar dels exemples amb el xat obert a sobre i l'encàrrec escrit al quadre" width="1600" height="965" loading="lazy">
+          </figure>
+          <div class="more-body">
+            <h3>Assistent IA dins de l'aplicació</h3>
+            <p>Descriu el que vols —o adjunta una foto— i la IA escriu la <strong>recepta</strong>: revolucions, extrusions, Python sobre l'API d'accions d'IngeTrazo. El motor determinista l'executa: <strong>cada pas és un desfer</strong>, cada recepta passa pel control d'hermeticitat i el model continua sent teu, editable a mà.</p>
+            <ul class="feat-list">
+              <li><strong>Assistent IA integrat</strong> (pestanya IA de la barra lateral, Ctrl+Maj+A) — un xat amb la teva pròpia clau: Groq (amb quota gratuïta), Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek o un model local amb Ollama. Sense intermediaris</li>
+              <li><strong>Veu el que fa</strong> — rep captures del visor i corregeix segons el que mira; amb <strong>Foto…</strong> reconstrueix el que mostra una imatge amb les mides que li donis</li>
+              <li><strong>Al teu ordinador, si vols</strong> — amb Ollama el model funciona al teu ordinador: sense internet, sense clau i sense pagar per ús</li>
+            </ul>
+            <p class="feat-muted"><a href="https://ingetrazo-docs.pages.dev/ia/" target="_blank" rel="noopener">Guia pas a pas al manual (en castellà) →</a></p>
+          </div>
+        </article>
+        <article class="more-card">
+          <figure class="more-img">
+          <img class="zoomable" src="/images/screenshots/componentes.webp"
+               srcset="/images/screenshots/componentes-480.webp 480w, /images/screenshots/componentes-960.webp 960w, /images/screenshots/componentes.webp 1600w"
+               sizes="(max-width: 960px) min(640px, calc(100vw - 40px)), 380px"
+               data-caption="Una escena poblada amb la safata de components d'IngeTrazo: un arbre amb ombres, una camioneta, un sofà, una font i figures d'escala, amb la biblioteca de persones, mobles, arbres i vehicles a la dreta"
+               alt="Una escena poblada amb la safata de components d'IngeTrazo: un arbre amb ombres, una camioneta, un sofà, una font i figures d'escala, amb la biblioteca de persones, mobles, arbres i vehicles a la dreta" width="1600" height="1007" loading="lazy">
+        </figure>
+          <div class="more-body">
+            <h3>Poblar l'escena no t'hauria de costar tota la tarda</h3>
+            <p>Un model s'entén quan té gent al costat, un arbre i un cotxe. IngeTrazo porta <strong>1.510 components</strong> a un clic i <strong>427 textures</strong> — i cadascun arriba <strong>a la seva mida real</strong>, no a la que li toqui.</p>
+            <ul class="feat-list">
+              <li><strong>1.510 models en línia</strong> — mobles, portes, finestres, arbres, vehicles i persones. Navegar-hi costa quilobytes: només es baixa el que cliques, i queda desat</li>
+              <li><strong>També sense connexió</strong> — vuit models i sis figures d'escala venen dins del programa</li>
+              <li><strong>427 textures amb la mida real</strong> — un maó sembla un maó perquè el catàleg diu quant mesura, no perquè l'ajustis a ull</li>
+            </ul>
+            <p class="feat-muted">Tot el material prové de la biblioteca lliure de <a href="https://www.sweethome3d.com" target="_blank" rel="noopener">Sweet Home 3D</a> (CC0, CC BY i Art Lliure); IngeTrazo mostra sempre la llicència i l'autoria de cada peça.</p>
+          </div>
+        </article>
+        <article class="more-card">
+          <figure class="more-img">
+          <img class="zoomable" src="/images/screenshots/importar.webp"
+               srcset="/images/screenshots/importar-480.webp 480w, /images/screenshots/importar-960.webp 960w, /images/screenshots/importar.webp 1600w"
+               sizes="(max-width: 960px) min(640px, calc(100vw - 40px)), 380px"
+               data-caption="La plaça major de Yanque modelada amb IngeTrazo sobre el seu terreny de satèl·lit: arc de benvinguda, pèrgoles, jardins, font, fanals solars i banderes, amb les capes i les escenes al panell"
+               alt="La plaça major de Yanque modelada amb IngeTrazo sobre el seu terreny de satèl·lit: arc de benvinguda, pèrgoles, jardins, font, fanals solars i banderes, amb les capes i les escenes al panell" width="1600" height="1007" loading="lazy">
+        </figure>
+          <div class="more-body">
+            <h3>Porta els teus plànols i models</h3>
+          <p>La biblioteca que has fet durant anys no es queda enrere — i els teus companys tampoc: IngeTrazo importa plànols DWG i DXF, models <code>.skp</code> de totes les versions gràcies a <a href="https://github.com/iamahsanmehmood/openskp" target="_blank" rel="noopener"><strong>OpenSKP</strong></a>, un lector lliure, i OBJ, COLLADA, glTF i STL — sense convertidors ni instal·lacions addicionals.</p>
+          <ul class="feat-list">
+            <li><strong>Plànols DWG i DXF</strong> — cada capa com un grup, a punt per calcar i aixecar</li>
+            <li><strong>Amb tot a dins</strong> — grups, components, materials, textures, capes, escenes, cotes i textos amb línia guia</li>
+            <li><strong>Per tornar a emportar-te el model</strong> — exporta COLLADA (.dae), glTF o OBJ, que obre gairebé qualsevol programa 3D</li>
+            <li><strong>I a més OBJ, COLLADA, glTF, STL</strong> i <strong>IFC</strong></li>
+          </ul>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============ EXTENSIONES ============ -->
+  <!-- Cards filled by /home-ext.js from /extensiones.json. -->
+  <section id="extensiones" class="section bg-light home-ext reveal">
+    <div class="container">
+      <div class="section-head">
+        <h2>Extensions de la comunitat</h2>
+        <p>Més de 130 extensions gratuïtes, escrites en Python per més de 50 persones: arquitectura, dibuix, fabricació, estructures, terreny, render i més. S'instal·len des de la mateixa aplicació, a <strong>Extensions ▸ Gestiona les extensions…</strong>, que comprova cada baixada i t'avisa quan hi ha una versió nova.</p>
+      </div>
+      <!-- CAPTURA: catálogo de extensiones dentro de la app — Extensiones ▸ Gestionar extensiones… con la lista del catálogo de la comunidad (miniaturas, etiquetas, «Revisada»/«Comunidad», botón Descargar y una con «Actualizar»), filtrada por la etiqueta Arquitectura para que se vean varias de eddy-99. Iría en esta sección, encima de las tarjetas. -->
+      <div class="ext-grid" id="home-ext-grid"></div>
+      <p class="home-ext-cta">
+        <a class="btn btn-primary" href="/ca/extensiones">Mira les <span id="home-ext-n"></span> extensions →</a>
+        <a class="home-ext-pub" href="/ca/extensiones#publicar">N'has fet una? Publica-la →</a>
+      </p>
+      <div class="home-ext-more">
+        <div>
+          <h3>Gent que no para</h3>
+          <p><a href="https://github.com/eddy-99" target="_blank" rel="noopener">Phillip Edwards (eddy-99)</a> ja ha publicat 28 extensions d'arquitectura i construcció: obertures en murs, teules, xemeneies, canals, finestres i portes d'època, subestructura, planta 3D… Després venen Pesi amb 11, aashishzharbade-arch amb 9 i Ezequiel M. Rezende amb 7, entre més de 50 autors i autores.</p>
+          <h3>Acabades d'arribar</h3>
+          <p>Obertures 3D, Planta 3D, Components dinàmics, Estudi de materials, FGId Escenes, Estira vèrtexs, Punts d'ajust arrodonits i Progressives per a carreteres i canals.</p>
+        </div>
+        <div class="home-ext-dev">
+          <h3>Escriu la teva</h3>
+          <p>Una extensió és un fitxer Python: una classe amb el seu nom i el que fa quan s'activa. El que canvia el model passa pel desfer, i una extensió que falla no fa caure IngeTrazo. Amb la <strong>biblioteca de recursos</strong>, la teva extensió desa els seus propis recursos i els comparteix en paquets portables <code>.iglib</code>.</p>
+<div class="dl-code">
+<code># ~/.local/share/ingetrazo/plugins/hola.py
+from tools.base import Tool
+
+
+class Hola(Tool):
+    name = "Hola"
+    description = "Saluda a la barra d'estat."
+
+    def on_activate(self, viewport):
+        viewport.flash_status("Hola des d'una extensió!", 3000)
+
+    def on_deactivate(self, viewport):
+        pass</code>
+<button class="dl-code-copy" type="button" data-copy="# ~/.local/share/ingetrazo/plugins/hola.py
+from tools.base import Tool
+
+
+class Hola(Tool):
+    name = &quot;Hola&quot;
+    description = &quot;Saluda a la barra d'estat.&quot;
+
+    def on_activate(self, viewport):
+        viewport.flash_status(&quot;Hola des d'una extensió!&quot;, 3000)
+
+    def on_deactivate(self, viewport):
+        pass">Copia</button>
+</div>
+          <p><a href="https://github.com/ingelibre/ingetrazo/blob/main/docs/plugins.md" target="_blank" rel="noopener">Guia per escriure extensions (en anglès) →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PUENTE INGEPRESUPUESTOS ============ -->
+  <section class="bridge reveal">
+    <div class="container">
+      <h2>Part d'una família de<br>programari lliure per a l'enginyeria.</h2>
+      <p>IngeTrazo no va sol. Amb el mateix autor i la mateixa llicència, dos programes més cobreixen el dibuix i el pressupost de l'obra. Tots tres s'entenen entre ells.</p>
+      <div class="fam-grid">
+        <article class="fam-card fam-lime">
+          <a class="fam-shot" href="https://ingecad.org" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="/images/familia/ingecad.webp"
+               srcset="/images/familia/ingecad-480.webp 480w, /images/familia/ingecad.webp 960w"
+               sizes="(max-width: 700px) calc(100vw - 40px), 460px" alt="" width="960" height="540" loading="lazy">
+          </a>
+          <span class="fam-tag">CAD 2D · Linux</span>
+          <h3>IngeCAD</h3>
+          <p>Dibuix 2D lliure a l'estil de l'AutoCAD clàssic, amb DWG i DXF d'anada i tornada. Les vistes de les teves làmines surten en DXF a punt per obrir-les-hi.</p>
+          <p class="fam-links">
+            <a href="https://ingecad.org" target="_blank" rel="noopener">ingecad.org</a>
+            <a href="https://github.com/ingelibre/ingecad" target="_blank" rel="noopener">Codi a GitHub</a>
+          </p>
+        </article>
+        <article class="fam-card fam-orange">
+          <a class="fam-shot" href="https://ingepresupuestos.com" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="/images/familia/ingepresupuestos.webp"
+               srcset="/images/familia/ingepresupuestos-480.webp 480w, /images/familia/ingepresupuestos.webp 960w"
+               sizes="(max-width: 700px) calc(100vw - 40px), 460px" alt="" width="960" height="540" loading="lazy">
+          </a>
+          <span class="fam-tag">Pressupostos d'obra</span>
+          <h3>IngePresupuestos</h3>
+          <p>Importa l'IFC del teu model i munta el pressupost amb anàlisi de preus unitaris, diagrama de Gantt d'anada i tornada amb MS Project i fórmula polinòmica amb índexs de l'INEI.</p>
+          <p class="fam-links">
+            <a href="https://ingepresupuestos.com" target="_blank" rel="noopener">ingepresupuestos.com</a>
+            <a href="https://github.com/ingelibre/ingepresupuestos" target="_blank" rel="noopener">Codi a GitHub</a>
+          </p>
+        </article>
+      </div>
+      <p class="fam-note">Tot sota GPL-3.0-or-later, sense versions de pagament. El codi dels tres és a <a href="https://github.com/ingelibre" target="_blank" rel="noopener">github.com/ingelibre</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ IMPACT ============ -->
+  <section class="impact">
+    <h2>Lliure i de codi obert.<br>Per sempre.</h2>
+    <p>IngeTrazo és programari lliure sota GPL-3.0. Els teus models són al teu ordinador, en un format obert que sempre podràs llegir. Fet al Perú per a professionals de l'enginyeria, l'arquitectura i el disseny de tot el món.</p>
+    <aside class="impact-card">
+      <p class="impact-card-q">Ajuda'l a continuar sent lliure</p>
+      <p class="impact-card-sub">Cada aportació, per petita que sigui, en sosté el desenvolupament.</p>
+      <a class="btn btn-lg impact-card-btn" href="/ca/apoyar">Dona suport al projecte</a>
+      <ul class="pay-chips" aria-label="Mitjans de pagament"><li>Yape</li><li>Plin</li><li>Liberapay</li><li>PayPal</li></ul>
+      <p class="impact-card-alt">No pots aportar diners? També ajuda parlar-ne amb algú de la feina o deixar una estrella a <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">GitHub</a>.</p>
+    </aside>
+  </section>
+
+
+  <!-- ============ DESCARGAR ============ -->
+  <section id="descargar" class="download-section">
+    <div class="container">
+      <h2>Aconsegueix IngeTrazo</h2>
+      <p class="download-sub">Versió <span id="dl-version">0.6.3.2</span> — <span id="dl-date">novembre del 2026</span>.</p>
+      <div class="dl-primary" id="dl-primary" hidden>
+        <a class="btn btn-primary btn-lg" id="dl-primary-btn" href="#descargar"></a>
+        <p class="dl-primary-sub" id="dl-primary-sub"></p>
+      </div>
+      <div class="dl-row">
+        <div class="dl-group">
+          <span class="dl-group-label">Windows</span>
+          <div class="dl-group-cards">
+            <a class="dl-card dl-card-compact" id="dl-win-btn" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 2.3 6.5 1.4v6.3H0V2.3zM7.3 1.3 16 0v7.7H7.3V1.3zM0 8.5h6.5v6.3L0 13.9V8.5zM7.3 8.5H16V16l-8.7-1.2V8.5z"/></svg>
+              <strong>Instal·lador (.exe)</strong>
+              <span>Windows 10/11 · 64 bits</span>
+            </a>
+            <a class="dl-card dl-card-compact" id="dl-win-zip" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 0h5l4 4v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1zm5 1v3h3L9 1z"/></svg>
+              <strong>Portable (.zip)</strong>
+              <span>sense instal·lació</span>
+            </a>
+          </div>
+          <p class="dl-group-alt">És normal: l'instal·lador encara no té signatura digital. Si SmartScreen t'avisa, tria «Més informació → Executa igualment».</p>
+          <p class="dl-group-alt">Signatura de codi gratuïta de SignPath.io, certificat de SignPath Foundation (en tràmit) — <a href="/ca/firma">política de signatura</a>.</p>
+        </div>
+
+        <div class="dl-divider"></div>
+
+        <div class="dl-group">
+          <span class="dl-group-label">Linux · x86_64</span>
+          <div class="dl-group-cards">
+            <a class="dl-card dl-card-compact" id="dl-flatpak" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0 1 3.5v9L8 16l7-3.5v-9L8 0zm0 1.7 5 2.5-5 2.5-5-2.5 5-2.5zM2.5 5.6l4.75 2.4v5.9L2.5 11.5V5.6zm11 0v5.9l-4.75 2.4V8L13.5 5.6z"/></svg>
+              <strong>Flatpak</strong>
+              <span>doble clic i s'instal·la</span>
+            </a>
+            <a class="dl-card dl-card-compact" id="dl-appimage" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              <strong>AppImage</strong>
+              <span>no instal·la res</span>
+            </a>
+            <a class="dl-card dl-card-compact" id="dl-tarball" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 3a1 1 0 0 1 1-1h4l1.5 1.5H13a1 1 0 0 1 1 1V12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3zm6 3v4.29L6.85 9.15l-.7.7L8.5 12.2l2.35-2.35-.7-.7L9 10.29V6H8z"/></svg>
+              <strong>tar.gz</strong>
+              <span>sense FUSE</span>
+            </a>
+          </div>
+          <div class="dl-howto">
+            <div class="dl-tabs" role="tablist" aria-label="Com s'instal·la a Linux">
+              <span class="dl-tabs-label">Com s'instal·la ▾</span>
+              <button type="button" role="tab" class="dl-tab" aria-selected="false" data-tab="flatpak">Flatpak <em>recomanat</em></button>
+              <button type="button" role="tab" class="dl-tab" aria-selected="false" data-tab="appimage">AppImage</button>
+              <button type="button" role="tab" class="dl-tab" aria-selected="false" data-tab="tarball">tar.gz</button>
+            </div>
+
+            <div class="dl-panel" role="tabpanel" data-panel="flatpak" hidden>
+              <p>Instal·la'l des del nostre repositori i <code>flatpak update</code> et portarà cada versió nova. Queda al teu menú d'aplicacions, amb els fitxers <code>.igz</code> i <code>.skp</code> associats.</p>
+              <div class="dl-code" id="dl-code-flatpak">
+                <code>flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --user --if-not-exists ingetrazo https://ingetrazo.com/ingetrazo.flatpakrepo
+flatpak install --user ingetrazo com.ingetrazo.IngeTrazo
+flatpak run com.ingetrazo.IngeTrazo</code>
+                <button class="dl-code-copy" type="button" data-copy="flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && flatpak remote-add --user --if-not-exists ingetrazo https://ingetrazo.com/ingetrazo.flatpakrepo && flatpak install --user ingetrazo com.ingetrazo.IngeTrazo && flatpak run com.ingetrazo.IngeTrazo">Copia</button>
+              </div>
+              <p class="dl-panel-small">T'estimes més el fitxer solt? La targeta de dalt el baixa i s'instal·la amb doble clic, però així <strong>no s'actualitza sol</strong>.</p>
+            </div>
+
+            <div class="dl-panel" role="tabpanel" data-panel="appimage" hidden>
+              <p>No instal·la res: dona-li permís d'execució i obre'l (o fes-hi doble clic des del gestor de fitxers).</p>
+              <div class="dl-code" id="dl-code-appimage">
+                <code>chmod +x IngeTrazo-0.6.3.2-x86_64.AppImage
+./IngeTrazo-0.6.3.2-x86_64.AppImage</code>
+                <button class="dl-code-copy" type="button" data-copy="chmod +x IngeTrazo-0.6.3.2-x86_64.AppImage && ./IngeTrazo-0.6.3.2-x86_64.AppImage">Copia</button>
+              </div>
+              <p class="dl-panel-small">Necessita FUSE, que gairebé totes les distribucions porten. Si la teva no el porta, fes servir el tar.gz.</p>
+            </div>
+
+            <div class="dl-panel" role="tabpanel" data-panel="tarball" hidden>
+              <p>Per a distribucions sense FUSE, o per instal·lar-lo a <code>/opt</code>: descomprimeix i executa.</p>
+              <div class="dl-code" id="dl-code-tarball">
+                <code>tar -xzf IngeTrazo-0.6.3.2-linux-x86_64.tar.gz
+IngeTrazo-0.6.3.2/ingetrazo</code>
+                <button class="dl-code-copy" type="button" data-copy="tar -xzf IngeTrazo-0.6.3.2-linux-x86_64.tar.gz && IngeTrazo-0.6.3.2/ingetrazo">Copia</button>
+              </div>
+              <p class="dl-panel-small">Porta el mateix que l'AppImage: Python, Qt i el lector de .skp van a dins.</p>
+            </div>
+
+            <p class="dl-howto-foot" hidden>Tots tres funcionen a Ubuntu 22.04 o posterior. Si alguna cosa falla, executa'l amb l'opció <code>--check</code> i et dirà què hi falta (per exemple <code>flatpak run com.ingetrazo.IngeTrazo --check</code> o <code>./IngeTrazo-*-x86_64.AppImage --check</code>).</p>
+          </div>
+          <p class="dl-note">També el pots executar <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">des del codi font</a> (3 ordres, al README). Tots els fitxers són a les <a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">versions publicades a GitHub</a>.</p>
+        </div>
+
+        <div class="dl-divider"></div>
+
+        <div class="dl-group" id="mac">
+          <span class="dl-group-label">macOS · Apple Silicon · Intel</span>
+          <div class="dl-group-cards">
+            <a class="dl-card dl-card-compact" id="dl-mac" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/></svg>
+              <strong>IngeTrazo per a Mac (.dmg)</strong>
+              <span>Apple Silicon · macOS</span>
+            </a>
+            <a class="dl-card dl-card-compact" id="dl-mac-intel" href="https://github.com/ingelibre/ingetrazo/releases/latest" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/></svg>
+              <strong>IngeTrazo per a Mac (.dmg)</strong>
+              <span>Intel · macOS</span>
+            </a>
+          </div>
+          <p class="dl-group-alt">Obre el <code>.dmg</code> i arrossega IngeTrazo a <strong>Aplicacions</strong>. Encara no està signat amb un compte d'Apple, o sigui que <strong>la primera vegada</strong> macOS no l'obrirà amb doble clic i dirà que no pot verificar el desenvolupador: autoritza'l una sola vegada amb els passos de sota. A partir d'aleshores s'obre amb normalitat, i els fitxers <code>.igz</code> i <code>.skp</code> s'obren amb doble clic. Empaquetat per <a href="https://github.com/felixriestra" target="_blank" rel="noopener">Félix Riestra</a>.</p>
+          <details class="mac-help">
+            <summary>macOS no deixa obrir IngeTrazo: com autoritzar-lo</summary>
+            <p><strong>macOS 15 Sequoia o posterior</strong> (el clic dret ja no n'hi ha prou):</p>
+            <ol>
+              <li>Prova d'obrir IngeTrazo i, a l'avís, prem <strong>Fet</strong>.</li>
+              <li>Obre el menú Apple ▸ <strong>Configuració del Sistema</strong> ▸ <strong>Privacitat i seguretat</strong>.</li>
+              <li>Baixa fins a <strong>Seguretat</strong>: veuràs que IngeTrazo s'ha bloquejat. Prem <strong>Obre igualment</strong> i confirma-ho amb Touch ID o la teva contrasenya.</li>
+            </ol>
+            <p><strong>macOS 14 o anterior:</strong> a Aplicacions, fes <strong>clic dret</strong> (o Control + clic) sobre IngeTrazo ▸ <strong>Obre</strong> i, a l'avís, <strong>Obre</strong>.</p>
+            <p><strong>Si tot i així no s'obre</strong>, treu-li la marca de «baixat d'internet» des del Terminal i torna'l a obrir:</p>
+            <pre><code>xattr -dr com.apple.quarantine /Applications/IngeTrazo.app</code></pre>
+            <p>Fes-ho només amb programes en què confiïs: el d'aquesta pàgina és el mateix codi publicat a GitHub. Guia aportada per la comunitat a la <a href="https://github.com/ingelibre/ingetrazo/discussions/324" target="_blank" rel="noopener">discussió #324</a>.</p>
+          </details>
+          <p class="dl-group-alt">Tria el del teu Mac: menú Apple ▸ <strong>Quant a aquest Mac</strong>; si hi diu «Xip Apple M…» és <strong>Apple Silicon</strong>, i si hi diu «Processador Intel» és <strong>Intel</strong>. El que encara no funciona al Mac: la importació de DWG; obrir fitxers <code>.skp</code> sí que funciona. Si alguna cosa falla, explica'ns-ho en una <a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">incidència a GitHub</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EJEMPLOS ============ -->
+  <section id="ejemplos" class="section bg-light">
+    <div class="container">
+      <div class="section-head">
+        <h2>Exemples per obrir i desmuntar</h2>
+        <p>Quatre documents reals de la remodelació de la plaça de Yanque, districte de Chichas (Arequipa, 2026): el model amb les escenes i la seva làmina A3 tal com surt d'IngeTrazo, amb el PDF al costat. Baixa'ls i obre'ls amb Fitxer ▸ Obre.</p>
+      </div>
+      <div class="ej-grid">
+        <article class="ej-card">
+          <img class="zoomable" src="/images/ejemplos/pileta-fuente-yanque.webp"
+               srcset="/images/ejemplos/pileta-fuente-yanque-480.webp 480w, /images/ejemplos/pileta-fuente-yanque.webp 993w"
+               sizes="(max-width: 560px) calc(100vw - 40px), 280px" alt="Làmina A3 de la font ornamental: alçat frontal, 3D, planta i secció a 1:40 amb cotes i caixetí" width="993" height="702" loading="lazy">
+          <h3>Font ornamental</h3>
+          <p>Pedestal octogonal, fust estriat i dos plats de vora ondulada: 22 instàncies de component, ombres amb el sol real i un pla de secció. La làmina porta alçat frontal, 3D, planta i secció a 1:40.</p>
+          <p class="ej-links"><a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/pileta-fuente-yanque.igz">Obre-la a IngeTrazo — .igz (1,8 MB)</a> · <a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/pileta-fuente-yanque.pdf" target="_blank" rel="noopener">PDF de la làmina</a></p>
+        </article>
+        <article class="ej-card">
+          <img class="zoomable" src="/images/ejemplos/banca-pergola-yanque.webp"
+               srcset="/images/ejemplos/banca-pergola-yanque-480.webp 480w, /images/ejemplos/banca-pergola-yanque.webp 993w"
+               sizes="(max-width: 560px) calc(100vw - 40px), 280px" alt="Làmina A3 del banc amb pèrgola: vistes, cotes en cadena i etiquetes" width="993" height="702" loading="lazy">
+          <h3>Banc amb pèrgola</h3>
+          <p>Banc de formigó amb pèrgola de fusta, fet amb components i amb cinc escenes desades. La làmina: quatre vistes, 23 cotes i 12 etiquetes amb línia guia.</p>
+          <p class="ej-links"><a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/banca-pergola-yanque.igz">Obre'l a IngeTrazo — .igz (0,5 MB)</a> · <a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/banca-pergola-yanque.pdf" target="_blank" rel="noopener">PDF de la làmina</a></p>
+        </article>
+        <article class="ej-card">
+          <img class="zoomable" src="/images/ejemplos/luminaria-solar-yanque.webp"
+               srcset="/images/ejemplos/luminaria-solar-yanque-480.webp 480w, /images/ejemplos/luminaria-solar-yanque.webp 993w"
+               sizes="(max-width: 560px) calc(100vw - 40px), 280px" alt="Làmina A3 del fanal solar: pal, dau de formigó i detall de l'armadura" width="993" height="702" loading="lazy">
+          <h3>Fanal solar</h3>
+          <p>Pal de 4,5 m amb dos projectors i la seva placa, dau troncocònic, fonament soterrat i l'armadura d'acer de 3/8&quot; dibuixada a dins — modelat amb receptes amb l'Assistent IA. Làmina amb el detall del dau.</p>
+          <p class="ej-links"><a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/luminaria-solar-yanque.igz">Obre'l a IngeTrazo — .igz (0,5 MB)</a> · <a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/luminaria-solar-yanque.pdf" target="_blank" rel="noopener">PDF de la làmina</a></p>
+        </article>
+        <article class="ej-card">
+          <img class="zoomable" src="/images/ejemplos/arco-yanque.webp"
+               srcset="/images/ejemplos/arco-yanque-480.webp 480w, /images/ejemplos/arco-yanque.webp 993w"
+               sizes="(max-width: 560px) calc(100vw - 40px), 280px" alt="Làmina A3 D04 de l'arc de benvinguda YANQUE: alçat frontal, lateral dret, planta i 3D a 1:50, detall de lletra i escultura a 1:25 i del capitell de carreu a 1:20, amb cotes, nivells, línia de terreny i caixetí" width="993" height="702" loading="lazy">
+          <h3>Arc de benvinguda «YANQUE»</h3>
+          <p>Segons el plànol d'estructures E02: formigó i <strong>tota l'armadura</strong> (sabates, pilars, arc rebaixat, biga i timpà), capitells de carreu, quatre fanals ornamentals, lletres i escultura; mira-ho amb Raigs X. La làmina D04: alçat frontal, lateral, planta i 3D a 1:50, el detall de lletra i escultura a 1:25 i el del capitell a 1:20, amb nivells, línia de terreny i etiquetes amb línia guia.</p>
+          <p class="ej-links"><a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/arco-yanque.igz">Obre'l a IngeTrazo — .igz (3,6 MB)</a> · <a href="https://github.com/ingelibre/ingetrazo/raw/main/examples/arco-yanque.pdf" target="_blank" rel="noopener">PDF de la làmina</a></p>
+        </article>
+      </div>
+      <p class="ej-note">Tots junts a cada versió publicada: <a href="https://github.com/ingelibre/ingetrazo/releases/latest/download/IngeTrazo-ejemplos.zip">IngeTrazo-ejemplos.zip</a> · o a la carpeta <a href="https://github.com/ingelibre/ingetrazo/tree/main/examples" target="_blank" rel="noopener">examples/</a> del repositori. Documents de l'enginyer Marco Sumari sota <a href="https://creativecommons.org/licenses/by/4.0/deed.ca" target="_blank" rel="noopener">CC BY 4.0</a>; necessiten IngeTrazo 0.3.15 o posterior.</p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" class="section">
+    <div class="container container-narrow">
+      <div class="section-head">
+        <h2>Preguntes freqüents</h2>
+        <p>El que tothom pregunta abans de traçar la primera línia.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Què vol dir que sigui lliure?</summary>
+          <p>IngeTrazo és <strong>programari lliure sota GPL-3.0</strong>: el pots fer servir per a qualsevol projecte, estudiar com funciona, millorar-lo i compartir-lo, amb el codi font publicat a GitHub. Els teus models són teus.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Què fa diferent IngeTrazo?</summary>
+          <p>És <strong>lliure</strong> (GPL-3.0) i funciona de manera <strong>nativa a Linux</strong>, a més de Windows i macOS. Garanteix <strong>sòlids hermètics</strong> i porta una <strong>capa BIM</strong> opcional, en desenvolupament. Compon <strong>làmines a escala</strong> en PDF, porta el <strong>terreny real</strong> (satèl·lit, elevació, dron, punts GPS) i es connecta amb <strong>assistents d'IA</strong> que dibuixen amb el mateix motor, i cada pas es pot desfer.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Quins formats obre i desa?</summary>
+          <p>Obre els seus documents <strong>.igz</strong>, plànols <strong>DWG i DXF</strong>, models <strong>.skp</strong> de totes les versions (amb <a href="https://github.com/iamahsanmehmood/openskp" target="_blank" rel="noopener"><strong>OpenSKP</strong></a>, un lector lliure al qual IngeTrazo contribueix), <strong>COLLADA (.dae)</strong>, <strong>OBJ</strong>, <strong>glTF</strong> i <strong>STL</strong>. Desa en <strong>.igz</strong>, un format obert, i exporta COLLADA, OBJ, glTF, STL, IFC, DXF i plànols en PDF.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Té BIM?</summary>
+          <p>Sí, com una capa opcional que creix amb cada versió: etiquetes la geometria que ja has traçat amb la seva classe IFC (mur, llosa, pilar, biga, porta, finestra, espai…), en veus les quantitats a la <strong>taula BIM</strong> —amb cercador, filtre per classe, agrupació i totals d'amidament i volum— i l'exportes en <strong>IFC4 o IFC4.3</strong>, amb coordenades globals, nord del projecte i ubicació. IngePresupuestos llegeix aquest IFC per treure els amidaments del pressupost.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Puc generar els plànols del projecte?</summary>
+          <p>Sí. El <strong>compositor de làmines</strong> col·loca vistes del model a <strong>escala exacta</strong> (1:50, 1:100…) en fulls A4–A0, amb cotes ancorades al model que s'actualitzen si el model canvia, caixetí editable, escala gràfica, títols de vista numerats, marques de secció, cotes de nivell i en cadena, crides de detall i un estil vectorial de línies ocultes amb plomes i poché. Exporta cada làmina — o el joc complet — a <strong>PDF vectorial</strong>, i la vista a <strong>DXF</strong>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Hi puc afegir funcions amb extensions?</summary>
+          <p>Sí. <strong>Extensions ▸ Gestiona les extensions…</strong> obre el catàleg de la comunitat: més de 130 extensions gratuïtes en Python que s'instal·len amb un clic, comprovades amb la seva empremta SHA-256. Escriure la teva és senzill: un fitxer Python amb les teves eines, integrat amb el desfer. Ja hi venen incloses la <strong>Informació del model</strong> i una <strong>Consola Python</strong> per inspeccionar i automatitzar el model amb codi. La guia és al <a href="https://ingetrazo-docs.pages.dev/extensiones/" target="_blank" rel="noopener">manual</a> (en castellà).</p>
+        </details>
+        <details class="faq-item">
+          <summary>Té intel·ligència artificial?</summary>
+          <p>Sí, de dues maneres. L'<strong>Assistent IA</strong> integrat és un xat: hi enganxes la clau del proveïdor que prefereixis (Groq té quota gratuïta; també Gemini, OpenAI, Anthropic, OpenRouter, DeepSeek o Ollama al teu propi ordinador) i li demanes el model amb paraules o amb una foto. I el <strong>pont MCP</strong> permet que Claude o qualsevol client MCP facin anar l'aplicació oberta —o un IngeTrazo sense finestra, per automatitzar— amb eines amb nom i un pas de desfer per cada acció. IngeTrazo no demana cap compte ni limita els usos, i amb un model local tot es queda al teu ordinador. Sense IA, IngeTrazo funciona igual i sense internet.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Funciona sense internet?</summary>
+          <p>Sí, tot el modelador funciona <strong>sense connexió</strong> i els teus fitxers són al teu ordinador. Només el mapa de satèl·lit i el terreny 3D baixen imatges d'internet mentre els fas servir.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Com l'instal·lo?</summary>
+          <p>A <strong>Windows</strong>: baixa l'instal·lador de la secció Descarrega, fes-hi doble clic i llestos (associa els fitxers .igz). A <strong>Linux</strong>: baixa el <strong>Flatpak</strong> (fes-hi doble clic i GNOME Software / KDE Discover l'instal·la, amb els fitxers .igz i .skp associats), l'<strong>AppImage</strong> (dona-li permís d'execució i obre'l) o, si la teva distribució no porta FUSE, el <strong>tar.gz</strong>: descomprimeix-lo on vulguis i executa <code>ingetrazo</code>. Si alguna cosa no funciona, <code>--check</code> et diu què hi falta. A <strong>macOS</strong> (Apple Silicon): baixa el <strong>.dmg</strong> de <a href="#mac">Descarrega ▸ macOS</a>, arrossega IngeTrazo a Aplicacions i la primera vegada autoritza'l a Configuració del Sistema ▸ Privacitat i seguretat ▸ Obre igualment (a macOS 14 o anterior, clic dret ▸ Obre), perquè encara no està signat amb un compte d'Apple. També el pots executar des del codi font amb 3 ordres.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Serveix per a la impressió 3D?</summary>
+          <p>Encara no és el seu punt fort, però és a l'horitzó. Avui pots exportar a <strong>STL binari</strong> i portar-lo al laminador, i els sòlids que fa el motor són tancats; el que encara no porta són les eines pròpies de la impressió 3D (revisar gruixos de paret, voladissos, reparar malles, 3MF). Estan <strong>previstes per més endavant</strong>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Com informo d'un problema o hi col·laboro?</summary>
+          <p>El projecte és a <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">GitHub</a>: obre-hi una incidència amb el teu fitxer d'exemple, proposa millores o envia codi. També pots escriure per <a href="mailto:ing.sumari@gmail.com">correu</a>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRANJA FINAL ============ -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Comença a modelar avui</h2>
+      <p>A Linux, Windows i macOS.</p>
+      <div class="final-cta-btns">
+        <a href="#descargar" class="btn btn-lg final-cta-dl">Descarrega IngeTrazo</a>
+        <a href="https://ingetrazo-docs.pages.dev" class="btn btn-lg final-cta-man" target="_blank" rel="noopener">Llegeix el manual (en castellà)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contacto" class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <img src="/images/logo.png" alt="Logotip d'IngeTrazo" width="36" height="36">
+          <strong>IngeTrazo</strong>
+        </div>
+        <p>Modelador 3D lliure per a arquitectura, enginyeria i disseny.</p>
+        <a class="btn btn-heart footer-support" href="/ca/apoyar">Dona-hi suport</a>
+        <p class="footer-copy">© 2026 Marco Sumari Tellez · Programari lliure GPL-3.0</p>
+      </div>
+      <div class="footer-col">
+        <h4>Producte</h4>
+        <ul>
+          <li><a href="#features">Característiques</a></li>
+          <li><a href="#descargar">Descarrega</a></li>
+          <li><a href="/ca/novedades">Novetats</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">Versions</a></li>
+          <li><a href="#faq">Preguntes freqüents</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="https://ingetrazo-docs.pages.dev" target="_blank" rel="noopener">Manual d'usuari (en castellà)</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">Codi obert (GitHub)</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">Informa d'un problema</a></li>
+          <li><a href="/ca/extensiones">Extensions</a></li>
+          <li><a href="/ca/firma">Política de signatura de codi</a></li>
+          <li><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">Llicència GPL-3.0</a></li>
+          <li><a href="https://ingepresupuestos.com" target="_blank" rel="noopener">IngePresupuestos</a></li>
+          <li><a href="https://ingecad.org" target="_blank" rel="noopener">IngeCAD</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacte</h4>
+        <ul>
+          <li><a href="mailto:ing.sumari@gmail.com">ing.sumari@gmail.com</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox para ampliar capturas -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Tanca">×</button>
+    <img alt="">
+  </div>
+
+  <script src="/script.js"></script>
+  <script src="/home-ext.js" defer></script>
+</body>
+</html>

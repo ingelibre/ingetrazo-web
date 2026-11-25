@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#273445">
+
+  <title>Política de signatura de codi · IngeTrazo</title>
+
+  <meta name="description" content="Com se signen els programes d'IngeTrazo per a Windows: signatura de codi gratuïta de SignPath.io amb certificat de SignPath Foundation, qui aprova cada signatura i quines dades envia el programa.">
+
+  <link rel="canonical" href="https://ingetrazo.com/ca/firma">
+  <link rel="alternate" hreflang="es" href="https://ingetrazo.com/firma">
+  <link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/firma">
+  <link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/firma">
+  <link rel="alternate" hreflang="ca" href="https://ingetrazo.com/ca/firma">
+  <link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/firma">
+
+  <meta property="og:site_name" content="IngeTrazo">
+  <meta property="og:title" content="Política de signatura de codi · IngeTrazo">
+  <meta property="og:description" content="Com se signen els programes d'IngeTrazo per a Windows i quines dades envia el programa.">
+  <meta property="og:image" content="https://ingetrazo.com/images/og-banner.jpg">
+  <meta property="og:url" content="https://ingetrazo.com/ca/firma">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ca_ES">
+
+  <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/images/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/images/logo.png" sizes="180x180">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/ca/" class="nav-brand">
+        <img src="/images/logo.png" alt="IngeTrazo" width="32" height="32">
+        <span>IngeTrazo</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/ca/#features">Característiques</a>
+        <a href="/ca/#descargar">Descarrega</a>
+        <a href="/ca/extensiones">Extensions</a>
+        <a href="/ca/#ejemplos">Exemples</a>
+        <a href="https://ingetrazo-docs.pages.dev" target="_blank" rel="noopener">Manual (en castellà)</a>
+        <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">GitHub</a>
+        <a href="/ca/apoyar">Dona suport</a>
+        <span class="lang-switch" aria-label="Idioma"><a href="/firma" hreflang="es" data-lang="es">ES</a><a href="/en/firma" hreflang="en" data-lang="en">EN</a><a href="/pt/firma" hreflang="pt" data-lang="pt">PT</a><a href="/ca/firma" hreflang="ca" data-lang="ca" aria-current="true">CA</a></span>
+      </nav>
+      <button class="nav-toggle" aria-label="Obre el menú" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ FIRMA DE CÓDIGO ============ -->
+  <!-- SignPath Foundation asks for this page (code signing policy,
+       team roles, privacy). Same content in es/en/pt. -->
+  <section class="section bg-light apoyar-page">
+    <div class="container container-narrow">
+      <div class="section-head">
+        <h2>Política de signatura de codi</h2>
+        <p>Com se signen els programes d'IngeTrazo per a Windows i qui en respon.</p>
+      </div>
+
+      <div class="aporte-card policy">
+        <p class="policy-sponsor"><strong>Signatura de codi gratuïta proporcionada per <a href="https://signpath.io" target="_blank" rel="noopener">SignPath.io</a>, certificat de <a href="https://signpath.org" target="_blank" rel="noopener">SignPath Foundation</a>.</strong></p>
+        <p class="aporte-intro"><em>Estat:</em> l'alta de la signatura amb SignPath està en tràmit. Fins que no s'hagi completat, els programes per a Windows es publiquen sense signar; aquesta pàgina explica com se signaran i s'actualitzarà quan es comenci.</p>
+
+        <h3>Què se signa</h3>
+        <ul>
+          <li>Els executables d'IngeTrazo per a Windows: <code>ingetrazo.exe</code> i <code>ingetrazo-mcp.exe</code>, i l'instal·lador <code>ingetrazo-setup-&lt;versió&gt;.exe</code>.</li>
+          <li>Només se signa el que es compila a partir del <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">codi font públic</a> d'aquest projecte. Els components de tercers que van dins del paquet (Python, Qt/PySide6 i altres biblioteques lliures) no se signen amb el nostre certificat.</li>
+          <li>Cada versió es compila a <strong>GitHub Actions</strong>, a partir del repositori públic, amb el flux de treball «Build Windows»; ningú no compila al seu propi ordinador el que es publica. Les descàrregues són a les <a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">versions publicades a GitHub</a>.</li>
+        </ul>
+
+        <h3>Rols de l'equip</h3>
+        <ul>
+          <li><strong>Autoria i revisió:</strong> el codi l'escriuen la persona responsable del projecte i les persones <a href="https://github.com/ingelibre/ingetrazo/graphs/contributors" target="_blank" rel="noopener">col·laboradores</a>. Tot canvi d'una persona col·laboradora entra amb una <em>pull request</em> pública que la persona responsable revisa abans d'acceptar-la.</li>
+          <li><strong>Aprovació:</strong> Marco Sumari Tellez (<a href="https://github.com/tuxiasumari" target="_blank" rel="noopener">@tuxiasumari</a>), responsable del projecte. Cada signatura d'una versió s'aprova a mà.</li>
+          <li>Els comptes amb accés al repositori i a la signatura fan servir autenticació en dos passos.</li>
+        </ul>
+
+        <h3>Privacitat</h3>
+        <p class="aporte-intro">Aquest programa no transfereix cap informació a altres sistemes en xarxa si no ho demana expressament l'usuari o la persona que l'instal·la o el fa servir. No té telemetria ni busca actualitzacions pel seu compte. Només es connecta quan fas servir una funció que ho necessita:</p>
+        <ul>
+          <li>Mapes i relleu del terreny (OpenStreetMap, Esri, EOX, Sentinel-2, models d'elevació d'AWS Open Data) i la cerca de llocs (Nominatim).</li>
+          <li>El botó «Ubica'm», que estima la teva ciutat a partir de la teva adreça IP (ipapi.co).</li>
+          <li>La biblioteca de components (ingetrazo.com) i la de materials i models (Poly Haven, ambientCG, Sketchfab).</li>
+          <li>L'assistent d'IA, que només parla amb el proveïdor que triïs i configuris amb la teva pròpia clau (o amb un model local, com Ollama).</li>
+        </ul>
+
+        <h3>Com es comprova un fitxer</h3>
+        <ul>
+          <li>A Windows: clic dret sobre el <code>.exe</code> ▸ <em>Propietats</em> ▸ pestanya <em>Signatures digitals</em>.</li>
+          <li>Si un antivirus marca un fitxer d'IngeTrazo, avisa'ns a <a href="https://github.com/ingelibre/ingetrazo/issues/162" target="_blank" rel="noopener">GitHub</a> o per correu.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contacto" class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <img src="/images/logo.png" alt="Logotip d'IngeTrazo" width="36" height="36">
+          <strong>IngeTrazo</strong>
+        </div>
+        <p>Modelador 3D lliure per a arquitectura, enginyeria i disseny.</p>
+        <p class="footer-copy">© 2026 Marco Sumari Tellez · Programari lliure GPL-3.0</p>
+      </div>
+      <div class="footer-col">
+        <h4>Producte</h4>
+        <ul>
+          <li><a href="/ca/#features">Característiques</a></li>
+          <li><a href="/ca/#descargar">Descarrega</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">Versions</a></li>
+          <li><a href="/ca/apoyar">Dona suport al projecte</a></li>
+          <li><a href="/ca/#faq">Preguntes freqüents</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="https://ingetrazo-docs.pages.dev" target="_blank" rel="noopener">Manual d'usuari (en castellà)</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">Codi obert (GitHub)</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">Informa d'un problema</a></li>
+          <li><a href="/ca/extensiones">Extensions</a></li>
+          <li><a href="/ca/firma">Política de signatura de codi</a></li>
+          <li><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">Llicència GPL-3.0</a></li>
+          <li><a href="https://ingepresupuestos.com" target="_blank" rel="noopener">IngePresupuestos</a></li>
+          <li><a href="https://ingecad.org" target="_blank" rel="noopener">IngeCAD</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacte</h4>
+        <ul>
+          <li><a href="mailto:ing.sumari@gmail.com">ing.sumari@gmail.com</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>

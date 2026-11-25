@@ -6,9 +6,10 @@
   const box = document.getElementById('home-ext-grid');
   if (!box) return;
   const lang = document.documentElement.lang.startsWith('pt') ? 'pt'
-    : document.documentElement.lang.startsWith('en') ? 'en' : 'es';
-  const page = { es: '/extensiones', en: '/en/extensiones', pt: '/pt/extensiones' }[lang];
-  const by = { es: 'por', en: 'by', pt: 'por' }[lang];
+    : document.documentElement.lang.startsWith('en') ? 'en'
+    : document.documentElement.lang.startsWith('ca') ? 'ca' : 'es';
+  const page = { es: '/extensiones', en: '/en/extensiones', pt: '/pt/extensiones', ca: '/ca/extensiones' }[lang];
+  const by = { es: 'por', en: 'by', pt: 'por', ca: 'per' }[lang];
   const SHOW = 6;
 
   function pick(texts) {

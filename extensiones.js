@@ -61,6 +61,22 @@
         education: 'Educação', other: 'Outras',
       },
     },
+    ca: {
+      download: 'Descarrega', code: 'Mira el codi', reviewed: 'Revisada',
+      community: 'Comunitat', by: 'per', tested: 'Provada amb IngeTrazo',
+      count: (n, t) => n === t ? `${t} extensions` : `${n} de ${t} extensions`,
+      one: '1 extensió', none: 'Cap extensió no coincideix amb la cerca.',
+      error: 'No s\'ha pogut carregar el catàleg. Torna-ho a provar d\'aquí a un moment.',
+      all: 'Totes', updated: 'actualitzada',
+      more: (n) => `Mostra'n més (${n})`, prev: 'Anteriors', next: 'Següents',
+      tags: {
+        architecture: 'Arquitectura', bim: 'BIM', structures: 'Estructures',
+        terrain: 'Terreny', drawing: 'Dibuix', analysis: 'Anàlisi',
+        'import-export': 'Importació/exportació', rendering: 'Render',
+        fabrication: 'Fabricació', productivity: 'Productivitat',
+        education: 'Educació', other: 'Altres',
+      },
+    },
   };
   const ui = UI[lang] || UI.es;
 
