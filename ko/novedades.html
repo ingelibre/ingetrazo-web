@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A2434">
+
+  <title>0.6.3과 0.6.2의 새로운 기능 · IngeTrazo</title>
+
+  <meta name="description" content="IngeTrazo 0.6.3의 새로운 기능 —그룹과 컴포넌트, Rust 엔진으로 더 부드러워진 드래그, 시트, 단면 상자, 지형, IFC4.3을 지원하는 BIM, AI 어시스턴트를 위한 MCP 도구— 그리고 시트와 치수에 집중한 0.6.2.">
+
+  <link rel="canonical" href="https://ingetrazo.com/ko/novedades">
+  <link rel="alternate" hreflang="es" href="https://ingetrazo.com/novedades">
+  <link rel="alternate" hreflang="en" href="https://ingetrazo.com/en/novedades">
+  <link rel="alternate" hreflang="pt" href="https://ingetrazo.com/pt/novedades">
+  <link rel="alternate" hreflang="ko" href="https://ingetrazo.com/ko/novedades">
+  <link rel="alternate" hreflang="x-default" href="https://ingetrazo.com/novedades">
+
+  <meta property="og:site_name" content="IngeTrazo">
+  <meta property="og:title" content="0.6.3과 0.6.2의 새로운 기능 · IngeTrazo">
+  <meta property="og:description" content="그룹과 컴포넌트, Rust 엔진으로 더 부드러워진 드래그, 시트, 단면 상자, 지형, IFC4.3을 지원하는 BIM, AI 어시스턴트를 위한 MCP 도구.">
+  <meta property="og:image" content="https://ingetrazo.com/images/og-banner.jpg">
+  <meta property="og:url" content="https://ingetrazo.com/ko/novedades">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+
+  <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/images/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/images/logo.png" sizes="180x180">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/ko/" class="nav-brand">
+        <img src="/images/logo.png" alt="IngeTrazo" width="32" height="32">
+        <span>IngeTrazo</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/ko/#features">기능</a>
+        <a href="/ko/#descargar">다운로드</a>
+        <a href="/ko/extensiones">확장</a>
+        <a href="https://ingetrazo-docs.pages.dev" target="_blank" rel="noopener">매뉴얼 (스페인어)</a>
+        <a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">GitHub</a>
+        <a href="/ko/apoyar">후원</a>
+        <span class="lang-switch" aria-label="언어"><a href="/novedades" hreflang="es" data-lang="es">ES</a><a href="/en/novedades" hreflang="en" data-lang="en">EN</a><a href="/pt/novedades" hreflang="pt" data-lang="pt">PT</a><a href="/ko/novedades" hreflang="ko" data-lang="ko" aria-current="true">KO</a></span>
+      </nav>
+      <button class="nav-toggle" aria-label="메뉴 열기" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ NOVEDADES ============ -->
+  <!-- Generada desde el CHANGELOG (0.6.2.1) y el borrador de la 0.6.3; las
+       notas completas y los créditos van en los releases de GitHub. -->
+  <section class="section bg-light nov-page">
+    <div class="container">
+      <div class="section-head">
+        <h2>IngeTrazo의 새로운 기능</h2>
+        <p>최근 두 릴리스: 그룹과 컴포넌트에 집중한 <strong>0.6.3</strong>, 시트와 치수에 집중한 <strong>0.6.2</strong>. 모든 변경 사항과 작성자가 담긴 전체 노트는 <a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">GitHub 릴리스</a>에 있습니다.</p>
+      </div>
+      <p class="nov-cta nov-cta-top">
+        <a class="btn btn-primary" href="/ko/#descargar">IngeTrazo 다운로드</a>
+        <a class="home-ext-pub" href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">GitHub의 전체 노트 →</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="v063" class="section nov-release">
+    <div class="container">
+      <div class="section-head">
+        <h2>0.6.3 · 그룹과 컴포넌트</h2>
+        <p>2026년 11월. 30명이 넘는 사람이 이번 릴리스에 코드를 기여했습니다. 모두 감사합니다.</p>
+      </div>
+      <!-- CAPTURA: láminas de la 0.6.3 — el compositor con el panel «Láminas» abierto (miniaturas de L-01…L-06), las pestañas de lámina arriba, una lámina con la leyenda editable y la barra de escala y el norte con su fondo sobre la ortofoto. Formato 1600 px de ancho, como laminas.jpeg. -->
+      <!-- CAPTURA: caja de sección — un edificio de dos plantas recortado por la caja de seis caras, con las asas visibles, y al lado la misma vista en una lámina. -->
+      <div class="ej-grid nov-grid">
+        <article class="ej-card nov-card">
+          <h3>그룹과 컴포넌트</h3>
+          <ul class="feat-list">
+            <li><strong>컴포넌트 사본이 변경을 따라갑니다</strong>: 컴포넌트 안의 그룹을 옮기거나 축척하면 모든 사본에 반영됩니다</li>
+            <li><strong>어셈블리 안에서 그리면</strong> 사본마다 제자리에 반영됩니다</li>
+            <li><strong><code>.skp</code> 가져오기에서 중첩 컴포넌트 유지</strong>: 복잡한 모델이 더 이상 컴포넌트 하나로 뭉개지지 않습니다</li>
+            <li><strong>내 라이브러리</strong>: 트리 형태의 나만의 컴포넌트 폴더, 그리고 사이드바의 컴포넌트 트리</li>
+            <li>XYZ 연동과 기준점 선택이 가능한 <strong>축척 관리자</strong></li>
+            <li>그룹 안에서 편집한 뒤마다 생기던 약 0.4초의 끊김이 사라졌습니다</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>Rust 엔진으로 더 부드럽게</h3>
+          <ul class="feat-list">
+            <li><strong>이동, 회전, 축척은 드래그하는 동안 모델을 건드리지 않습니다</strong>: 손을 놓을 때 한 번만 바뀌며, 실행 취소와 정확한 입력값은 그대로입니다</li>
+            <li>낱개 형상 면 6,400개: 프레임당 약 320–350 ms에서 <strong>1.3–3 ms</strong>로</li>
+            <li>레거시 그룹 축척: 87 ms에서 <strong>1.3 ms</strong>로</li>
+            <li>구멍 난 슬래브 밀기/끌기: 프레임당 51 ms에서 <strong>5 ms</strong>로</li>
+            <li>선에 스냅: 이동마다 약 31 ms에서 <strong>약 6 ms</strong>로</li>
+            <li>큰 모델에서 시트 전환: 약 2초에서 <strong>약 0.1초</strong>로</li>
+          </ul>
+          <p class="nov-note">저희 시험 모델에서 측정한 값입니다. 여러분의 컴퓨터와 모델에서는 수치가 다를 수 있습니다.</p>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>시트</h3>
+          <ul class="feat-list">
+            <li>드래그로 순서를 바꾸고 실행 취소도 되는 <strong>시트 탭</strong></li>
+            <li>시트마다 미리보기가 있는 <strong>“시트” 패널</strong>: 선택, 순서 변경, 이름 바꾸기, 삭제</li>
+            <li><strong>편집 가능한 범례</strong>: 레이어별로 나만의 이름과 색, 그리고 자유 항목</li>
+            <li>그래픽 축척, 방위표, 범례용 <strong>배경</strong>: 정사영상 위에서도 잘 읽힙니다</li>
+            <li><strong>시트 목록</strong>과 시트 탐색기</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>그리기와 모델링</h3>
+          <ul class="feat-list">
+            <li><strong>단면 상자</strong>: 여섯 면 상자로 모델을 잘라 뷰와 시트에서 봅니다</li>
+            <li><strong>그리기 ▸ 지형</strong>: 편집 가능한 지형을 만들고, 깎고, 찍어 내고, 씌웁니다. DXF의 측량점으로도 가능합니다</li>
+            <li><strong>개구부 자르기</strong>: 창이나 문이 벽에 개구부를 뚫습니다. 벽이 그룹이어도 되며, 옮기면 개구부도 따라갑니다</li>
+            <li><strong>면 만들기와 돌출</strong>: 윤곽마다 한 번에 각자의 솔리드가 됩니다</li>
+            <li>치수 입력란의 <strong>계산기</strong>: 길이를 넣는 곳에 <code>=1.25*2+2.45/2</code>처럼 입력하세요</li>
+            <li><strong>안내점</strong> 도구, 하나씩 켜는 추론, 모델 축척을 바꾸는 줄자</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>뷰, 카메라, 프레젠테이션</h3>
+          <ul class="feat-list">
+            <li><strong>사진에서 카메라</strong>: 사진을 찍은 카메라를 찾아 모델을 사진에 맞춥니다</li>
+            <li><strong>구도 안내선</strong>과 장면 숨기기(Ctrl+E)</li>
+            <li>완전한 <strong>스타일 편집기</strong>, 지평선 그라데이션, 안개, 레이어·재질 색의 불투명도</li>
+            <li>장면을 <strong>PNG 시퀀스</strong>로 내보내기, 투명 배경 선택 가능</li>
+            <li><strong>트랙패드</strong>: 핀치하면 손가락 쪽으로 확대됩니다. 카메라 롤을 지원하는 3D 마우스, macOS의 SpaceMouse</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>BIM과 IFC</h3>
+          <ul class="feat-list">
+            <li><strong>BIM 표</strong>: 검색, IFC 클래스별 필터, 그룹화, 트리 경로 보기, 물량·부피 합계</li>
+            <li><strong>안정화된 IFC4.3 내보내기</strong>와 검증된 납품 패키지(첫 프로파일은 튀르키예용)</li>
+            <li>Reference View 헤더, 단위, 프로젝트 북쪽, 대지 위치를 갖춘 <strong>세계 좌표 IFC</strong></li>
+            <li>Model Info의 <strong>위치 탭</strong>, 사용 중인 재질 표를 CSV로</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>AI와 자동화</h3>
+          <ul class="feat-list">
+            <li>임의 코드 없이 모두 실행 취소되는 <strong>이름 있는 MCP 도구</strong></li>
+            <li><strong>서버 모드</strong>: <code>ingetrazo --server [file] [--port N]</code></li>
+            <li><strong>창 없이</strong>: <code>ingetrazo --headless --ai-bridge --open House.igz</code>, MCP에서 저장과 종료까지</li>
+            <li>버전 관리를 위한 <strong>일반 JSON 저장</strong></li>
+            <li>열린 문서마다 창을 넘나들며 따로 지정할 수 있습니다</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>재질, 확장, 언어</h3>
+          <ul class="feat-list">
+            <li><strong><code>.igmat</code> 재질</strong> 내보내기·가져오기, “내 재질”, <code>.skm</code> 재질 가져오기</li>
+            <li>밝은 부분과 어두운 부분을 살리는 <strong>텍스처 색조</strong></li>
+            <li>개선된 <strong>확장 관리자</strong>, <code>.iglib</code> 묶음을 쓰는 리소스 라이브러리</li>
+            <li>인터페이스에 <strong>튀르키예어</strong>와 <strong>카탈루냐어</strong>, 베트남어 용어 추가</li>
+            <li><strong>Windows</strong>: 탐색기의 <code>.igz</code> 미리보기, 작업 표시줄의 최근 파일, Winget 배포</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="v062" class="section bg-light nov-release">
+    <div class="container">
+      <div class="section-head">
+        <h2>0.6.2 · 시트와 치수</h2>
+        <p>2026년 11월 14일. 같은 날 밤 0.6.2.1 수정판이 나왔습니다.</p>
+      </div>
+      <div class="ej-grid nov-grid">
+        <article class="ej-card nov-card">
+          <h3>시트와 치수</h3>
+          <ul class="feat-list">
+            <li>모서리를 따라 스냅되는 <strong>시트 치수</strong>, 라벨은 아래나 뒤집어서, 문자와 간격을 두고</li>
+            <li>시트, DXF, 3D 뷰에서 <strong>레이어별 단면 선 굵기와 해치</strong></li>
+            <li><strong>확장도 시트에 그립니다</strong>: 도로나 수로의 측점이 벡터로 나옵니다</li>
+            <li>창 없이 <strong>명령줄에서</strong> 모든 시트를 PDF로 내보내기</li>
+            <li>시험용 광장의 시트 구성기가 57초 대신 <strong>2.5초</strong>에 열립니다</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>장면, 카메라, 영상</h3>
+          <ul class="feat-list">
+            <li><strong>장면 전환</strong>, 재생, 둘러보기를 영상으로 내보내기</li>
+            <li>전용 탭의 <strong>폴더와 미리보기가 있는 장면</strong></li>
+            <li><strong>북쪽 도구</strong>와 카메라 ▸ 카메라 설정: 초점 거리, 센서, 렌즈 시프트</li>
+            <li>각자 스타일, 투영, 장면을 갖는 <strong>여러 뷰포트</strong></li>
+            <li><strong>뷰 정렬</strong>: 카메라가 선택한 면을 정면으로 봅니다</li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>인터페이스와 내보내기</h3>
+          <ul class="feat-list">
+            <li><strong>새 테마 네 가지</strong> —Studio, Solarized, Campbell, Sand—, 개선된 Dark 테마와 더 가는 아이콘</li>
+            <li>면, 텍스처, 태양 그림자를 담은 <strong>레이어별 SVG로 뷰 내보내기</strong></li>
+            <li><strong>부드러운 그림자</strong>, 해석적 안내 원, “면 중심” 스냅</li>
+            <li>여러 면을 각자의 법선 방향으로 한 번에 <strong>밀기/끌기</strong></li>
+          </ul>
+        </article>
+        <article class="ej-card nov-card">
+          <h3>아주 큰 모델</h3>
+          <ul class="feat-list">
+            <li>그룹 21,000개 모델: 첫 프레임 60초에서 <strong>21초</strong>로, 메모리 9 GB에서 <strong>5.4 GB</strong>로</li>
+            <li>객체 1,035개 광장의 평면을 SVG로 내보내는 데 170초 대신 <strong>17초</strong></li>
+            <li>0.6.2.1: 큰 모델에서 사이드바가 더 이상 창을 멈추지 않습니다(12–22초에서 0.1초로)</li>
+            <li>수십 가지 수정: 확장을 연 상태의 Ctrl+S, 이동+Ctrl의 정확한 복사, 장면이 있는 <code>.skp</code>를 가져올 때 Mac에서의 충돌</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRANJA FINAL ============ -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>오늘 바로 써 보세요</h2>
+      <p>무료, 계정 없이, Linux, Windows, macOS에서.</p>
+      <div class="final-cta-btns">
+        <a href="/ko/#descargar" class="btn btn-lg final-cta-dl">IngeTrazo 다운로드</a>
+        <a href="https://ingetrazo-docs.pages.dev" class="btn btn-lg final-cta-man" target="_blank" rel="noopener">매뉴얼 읽기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contacto" class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <img src="/images/logo.png" alt="IngeTrazo 로고" width="36" height="36">
+          <strong>IngeTrazo</strong>
+        </div>
+        <p>건축, 공학, 디자인을 위한 오픈소스 3D 모델러.</p>
+        <a class="btn btn-heart footer-support" href="/ko/apoyar">프로젝트 후원하기</a>
+        <p class="footer-copy">© 2026 Marco Sumari Tellez · 오픈소스 소프트웨어, GPL-3.0</p>
+      </div>
+      <div class="footer-col">
+        <h4>제품</h4>
+        <ul>
+          <li><a href="/ko/#features">기능</a></li>
+          <li><a href="/ko/#descargar">다운로드</a></li>
+          <li><a href="/ko/novedades">새 소식</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/releases" target="_blank" rel="noopener">릴리스</a></li>
+          <li><a href="/ko/#faq">자주 묻는 질문</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>자료</h4>
+        <ul>
+          <li><a href="https://ingetrazo-docs.pages.dev" target="_blank" rel="noopener">사용자 매뉴얼 (스페인어)</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo" target="_blank" rel="noopener">소스 코드 (GitHub)</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">문제 보고</a></li>
+          <li><a href="/ko/extensiones">확장</a></li>
+          <li><a href="/ko/firma">코드 서명 정책</a></li>
+          <li><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPL-3.0 라이선스</a></li>
+          <li><a href="https://ingepresupuestos.com" target="_blank" rel="noopener">IngePresupuestos</a></li>
+          <li><a href="https://ingecad.org" target="_blank" rel="noopener">IngeCAD</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>연락처</h4>
+        <ul>
+          <li><a href="mailto:ing.sumari@gmail.com">ing.sumari@gmail.com</a></li>
+          <li><a href="https://github.com/ingelibre/ingetrazo/issues" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>
